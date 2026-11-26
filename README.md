@@ -3,8 +3,10 @@
 Tools for analysing the **KCBS-2** Digital Radio Mondiale shortwave broadcast from
 raw KiwiSDR IQ recordings. The repo parses the DRM container, recovers some
 side-channel text, and renders experimental audio through a candidate codec.
-**There is no verified broadcast audio decode** and no demonstrated complete
-Korean-text recovery in this repo.
+The March role-0 EVS output reproduces a specific spectral feature of the RF
+capture, but a complete programme/audio match is not verified. The November
+contribution adds variable-length records and greatly improves usable text-tail
+coverage.
 
 ## Play or render the bundled 19:06 recording
 
@@ -76,9 +78,9 @@ python scripts/kcbs_decode_audio.py captures/mycapture_iq.wav --out work/mycaptu
 ```
 
 The text output distinguishes CRC-supported records from heuristic candidates.
-`--allow-candidate-keys` permits the per-run renderer to use heuristic keys when
-no full CRC-supported keys are available. The experimental `--montage` path can
-also use heuristics without that flag; do not treat montage output as CRC-only.
+`--allow-candidate-keys` explicitly permits heuristic keys only when no full
+CRC-supported prefixes are available. The `--montage` timeline respects the
+same rule and labels heuristic audio `HANGUL_CANDIDATE`, never `CRC_PREFIX`.
 
 To combine simultaneous length-prefixed MSC dumps without re-demodulating:
 
@@ -90,25 +92,70 @@ python scripts/salvage_msc_packets.py receiver-a.msc.bin receiver-b.msc.bin \
 Salvage merges packet-CRC-good payloads at the same counter and phase, rejects
 conflicting copies, and requires the reassembled data unit to pass its CRC.
 The March fast path instead uses complete CRC-good groups in the cached dumps.
+On the longest bundled March capture, both paths independently return the same
+708 counters and data units; salvage adds zero, so it does not explain the
+reported 702 count. Martyn’s 702 groups are a byte-identical subset of those
+708; his dump lacks the other six. For June, combining CRC-good packets across the two
+frequencies yields **410 complete groups instead of 408**.
+The two added groups are not additional verified text prefixes.
 
-For a non-idle capture, the same replay can render excerpts from a complete
-CRC-supported mask prefix. It never promotes the Hangul-density candidates:
+## Render the contributed November recording
+
+[**Download the quieter 17:40.8 listening WAV**](https://github.com/KoryoFront/kcbs2-drm-decode/releases/download/november-quiet-review/KCBS2_NOV25_UNVERIFIED_QUIET_17m40_32k.wav).
+It uses the same counter span as the previous November 24 UTC / November 25 KST
+sample. This time **671 of 884 timeline groups** have full 16-byte prefixes checked
+against repeated records. This is group coverage, not a percentage of verified
+speech or music. Role 2 is concealed; role 3 can replay the next fully unmasked
+frame. The copy measures **−26.7 LUFS**, with a **−2.6 dBTP** true peak and
+11 silent gaps of their original durations. The March release is unchanged.
+
+[Martyn’s contribution](contrib/kcbsdrm/README.md) supplies six matching groups of
+dumps, prefix archives, record reports and Korean text. All **3,517** exported full prefixes matched complete received groups by
+counter; the six captures contain **4,421** complete groups in total. Rechecking header/body CRC, padding, fill, and matching records
+at the same position in the carousel kept **3,007 full prefixes**. Repeat agreement
+is an extra consistency check, not authentication; the exports are not a source
+of keys for future broadcasts.
+
+With FFmpeg and the EVS build from the March quickstart, reproduce the release
+from the contributed data (Git Bash):
 
 ```bash
+python scripts/salvage_msc_packets.py \
+    contrib/kcbsdrm/reference/sf_2026-11-25_04*3205_hik.bin --out work/november
+python scripts/review_supplied_records.py \
+    --data-units work/november/data_units.npz \
+    --keys contrib/kcbsdrm/keys/keys_2026-11-25.npz \
+    --repeat-blocks 969 --out work/november_review
 python scripts/render_supported_nonidle.py \
-    --groups work/mycapture/salvage/groups.npz \
-    --keys work/mycapture/keys/keys.npz --out work/nonidle_replay
+    --groups work/november/groups.npz --keys work/november_review/keys.npz \
+    --timeline --start-counter 43679908 --end-counter 43680791 \
+    --loss-policy future --attenuate-db 2.2 --out work/november_audio
+python scripts/finish_listening_wav.py \
+    work/november_audio/NONIDLE_CRC_PREFIX_UNVERIFIED_FUTURE_TIMELINE_32k.wav \
+    --report work/november_audio/report.json --gain-db 2.2 \
+    --out work/november_audio/KCBS2_NOV25_UNVERIFIED_QUIET_17m40_32k.wav
 ```
 
-The output joins contiguous supported runs with half-second silent separators.
-Its report maps excerpt positions back to source counters. It is an excerpt reel,
-not a continuous capture or a verification of the audio.
+Use a new output directory or filenames for reruns. Omit `--timeline` for an
+excerpt reel with half-second separators. `--loss-policy replay` matches the
+quieter March playback policy; `--loss-policy plc` uses concealment instead of
+frame replay. None of the options recovers the missing payload or guarantees
+natural music. Each render writes a counter and timing report.
 
 To check for a pre-programme RF pulse from two overlapping recordings, use
 `python scripts/rf_pulse_check.py --help`. In one June pair on 3205 and 6140 kHz
-no consistent period stood out in both receivers and both halves of the shared
-interval. This does not rule out a pulse in programme audio. If confirmed, a
-pulse can help with alignment; it does not recover missing frame bytes.
+no shared pulse persisted across adjacent 40-second windows of the common
+interval. A planted 0.8 Hz modulation passed the same check. A listener reported
+pre-start pulsing. This must not be equated to the narrow component in the March
+EVS output below.
+This two-frequency power test does not check what is audible in programme
+content. A confirmed audio pulse can help align recordings of the same programme;
+it does not recover missing frame bytes. The capture layout audit reports exact
+mode-edge counters without mistaking gaps for transitions:
+
+```bash
+python scripts/audit_capture_layout.py work/mycapture/salvage/groups.npz
+```
 
 ## Container and partial mask
 
@@ -133,8 +180,8 @@ not establish independence. A one-step change of counter changes about 64 of the
 strength, or locate a secret in receiver hardware. Byte-identical payloads across
 two transmitters support a common upstream masked stream.
 
-**Opaque trailer.** All 865 bundled March groups match this layout immediately
-before the text tail:
+**Opaque trailer.** This layout immediately before the text tail matched all **2,310** complete
+groups checked across the March, June, November 24, and November 25 samples:
 
 | Phase | Layout, starting at `du[662]` |
 |---|---|
@@ -142,8 +189,8 @@ before the text tail:
 | 1 | 3 zero bytes, `du[665:698]` (33 variable bytes) |
 | 2 | 2 zero bytes, `du[664:697]` (33 variable bytes), 1 zero byte |
 
-The resulting 96-byte blocks are distinct in the merged capture; their pooled
-bit-one fraction is 0.5005. Their function is unknown. Simple mappings tested so
+The resulting 96-byte blocks are distinct within each sample, with bit-one
+fractions from 0.4994 to 0.5022. Their function is unknown. Simple mappings tested so
 far did not produce supported recovery of additional mask bytes.
 
 ## Text recovery and validation
@@ -160,31 +207,55 @@ and text, and 16 bytes of `0xBB` fill. CRC is an integrity check, not authentica
 Hangul density is only a heuristic: even the fill word `0xBBBB` counts as a Hangul
 syllable, and forcing a fill biases this score.
 
-**Variable-length records:** External analysis reports a block-aligned header
-with length `((b0 & 7) << 4) | (b1 & 0x0f)`, a last-record flag and sequence
-number. It reports zero padding after the text CRC and fill after non-final
-records; final records and titles do not fit the fixed grid. Text recurs after
-323 groups (6:27.6); the reported per-item toggle can require two loops for exact
-header equality. The external counts **469/505** and **247/267** are fractions
-of records, not fractions of unique groups with all 16 mask bytes. The parser
-and those results have not been reproduced in this repo. A fair comparison
-needs per-counter byte masks and provenance, against both the number of received
-groups and the full timeline. Fixed-grid coverage is not a ceiling.
+**Variable-length records:** `scripts/parse_text_records.py` checks already-available
+plaintext using the reported block-aligned header, length `((b0 & 7) << 4) | (b1 & 0x0f)`,
+last-record flag, sequence number, CRC, zero padding and a fill block after a non-final
+record. The optional same-length `--known-bytes` map (0 or 1 per input byte) prevents
+unknown bytes from being treated as evidence. Title and item signalling are not parsed.
+
+```bash
+python scripts/parse_text_records.py plaintext.bin --known-bytes known_mask.bin
+```
+
+In the contributed archives, the parser rechecked **1,324** full records,
+including **42** final records. Observed bodies span 8–92 bytes rather than a
+fixed 92. The reported ~93% figures count records; the group counts above use
+a different denominator. `review_supplied_records.py` only narrows existing
+masks to observations that pass the review; it never infers new mask bytes.
+
+Observed carousel repetition depends on the recording: **969**, **700**, and
+**878** 16-byte blocks (6:27.6, 4:40, and 5:51.2 at 0.4 s per block). The item
+toggle can require two loops for byte-identical headers, so the repeat check
+compares body, sequence, final flag and position without requiring the toggle.
 
 ## Audio evidence and limitations
 
 - The `[mode byte][32-byte payload]` reading gives 264 bits, consistent with
-  EVS 13.2. In a GCC decoder test, **0/255** supplied frames raised error flags,
-  versus **53–79** for uniform wrong-key controls. Those controls also change
-  byte statistics; this does not identify the codec. Stronger controls preserve
-  byte or bit statistics within each mode and use the same frame-loss pattern.
-- The candidate did not beat wrong-key controls against the paired November
-  stream. At the selected lag, held-out correlation was **−0.025**. Known EVS
-  audio provided a positive control; a successful round-trip validates the build,
-  not that the broadcast uses EVS.
-- The old March 1 kHz audio reference was **KCBS-1**, not KCBS-2. A change in
-  DRM frame statistics does not identify a 1 kHz tone or digital silence. An
-  independently verified KCBS-2 recording is needed to label those intervals.
+  EVS 13.2. A traced GCC decoder flagged **0 of 12,975** March role-0 frames.
+  Across 24 trials per control, shuffling each keyed byte column within the same
+  exact mode flagged **2,983–3,117**; moving whole keyed vectors within mode
+  flagged **2,963–3,116**; draws from matched bit frequencies flagged
+  **3,154–3,329**. November gave **0/255** versus **17–29** for the column
+  shuffles. Modes, clear bytes, frame positions and erasures were unchanged.
+  So uniform wrong-key statistics do not explain the separation in these tests.
+  Flags are not a universal check: some shuffles of known EVS controls also had
+  zero flags. The broadcast codec and audio correspondence remain unverified.
+- The candidate did not beat wrong-key controls against the simultaneously
+  recorded November comparison stream. Its programme identity was not established
+  by the channel label alone. At the selected lag, held-out correlation was
+  **−0.025**. Known EVS audio provided a positive control; a successful round-trip
+  validates the build, not that the broadcast uses EVS.
+- Martyn’s March spectral result reproduces independently on both raw dumps.
+  From 20–80 s on the longest capture’s counter timeline, a role-0-only EVS
+  render has a **1,000 Hz** peak containing **98.15%** of the 100–7,000 Hz
+  power in the 980–1,020 Hz band. Wrong-prefix and exact-mode shuffled controls
+  show 0.77% and 3.20–4.24%, respectively. The candidate then falls to roughly
+  six PCM counts RMS at 100–220 s. This is evidence for EVS on those particular
+  inputs. It does not identify a separate satellite programme or the usual
+  pre-start cue. The satellite WAV is not bundled, so its reported correlation
+  was not checked. The RF mode edge is counter **25464052**, phase 0, zero-based
+  slot 1 (82.82 s from the longest capture’s first group, 322.82 s in the merge).
+  `scripts/audit_march_contribution.py` reproduces the RF-only test.
 - The role-1 continuity pilot substituted a constant plaintext byte across
   different frames. It did not apply a shared XOR mask to those frames and does
   not establish that the six bytes are impossible to recover. Substitutes and
@@ -209,16 +280,31 @@ The benchmark needs at least 18 minutes of audio for the selected offsets. It
 encodes independent controls locally, compares seven strategies, and keeps its
 selection and held-out slices separate.
 
+## Can this run live?
+
+The audio stage is fast enough to prototype. On one desktop, a 17:40.8 render
+with the prefixes already on disk took about 30 seconds. An offline 16-group
+check took a median **0.15 s** to decode each **1.2 s** group, but opening WSL for
+one group stalled for **4.84 s**. A live listener would need a persistent decoder
+and a playout buffer, with missing groups passed as losses on the original clock.
+These are decoder measurements, not an end-to-end live test.
+
+A live receiver also needs stable RF lock and usable prefixes for the incoming
+counter before playout. The November archives apply only to the recordings they
+match. For new scrolling-text broadcasts the demonstrated workflow is delayed
+review and playback, not immediate audio. No live capture is started by these
+scripts. The reported operating hours remain **05:00–23:00 KST**.
+
 ## Tests and licensing
 
 ```bash
-for t in test_key_recovery test_november_recovery test_speech_reconstruction test_aio_pipeline test_march_playback; do
+for t in test_key_recovery test_november_recovery test_speech_reconstruction test_aio_pipeline test_march_playback test_text_records test_capture_layout test_supplied_records; do
     python scripts/$t.py || exit 1
 done
 ```
 
 The tests use synthetic inputs to check CRC and salvage, key evidence, alignment,
-frame placement, donor-byte coordinates, gap length, and fades. The bundled March
-command is the end-to-end check. Dream is GPL; see [docs/NOTICE.md](docs/NOTICE.md)
+frame placement, donor-byte coordinates, gap length, and fades. The bundled March and November
+commands are end-to-end checks. Dream is GPL; see [docs/NOTICE.md](docs/NOTICE.md)
 and [docs/COPYING.FAAD2](docs/COPYING.FAAD2) for third-party notices. The 3GPP EVS
 reference codec is not redistributed here.

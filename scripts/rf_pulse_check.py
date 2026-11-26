@@ -5,7 +5,8 @@ from pathlib import Path
 import wave
 
 import numpy as np
-from scipy.signal import detrend, welch
+from scipy.ndimage import median_filter
+from scipy.signal import detrend, periodogram, welch
 
 STEP = .02
 BANDS = ((300, 4100), (5000, 5700))
@@ -55,6 +56,33 @@ def compare(x, y):
     return dict(seconds=round(lag*STEP, 2), correlation=round(at_shift(lag), 4))
 
 
+def localized_pulses(x, y, seconds=40):
+    """Require a common excess in two adjacent windows, not an isolated peak."""
+    width = round(seconds/STEP)
+
+    def bins(signal):
+        freq, power = periodogram(signal, fs=1/STEP, window='hann', detrend='linear')
+        floor = np.maximum(median_filter(power, size=31), 1e-20)
+        relative = power/floor
+        return np.flatnonzero((freq >= .2) & (freq <= 10) & (relative >= 10)
+                              & (relative > np.roll(relative, 1))
+                              & (relative > np.roll(relative, -1)))
+
+    hits = []
+    n = min(len(x), len(y))
+    for start in range(0, n-width+1, width):
+        first = bins(x[start:start+width])
+        second = bins(y[start:start+width])
+        hits.append([int(idx) for idx in first if np.any(np.abs(second-idx) <= 1)])
+    hz = 1/(width*STEP)
+    persistent = [dict(start_seconds=round(i*width*STEP, 2), hz=round(bin_id*hz, 3))
+                  for i, (left, right) in enumerate(zip(hits,hits[1:]))
+                  for bin_id in left if any(abs(bin_id-next_id) <= 1 for next_id in right)]
+    return dict(window_seconds=seconds, windows=len(hits),
+                shared_peaks_hz=[[round(idx*hz,3) for idx in row] for row in hits],
+                adjacent_window_matches=persistent)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('first', type=Path)
@@ -69,7 +97,9 @@ def main():
     x = band_power(a.first, a.first_skip, a.seconds)
     y = band_power(a.second, a.second_skip, a.seconds)
     n = min(len(x),len(y))
-    report = dict(seconds=round(n*STEP, 2), results={})
+    report = dict(seconds=round(n*STEP, 2), results={},
+                  localized_inband=localized_pulses(x[:n,0], y[:n,0]),
+                  note='RF power test, not the programme audio envelope.')
     for lab, s in [('early',slice(0,n//2)), ('late',slice(n//2,n))]:
         xs, ys = detrend(x[s],axis=0), detrend(y[s],axis=0)
         report['results'][lab] = dict(first_inband=peaks(xs[:,0]), second_inband=peaks(ys[:,0]),
@@ -78,6 +108,7 @@ def main():
                                       power_ratio_correlation=compare(xs[:,0]-xs[:,1],ys[:,0]-ys[:,1]))
     with a.out.open('x', encoding='utf-8') as f:
         json.dump(report,f,indent=2)
+    print('Shared pulse candidates in adjacent windows:', report['localized_inband']['adjacent_window_matches'])
     for label,row in report['results'].items():
         print(label, 'in-band peaks (Hz, power/floor):',row['first_inband'][:4],row['second_inband'][:4],
               'cross-correlation:',row['inband_correlation'], row['power_ratio_correlation'])

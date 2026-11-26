@@ -44,6 +44,8 @@ from salvage_msc_packets import salvage
 from repeated_text_keys import recover
 import role1_key_search as rks
 from role1_smooth_fill import smooth_fill
+from kcbs_decode_fast import assemble_frames, decode_evs, group_runs, render_timeline
+from render_supported_nonidle import join_supported
 
 _spec = importlib.util.spec_from_file_location('pfq', HERE/'partial_frame_quality.py')
 pfq = importlib.util.module_from_spec(_spec)
@@ -282,7 +284,7 @@ def stage_audio(groups_npz, keys_npz, out, rate, fill, log, allow_candidates=Fal
                   'characters); using those for audio' % (len(counters),
                                                           int((scores >= 0).sum())), flush=True)
     if not len(counters):
-        return [], dict(crc_verified_key_groups=0, key_source='none')
+        return [], dict(audio_key_groups=0, crc_verified_key_groups=0, key_source='none')
     with np.load(groups_npz) as d:
         index = np.searchsorted(d['counters'], counters)
         found = index < len(d['counters'])
@@ -408,6 +410,40 @@ def stage_audio(groups_npz, keys_npz, out, rate, fill, log, allow_candidates=Fal
                           key_source=key_source, audio_key_groups=int(len(counters)))
 
 
+def stage_montage(groups_npz, keys_npz, out, rate, merge_gap, allow_candidates):
+    counters, keys, du, available = join_supported(groups_npz, keys_npz)
+    verified = len(counters)
+    source = 'crc_supported'
+    if not verified and allow_candidates:
+        candidate = hangul_validated(groups_npz)
+        if candidate is not None:
+            all_counters, all_keys, good, _ = candidate
+            counters, keys, source = all_counters[good], all_keys[good], 'hangul_candidate'
+            with np.load(groups_npz) as data:
+                du = data['du'][good]
+    if not len(counters):
+        return [], dict(audio_key_groups=0, crc_verified_key_groups=0, key_source='none')
+    first, last = int(available[0]), int(available[-1])
+    offsets = counters - first
+    frames, supplied = assemble_frames(du, keys, offsets, last-first+1)
+    runs = group_runs(offsets, merge_gap)
+    audio_dir = out/'audio'
+    audio_dir.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix='evs_', dir=audio_dir) as tmp:
+        pcm = render_timeline(frames, supplied, runs, rate,
+                              lambda f, s: decode_evs(f, s, rate, Path(tmp)))
+    label = 'CRC_PREFIX' if source == 'crc_supported' else 'HANGUL_CANDIDATE'
+    path = audio_dir/f'KCBS2_UNVERIFIED_{label}_montage_{rate//1000}k_{first}-{last}.wav'
+    with wave.open(str(path),'wb') as wav:
+        wav.setparams((1,2,rate,0,'NONE','not compressed'))
+        wav.writeframes(pcm.tobytes())
+    report = dict(file=path.name, seconds=round(len(pcm)/rate,2),
+                  audio_key_groups=len(counters), crc_verified_key_groups=verified,
+                  key_source=source, decoder_calls=len(runs), merge_gap=merge_gap)
+    (audio_dir/'report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+    return [dict(file=str(path.relative_to(out)), kind='montage', seconds=report['seconds'])], report
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -420,15 +456,16 @@ def main():
                     help='with --montage, bridge up to N unkeyed groups inside one decoder '
                          'call; larger values give longer stretches but more concealment')
     ap.add_argument('--montage', action='store_true',
-                    help='also write one timeline file: decoded groups at their true counter '
-                         'times, silence elsewhere. Much easier to listen to than many short runs')
+                    help='write one counter-aligned timeline instead of separate runs')
     ap.add_argument('--allow-candidate-keys', action='store_true',
                     help='if no key is CRC-verified, decode audio with fill-crib candidate '
                          'keys instead; output is labelled CANDIDATEKEYS and is weaker evidence')
     ap.add_argument('--fill', choices=pfq.STRATEGIES + ['role1_smooth'], default='role1_smooth',
-                    help='role-1 substitute strategy; role1_smooth scored best on held-out '
-                         'controls but needs the traced decoder build (compiled on demand)')
+                    help='role-1 substitute strategy for separate-run output; '
+                         'montage always uses the adjacent role-0 donor')
     a = ap.parse_args()
+    if a.merge_gap < 0:
+        ap.error('--merge-gap must be nonnegative')
     missing = check_tools()
     if missing:
         raise SystemExit('missing prerequisites:\n  ' + '\n  '.join(missing))
@@ -452,36 +489,9 @@ def main():
     print('[4/5] writing decoded text', flush=True)
     text_report = stage_text(keys_dir, salvage_dir, out, log)
     if a.montage:
-        # The montage path uses the continuous renderer: long stretches decoded in one
-        # call with real silence between them, which is far less choppy than decoding
-        # many isolated 1.2 s groups from a cold start.
         print('[5/5] decoding audio continuously (%d Hz)' % a.rate, flush=True)
-        keys_for_audio = keys_dir/'keys.npz'
-        validated = hangul_validated(salvage_dir/'groups.npz')
-        if validated is not None and not np.load(keys_for_audio)['crc_supported'].any():
-            all_c, all_k, good, scores = validated
-            tmp_keys = out/'keys_hangul.npz'
-            np.savez_compressed(tmp_keys, counters=all_c.astype(np.uint32), ks=all_k,
-                                candidate_mask=np.repeat(good[:, None], 16, 1),
-                                crc_supported=np.repeat(good[:, None], 16, 1))
-            keys_for_audio = tmp_keys
-            print('  using %d Korean-text-validated groups' % int(good.sum()), flush=True)
-        command = [sys.executable, str(HERE/'render_continuous.py'), str(salvage_dir),
-                   str(keys_for_audio), '--out', str(out/'audio'), '--rate', str(a.rate),
-                   '--no-fill', '--merge-gap', str(a.merge_gap)]
-        proc = subprocess.run(command, capture_output=True, text=True,
-                              encoding='utf-8', errors='replace')
-        log.append(dict(stage='audio', command=command, returncode=proc.returncode,
-                        tail=proc.stderr[-1500:]))
-        if proc.returncode:
-            raise RuntimeError(proc.stderr[-1500:])
-        audio_report = json.loads((out/'audio'/'report.json').read_text(encoding='utf-8'))
-        rendered = [dict(file=str(Path('audio')/audio_report['file']), kind='montage',
-                         seconds=audio_report['seconds'])]
-        audio_report.setdefault('audio_key_groups', audio_report.get('tier_keyed', 0))
-        audio_report.setdefault('crc_verified_key_groups', 0)
-        audio_report.setdefault('key_source', 'hangul_validated'
-                                if keys_for_audio != keys_dir/'keys.npz' else 'crc_verified')
+        rendered, audio_report = stage_montage(salvage_dir/'groups.npz', keys_dir/'keys.npz',
+                                               out, a.rate, a.merge_gap, a.allow_candidate_keys)
     else:
         print('[5/5] decoding audio (%s, %d Hz)' % (a.fill, a.rate), flush=True)
         rendered, audio_report = stage_audio(salvage_dir/'groups.npz', keys_dir/'keys.npz',
@@ -494,7 +504,7 @@ def main():
         crc_verified_key_bytes=keys_report['crc_supported_key_bytes'],
         **text_report,
         **audio_report,
-        fill_strategy=a.fill, sample_rate=a.rate, audio=rendered,
+        fill_strategy='role1_donor' if a.montage else a.fill, sample_rate=a.rate, audio=rendered,
         content_seconds=round(sum(r['seconds'] for r in rendered
                                   if r.get('kind') != 'montage'), 2),
         montage_seconds=round(sum(r['seconds'] for r in rendered
@@ -504,9 +514,9 @@ def main():
                 'rerun with --allow-candidate-keys for unverified audio'),
         caveats=['Role-1 unknown bytes are substitutes, not recovered keys.',
                  'Roles 2 and 3 are concealed by the decoder.',
-                 'EVS 13.2 is a syntax-supported hypothesis, not a confirmed codec.',
+                 'EVS 13.2 is an unconfirmed codec hypothesis.',
                  'Separate runs are different times; do not treat them as continuous audio.',
-                 'CANDIDATEKEYS output uses keys that passed header/character gates, not CRC.'])
+                 'Hangul candidate audio is heuristic, not CRC-supported.'])
     (out/'manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
     (out/'calls.json').write_text(json.dumps(log, indent=2), encoding='utf-8')
     print(json.dumps({k: manifest[k] for k in

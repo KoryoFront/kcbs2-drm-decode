@@ -1,7 +1,9 @@
 """Synthetic checks for the end-to-end pipeline's frame assembly and fills."""
 import importlib.util
 import sys
+import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 import numpy as np
@@ -91,6 +93,45 @@ class PipelineTests(unittest.TestCase):
             self.assertIn('crc=False', candidate_part)
             self.assertNotIn('crc=False', verified_part)
             self.assertIn('TEXT FROM FILL-CRIB CANDIDATE KEYS', written)
+
+    def test_montage_requires_opt_in_and_keeps_prefix_sources_separate(self):
+        counters = np.array([50, 51], dtype=np.uint32)
+        keys = np.zeros((2,16), dtype=np.uint8)
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            groups, archive = root/'groups.npz', root/'keys.npz'
+            np.savez(groups, counters=counters, du=np.zeros((2,3,716), dtype=np.uint8))
+            candidates = np.ones_like(keys, dtype=bool)
+            supported = np.zeros_like(candidates)
+            supported[0,0] = True
+            np.savez(archive, counters=counters, ks=keys, crc_supported=supported,
+                     candidate_mask=candidates)
+
+            def silence(frames, supplied, rate, temporary):
+                return np.zeros(len(frames)*(rate//50), dtype=np.int16)
+
+            scored = (counters, keys, np.array([False, True]), np.array([0, 20]))
+            with patch.object(aio, 'hangul_validated', return_value=scored) as hangul,                  patch.object(aio, 'decode_evs', side_effect=silence) as decode:
+                rendered, report = aio.stage_montage(groups, archive, root, 16000, 0, False)
+                self.assertEqual(rendered, [])
+                self.assertEqual(report['key_source'], 'none')
+                hangul.assert_not_called()
+                decode.assert_not_called()
+                rendered, report = aio.stage_montage(groups, archive, root, 16000, 0, True)
+                self.assertEqual(report['crc_verified_key_groups'], 0)
+                self.assertEqual(report['audio_key_groups'], 1)
+                self.assertIn('HANGUL_CANDIDATE', rendered[0]['file'])
+                self.assertEqual(report['seconds'], 2.4)
+
+                supported[0] = True
+                np.savez(archive, counters=counters, ks=keys, crc_supported=supported,
+                         candidate_mask=candidates)
+                hangul.reset_mock()
+                rendered, report = aio.stage_montage(groups, archive, root, 16000, 0, True)
+                hangul.assert_not_called()
+                self.assertEqual(report['crc_verified_key_groups'], 1)
+                self.assertEqual(report['audio_key_groups'], 1)
+                self.assertIn('CRC_PREFIX', rendered[0]['file'])
 
     def test_one_line_collapses_breaks(self):
         self.assertEqual(aio._one_line('a' + chr(13) + chr(10) + 'b'), 'a / b')

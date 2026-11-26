@@ -3,4 +3,7 @@ __pycache__/
 *.pyc
 *.192
 *.raw
+
+# generated demodulator output, except the dumps shipped with the bundled recording
 *.msc.bin
+!dumps/*.msc.bin

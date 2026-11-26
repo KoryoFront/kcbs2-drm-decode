@@ -1,0 +1,5517 @@
+{
+"tag": "2026-11-25",
+"items": [
+[
+{
+"pos": 8,
+"counter": 43679422,
+"seq": 11,
+"last": true,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "에서 때때로 비가 내리겠습니다.\n혜산시에서는 때때로 비와 눈이 내리겠습니다."
+}
+],
+[
+{
+"pos": 120,
+"counter": 43679427,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "2)28일에 평양, 평성, 신의주, 해주, 사리원, 남포, 개성시에서 주로 개이겠"
+},
+{
+"pos": 176,
+"counter": 43679429,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "으나 새벽 한때 흐리겠으며 강계시에서는 새벽과 오전에 대체로 흐렸다가 오후부터 점차"
+},
+{
+"pos": 232,
+"counter": 43679431,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 개이겠습니다. \n원산, 함흥, 청진, 라선시에서 주로 개이겠으며 혜산시에서는 대"
+},
+{
+"pos": 288,
+"counter": 43679434,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "체로 흐리여 새벽과 오전 한때 눈이 내린후 오후부터 점차 개이겠습니다. \n\n29"
+},
+{
+"pos": 344,
+"counter": 43679436,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "일에는 평양, 평성, 해주,________________________, 개성시에서"
+},
+{
+"pos": 400,
+"counter": 43679438,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 주로 개이겠으며 신의주시에서는 주로 개이겠으나 오후 한때 흐리겠습니다. \n강계,"
+},
+{
+"pos": 456,
+"counter": 43679441,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 혜산시에서는 오전까지 주로 개였다가 대체로 흐리겠습니다. \n\n 30일에 평양,"
+},
+{
+"pos": 512,
+"counter": 43679443,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 평성, 신의주, 해주, 사리원, 강계, 원산, 함흥, 청진, 혜산, 남포, 라선,"
+},
+{
+"pos": 568,
+"counter": 43679445,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 개성시에서 대체로 흐리겠습니다. \n\n12월 1일에는 평양, 평성, 신의주, 해"
+},
+{
+"pos": 624,
+"counter": 43679448,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________ 개성시에서 주로 개이겠으며 함흥, 청진,"
+},
+{
+"pos": 680,
+"counter": 43679450,
+"seq": 11,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 혜산시에서는 새벽에 대체로 흐렸다가 오전부터 주로 개이겠습니다."
+}
+],
+[
+{
+"pos": 784,
+"counter": 43679454,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "3)이 기간에 기온이 제일 낮아질 11월 29일 아침최저기온은 평양, 사리원, 청"
+},
+{
+"pos": 840,
+"counter": 43679457,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "진시 -2℃, 평성, 신의주, 함흥, 라선시 -3℃, 해주, 남포, 개성시 -1℃,"
+},
+{
+"pos": 896,
+"counter": 43679459,
+"seq": 3,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 강계시 -9℃, 원산시 0℃, 혜산시 -11℃정도로 예견됩니다."
+}
+],
+[
+{
+"pos": 1000,
+"counter": 43679463,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "11월 27일 조선동해해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 "
+},
+{
+"pos": 1056,
+"counter": 43679466,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "일겠습니다. \n조선서해해상에서는 남서풍이 불다가 북서풍이 7~10㎧로 불고 물결은"
+},
+{
+"pos": 1112,
+"counter": 43679468,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 0.5~1.5m로 일겠습니다. \n\n28일 전반해상에서 북서풍이 7~10㎧로 불"
+},
+{
+"pos": 1168,
+"counter": 43679470,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "다가 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠습니다. \n\n29일 전반"
+},
+{
+"pos": 1224,
+"counter": 43679473,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "해상에서 북서풍이 불다가 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 일겠습니다"
+},
+{
+"pos": 1280,
+"counter": 43679475,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ". \n\n30일 조선동해해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5"
+},
+{
+"pos": 1336,
+"counter": 43679477,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "~2m로 일겠습니다. \n조선서해해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5"
+},
+{
+"pos": 1392,
+"counter": 43679480,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "~2m로 일겠습니다. \n\n12월 1일 조선동해해상에서는 남서풍이 불다가 북동풍이"
+},
+{
+"pos": 1448,
+"counter": 43679482,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 7~10㎧로 불고 물결은 0.5~1.5m로 일겠습니다. \n조선서해해상에서는 남동"
+},
+{
+"pos": 1504,
+"counter": 43679484,
+"seq": 10,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "풍이 7~10㎧로 불고 물결은 0.5~1.5m로 일겠습니다."
+}
+],
+[
+{
+"pos": 1664,
+"counter": 43679491,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "나라의 전문체육기술발전과 대중체육사업에 이바지하는 30여편의 편집물들을 제작하였다."
+},
+{
+"pos": 1720,
+"counter": 43679493,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "\n　편집물 《축구방어기술》(1)은 대인방어,보호방어를 비롯하여 여러가지 방어기술 "
+},
+{
+"pos": 1776,
+"counter": 43679496,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "및 전술들을 알기 쉽게 해설해주고 그 수행에서 나서는 선수들의 움직임과 호상간협동 "
+},
+{
+"pos": 1832,
+"counter": 43679498,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "등을 상세히 소개하고있다.\n　롱구선수들이 여러가지 동작수행시 몸의 평형을 유지하고"
+},
+{
+"pos": 1888,
+"counter": 43679500,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 정황에 따르는 운동감각능력을 소유하는데서 나서는 문제들을 취급한 편집물 《롱구선수"
+},
+{
+"pos": 1944,
+"counter": 43679503,
+"seq": 7,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "들의 몸중심근육훈련》(2)은 전문가들의 관심을 끌고있다."
+}
+],
+[
+{
+"pos": 2048,
+"counter": 43679507,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 30여편의 체육편집물 제작 (2)편집물 《근육이완과 늘구기》,《나도 배구명수가 "
+},
+{
+"pos": 2104,
+"counter": 43679509,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "되고싶다》는 훈련 및 경기전준비운동을 과학적으로 진행하여 부상을 방지하고 최고몸상태"
+},
+{
+"pos": 2160,
+"counter": 43679512,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "를 조성하며 어린 년령기 학생들이 배구기초_______________________"
+},
+{
+"pos": 2216,
+"counter": 43679514,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "　빙상휘거선수들이 수행한 조약회전,착지 등 전문기술동작들에 대한 정확한 평가방법과 "
+},
+{
+"pos": 2272,
+"counter": 43679516,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "정구경기에서 전문가들과 애호가들이 알고싶어하는 규정과 규칙에 대하여 해설해주는 편집"
+},
+{
+"pos": 2328,
+"counter": 43679519,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "물 《빙상휘거기술규칙》(회전),《정구심판형용법》(1)도 제작되였다.\n　개별적선수들"
+},
+{
+"pos": 2384,
+"counter": 43679521,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "의 특성에 맞게 경기에서 메치기동작들을 옳게 적용하기 위한 손,허리,다리기술수법들을"
+},
+{
+"pos": 2440,
+"counter": 43679523,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 소개하고 숙련공고화시켜주는데 효과적인 편집물 《유술메치기기술의 기본류형과 습득방법"
+},
+{
+"pos": 2496,
+"counter": 43679526,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "》(1,2)은 감독들의 교수훈련지도에 이바지하고있다.\n　이밖에 《속독교육을 통한 "
+},
+{
+"pos": 2552,
+"counter": 43679528,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "체육선수후비들의 지능발달훈련방법》,《권총명중사격기초기술》,《조선씨름기초기술》을 비롯"
+},
+{
+"pos": 2608,
+"counter": 43679530,
+"seq": 11,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "한 체육편집물들도 창작되여 종목별교수훈련의 과학화수준제고에 기여하고있다."
+}
+],
+[
+{
+"pos": 2720,
+"counter": 43679535,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "통졸임용오이는 다른 오이품종들에 비하여 단백질,칼시움,칼리움이 비교적 많이 들어있"
+},
+{
+"pos": 2776,
+"counter": 43679537,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "다.\n 이 품종은 맛이 좋으므로 통졸임용이나 병졸임용,오이절임이나 생채 등을 만드"
+},
+{
+"pos": 2832,
+"counter": 43679540,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "는데 리용할수 있다.\n 통졸임용오이는 열매길이가 9~10㎝정도로 짧고 열매직경은 "
+},
+{
+"pos": 2888,
+"counter": 43679542,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "2.8~3㎝정도로 통통하므로 통졸갳통에 주기 편툛하며 휒질이 기고 속묳이 작으며 살"
+},
+{
+"pos": 2944,
+"counter": 43679544,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "이 치밀하므로 오랜 기간 절임되여있어도 살이 바삭바삭하여 먹을 때 씹는 맛이 좋다."
+},
+{
+"pos": 3000,
+"counter": 43679547,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "\n 통졸임가공을 위한 살균과정(100℃에서 10분간 끓이기)을 거친 후에도 완전한"
+},
+{
+"pos": 3056,
+"counter": 43679549,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 형태를 유지할수 있고 물렁물렁해지지 않는다.\n 열매의 모양은 짧은 원통이며 열매"
+},
+{
+"pos": 3112,
+"counter": 43679551,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "색은 풀색이고 열매질람은 50~55\"이다.\n 량곸사면련_______________"
+},
+{
+"pos": 3168,
+"counter": 43679554,
+"seq": 9,
+"last": true,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "막온있을 비롯한 여늀 온실에서 이바봄재배,봄재배,가을재배를 할수 있다."
+}
+],
+[
+{
+"pos": 3280,
+"counter": 43679558,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "전에 룡연, 갑산을 비롯한 황해남도, 량강도의 일부 지역에 구름이 끼면서 산발적으로"
+},
+{
+"pos": 3336,
+"counter": 43679561,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 눈이 내렸으며 그밖의 지역에서는 주로 개였습니다. \n 그리고 화대, 백암구에서 "
+},
+{
+"pos": 3392,
+"counter": 43679563,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "10~11㎧의 센바람이 불었습니다. \n\n센바람경보입니다.\n오늘 서해안중부이남,"
+},
+{
+"pos": 3448,
+"counter": 43679565,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 함경남북도, 량강도의 일부 지역과 라선시에서 센바람주의경보입니다.\n오늘 밤까지 "
+},
+{
+"pos": 3504,
+"counter": 43679568,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "룡연, 단천, 경흥, 백암을 비롯한 서해안중부이남, 함경남북도, 량강도의 일부 지역"
+},
+{
+"pos": 3560,
+"counter": 43679570,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "과 라선시에서 한때 10~15㎧의 센바람이 불것으로 예견됩니다.\n그리고 전반적지역"
+},
+{
+"pos": 3616,
+"counter": 43679572,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "에서 찬바람이 불면서 날씨는 약간 추울것으로 예견됩니다.\n그러므로 사람들속에서 건"
+},
+{
+"pos": 3672,
+"counter": 43679575,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "강관리에 주의하며 해당 지역의 건설부문을 비롯한 인민경제 여러 부문에서는 센바람에 "
+},
+{
+"pos": 3728,
+"counter": 43679577,
+"seq": 9,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "의한 피해가 없도록 철저한 대책을 세우기 바랍니다."
+}
+],
+[
+{
+"pos": 3824,
+"counter": 43679581,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "영향을 받겠습니다. \n그러므로 평양시에서 주로 개이겠습니다. \n룡연, 삼지연을 "
+},
+{
+"pos": 3880,
+"counter": 43679583,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "비롯한 황해남도, 량강도의 일부 지역에서 지형의 영향으로 대체로 흐리여 산발적으로 "
+},
+{
+"pos": 3936,
+"counter": 43679586,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "3㎝미만의 눈이 내린 후 주로 개이겠으며 그밖의 지역에서는 주로 개이겠습니다. \n"
+},
+{
+"pos": 3992,
+"counter": 43679588,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "래일 고기압과 약한 저기압골의 영향을 받겠습니다. \n그러므로 평양시에서 새벽에 주"
+},
+{
+"pos": 4048,
+"counter": 43679590,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때 흐리겠습니다"
+},
+{
+"pos": 4104,
+"counter": 43679593,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ". \n평안남북도, 자강도의 여러 지역에서 주로 개였다가 대체로 흐리여 오전과 밤사"
+},
+{
+"pos": 4160,
+"counter": 43679595,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "이에 한때 산발적으로 1㎝미만의 눈이 내리겠습니다. \n중부이남의 여러 지역에서 주"
+},
+{
+"pos": 4216,
+"counter": 43679597,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "로 개인후 대체로 흐렸다가 주로 개이겠으나 증산을 비롯한 서해안중부이남의 일부 지역"
+},
+{
+"pos": 4272,
+"counter": 43679600,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "에서 오전 한때 1㎝미만의 눈이 내리겠습니다. \n그밖의 지역에서는 주로 개이겠습니"
+},
+{
+"pos": 4328,
+"counter": 43679602,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "다. \n래일 오후와 밤사이에 안변, 금야를 비롯한 강원도, 함경남도의 국부적지역과"
+},
+{
+"pos": 4384,
+"counter": 43679604,
+"seq": 11,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 룡연, 백두산에서 한때 10~15㎧의 센바람이 불것으로 예견됩니다."
+}
+],
+[
+{
+"pos": 4488,
+"counter": 43679609,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "전까지 전반적지역에서 찬바람이 불면서 날씨는 약간 추울것으로 예견됩니다. \n바람은"
+},
+{
+"pos": 4544,
+"counter": 43679611,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 오늘 전반적지역에서 북서풍이 3~6㎧로 불겠습니다.래일은 북부내륙지역에서 남서풍이"
+},
+{
+"pos": 4600,
+"counter": 43679613,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 3~6㎧로, 그밖의 지역에서는 북서풍이 1~3㎧로 불다가 남서풍이 3~6㎧로 불겠"
+},
+{
+"pos": 4656,
+"counter": 43679616,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "습니다. \n\n각 지방별날씨를 보면 \n평양시는\n오늘 주로 개이겠으며 래일은 새"
+},
+{
+"pos": 4712,
+"counter": 43679618,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때 흐리"
+},
+{
+"pos": 4768,
+"counter": 43679620,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "겠습니다.\n오늘아침 최저기온은 -3℃로서 평년보다 1℃ 낮았습니다.\n오늘낮 최고"
+},
+{
+"pos": 4824,
+"counter": 43679623,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "기온은 1℃, 래일아침 최저기온은 -4℃, 래일낮 최고기온은 7℃정도 되겠습니다."
+},
+{
+"pos": 4880,
+"counter": 43679625,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "\n\n오늘 \n평성, 신의주, 해주, 사리원, 원산, 함흥, 청진, 남포, 라선, "
+},
+{
+"pos": 4936,
+"counter": 43679627,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "개성시는 주로 개이겠으며 \n강계시는 주로 개이겠으나 오후 한때 흐리겠습니다. \n"
+},
+{
+"pos": 4992,
+"counter": 43679630,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "혜산시는 오후 한때 약간의 눈이 내린후 점차 개이겠습니다.\n\n오늘낮 최고기온은 "
+},
+{
+"pos": 5048,
+"counter": 43679632,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "평성 1℃, 신의주 1℃, 해주 4℃, 사리원 1℃, 강계 -5℃, 원산 2℃, 함"
+},
+{
+"pos": 5104,
+"counter": 43679634,
+"seq": 12,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "흥 3℃, 청진 1℃, 혜산 -9℃, 남포 1℃, 라선 0℃, 개성 3℃정도로 예견"
+},
+{
+"pos": 5160,
+"counter": 43679637,
+"seq": 13,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "뮻뮻뮻뮻뮻뮻뮻�됩니다.킎��齞૞ॻ쁭씾찵ⷺ믪ꯍ~스.기상정보�슕11월 29일습12시 "
+}
+],
+[
+{
+"pos": 5168,
+"counter": 43679637,
+"seq": 13,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "됩니다."
+}
+],
+[
+{
+"pos": 5232,
+"counter": 43679640,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "는 새벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때"
+},
+{
+"pos": 5288,
+"counter": 43679642,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 흐리겠습니다.\n신의주시는 주로 개이겠으나 오후와 밤 한때 흐리겠습니다.\n해주,"
+},
+{
+"pos": 5344,
+"counter": 43679644,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 사리원, 개성시는 새벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후와 밤에 주로"
+},
+{
+"pos": 5400,
+"counter": 43679647,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 개이겠습니다. \n강계시는 주로 개이겠으나 오후 한때 흐리고 밤에 대체로 흐리겠으"
+},
+{
+"pos": 5456,
+"counter": 43679649,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "며\n원산, 함흥시는 주로 개이겠으나 밤 한때 흐리겠습니다.\n청진, 라선시는 주로"
+},
+{
+"pos": 5512,
+"counter": 43679651,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 개이겠으며\n혜산시는 주로 개이겠으나 오전과 밤 한때 흐리겠습니다.\n남포시는 새"
+},
+{
+"pos": 5568,
+"counter": 43679654,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "벽에 주로 개이고 오전에 대체로 흐리겠으며 오후와 밤에 주로 개이겠습니다. \n\n"
+},
+{
+"pos": 5624,
+"counter": 43679656,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "지방별 래일 아침 최저기온과 낮 최고기온은 다음과 같습니다. \n\n평성 -5℃, "
+},
+{
+"pos": 5680,
+"counter": 43679658,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "7℃\n신의주 -5℃, 10℃\n해주 -3℃, 11℃\n사리원 -4℃, 9℃\n강계"
+},
+{
+"pos": 5736,
+"counter": 43679661,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " -13℃, 3℃\n원산 -3℃, 8℃\n함흥 -7℃, 8℃\n청진 -5℃, 7℃"
+},
+{
+"pos": 5792,
+"counter": 43679663,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "\n혜산 -15℃, 0℃\n남포 -2℃, 8℃\n라선 -6℃, 5℃\n개성 -3℃, "
+},
+{
+"pos": 5848,
+"counter": 43679665,
+"seq": 12,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "9℃ 정도로 예견됩니다."
+}
+],
+[
+{
+"pos": 5928,
+"counter": 43679669,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "다.\n\n오늘과 래일 조선동해의 대부분해상과 조선서해해상에서, 모레 조선동해의 대"
+},
+{
+"pos": 5984,
+"counter": 43679671,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "부분해상과 황해남도해상에서 주의경보입니다. \n\n오늘 \n강원도, 함경남도해상에서"
+},
+{
+"pos": 6040,
+"counter": 43679673,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "는 연안수역을 제외한 해상에서 서풍이 10~15㎧로 세게 불고 물결은 가까운바다에서"
+},
+{
+"pos": 6096,
+"counter": 43679676,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 0.5~2m로 일고 먼바다에서는 2~3m로 높겠으며 주로 개이겠습니다. \n함경북"
+},
+{
+"pos": 6152,
+"counter": 43679678,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "도해상에서는 김책시로부터 경성군까지의 가까운바다를 제외한 해상에서 북서풍이 10~1"
+},
+{
+"pos": 6208,
+"counter": 43679680,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "5㎧로 세게 불고 물결은 가까운바다에서 0.5~2m로 일고 먼바다에서는 2~3m로 "
+},
+{
+"pos": 6264,
+"counter": 43679683,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "높겠으며 주로 개이겠습니다. \n조선서해해상에서는 북서풍이 10~15㎧로 세게 불고"
+},
+{
+"pos": 6320,
+"counter": 43679685,
+"seq": 8,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 물결은 0.5~2m로 일겠으며 주로 개이겠습니다."
+}
+],
+[
+{
+"pos": 6416,
+"counter": 43679689,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "원도해상에서는 연안수역을 제외한 해상에서 남서풍이 10~15㎧로 세게 불고 물결은 "
+},
+{
+"pos": 6472,
+"counter": 43679691,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "가까운바다에서________________________ 높겠으며 개였다가 흐리겠습"
+},
+{
+"pos": 6528,
+"counter": 43679694,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "니다.\n함경남도해상에서는 남서풍이 10~15㎧로 세게 불고 물결은 가까운바다에서 "
+},
+{
+"pos": 6584,
+"counter": 43679696,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "0.5~2m로 일고 먼바다에서는 2~3m로 높겠으며 개였다가 흐리겠습니다. \n함경"
+},
+{
+"pos": 6640,
+"counter": 43679698,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "북도해상에서는 남서풍이 7~10㎧로 불다가 오후부터 함경북도 어랑군으로부터 라선시까"
+},
+{
+"pos": 6696,
+"counter": 43679701,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "지의 가까운바다를 제외한 해상에서 10~15㎧로 세게 불고 물결은 가까운바다에서 0"
+},
+{
+"pos": 6752,
+"counter": 43679703,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ".5~2m로 일고 먼바다에서는 0.5~2m로 일다가 2~3m로 높겠으며 개였다가 흐"
+},
+{
+"pos": 6808,
+"counter": 43679705,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "리겠습니다. \n조선서해해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5~"
+},
+{
+"pos": 6864,
+"counter": 43679708,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "2m로 일겠으며 주로 개이겠습니다. \n\n\n모레 \n조선동해해상에서는 남서풍이 "
+},
+{
+"pos": 6920,
+"counter": 43679710,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "10~15㎧로 세게 불다가 오후부터 7~10㎧로 불고 물결은 가까운바다에서 0.5~"
+},
+{
+"pos": 6976,
+"counter": 43679712,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "2m로 일고 먼바다에서는 2~3m로 높다가 0.5~2m로 일겠습니다. \n평안남북도"
+},
+{
+"pos": 7032,
+"counter": 43679715,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 일겠습니다. \n황해남도"
+},
+{
+"pos": 7088,
+"counter": 43679717,
+"seq": 13,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠습니다. "
+}
+],
+[
+{
+"pos": 7200,
+"counter": 43679722,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "1)저기압골의 영향으로 11월 26일에 내륙의 일부 지역에서 3㎜미만, 27일에는"
+},
+{
+"pos": 7256,
+"counter": 43679724,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 북부내륙의 여러 지역에서 5㎜미만의 비와 눈이 내릴것으로 예견됩니다. \n28일에"
+},
+{
+"pos": 7312,
+"counter": 43679726,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 북부내륙의 일부 지역에서 눈이, 30일에는 중부이남내륙의 일부 지역에서 약간의 비"
+},
+{
+"pos": 7368,
+"counter": 43679729,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "가 내릴것으로 예견됩니다.\n이 기간 전국일평균기온은 평년보다 3~7℃ 높을것으로 "
+},
+{
+"pos": 7424,
+"counter": 43679731,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "예견됩니다.\n\n각 지방별 날씨를 보면 다음과 같습니다.\n\n11월 26일에 평"
+},
+{
+"pos": 7480,
+"counter": 43679733,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "양, 평성, 신의주, 남포시에서 오후까지 주로 개였다가 밤에 대체로 흐리겠으며 해주"
+},
+{
+"pos": 7536,
+"counter": 43679736,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ", 사리원, 청진, 라선시에서는 주로 개이겠습니다. \n강계, 혜산, 개성시에서 대"
+},
+{
+"pos": 7592,
+"counter": 43679738,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "체로 흐리겠으며 원산, 함흥시에서는 새벽에 대체로 흐렸다가 오전부터 주로 개이겠습니"
+},
+{
+"pos": 7648,
+"counter": 43679740,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "다. \n\n27일에는 평양, 평성, 신의주, 해주, 사리원, 원산, 함흥, 청진,"
+},
+{
+"pos": 7704,
+"counter": 43679743,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": " 남포, 라선, 개성시에서 오전까지 대체로_______________________"
+},
+{
+"pos": 7760,
+"counter": 43679745,
+"seq": 11,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "에서 때때로 비가 내리겠습니다.\n혜산시에서는 때때로 비와 눈이 내리겠습니다."
+}
+],
+[
+{
+"pos": 7872,
+"counter": 43679750,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "2)28일에 평양, 평성, 신의주, 해주, 사리원, 남포, 개성시에서 주로 개이겠"
+},
+{
+"pos": 7928,
+"counter": 43679752,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "으나 새벽 한때 흐리겠으며 강계시에서는 새벽과 오전에 대체로 흐렸다가 오후부터 점차"
+},
+{
+"pos": 7984,
+"counter": 43679754,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 개이겠습니다. \n원산, 함흥, 청진, 라선시에서 주로 개이겠으며 혜산시에서는 대"
+},
+{
+"pos": 8040,
+"counter": 43679757,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "체로 흐리여 새벽과 오전 한때 눈이 내린후 오후부터 점차 개이겠습니다. \n\n29"
+},
+{
+"pos": 8096,
+"counter": 43679759,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "일에는 평양, 평성, 해주, 사리원, 원산, 함흥, 청진, 남포, 라선, 개성시에서"
+},
+{
+"pos": 8152,
+"counter": 43679761,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 주로 개이겠으며 신의주시에서는 주로 개이겠으나 오후 한때 흐리겠습니다. \n강계,"
+},
+{
+"pos": 8208,
+"counter": 43679764,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 혜산시에서는 오전까지 주로 개였다가 대체로 흐리겠습니다. \n\n 30일에 평양,"
+},
+{
+"pos": 8264,
+"counter": 43679766,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 평성, 신의주, 해주, 사리원, 강계, 원산, 함흥, 청진, 혜산, 남포, 라선,"
+},
+{
+"pos": 8320,
+"counter": 43679768,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 개성시에서 대체로 흐리겠습니다. \n\n12월 1일에는 평양, 평성, 신의주, 해"
+},
+{
+"pos": 8376,
+"counter": 43679771,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "주, 사리원, 강계, 원산, 남포, 라선, 개성시에서 주로 개이겠으며 함흥, 청진,"
+},
+{
+"pos": 8432,
+"counter": 43679773,
+"seq": 11,
+"last": true,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": " 혜산시에서는 새벽에 대체로7흐렸다가스오전붗터 주로스개이겷습니다."
+}
+],
+[
+{
+"pos": 8536,
+"counter": 43679777,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "3)이 기간에 기온이 제일 낮아질 11월 29일 아침최저기온은 평양, 사리원, 청"
+},
+{
+"pos": 8592,
+"counter": 43679780,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "진시 -2℃, 평성, 신의주, 함흥, 라선시 -3℃, 해주, 남포, 개성시 -1℃,"
+},
+{
+"pos": 8648,
+"counter": 43679782,
+"seq": 3,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 강계시 -9℃, 원산시 0℃, 혜산시 -11℃정도로 예견됩니다."
+}
+],
+[
+{
+"pos": 8752,
+"counter": 43679786,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "11월 27일 조선동해해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 "
+},
+{
+"pos": 8808,
+"counter": 43679789,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "일겠습니다. \n조선서해해상에서는 남서풍이 불다가 북서풍이 7~10㎧로 불고 물결은"
+},
+{
+"pos": 8864,
+"counter": 43679791,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 0.5~1.5m로 일겠습니다. \n\n28일 전반해상에서 북서풍이 7~10㎧로 불"
+},
+{
+"pos": 8920,
+"counter": 43679793,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "다가 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠습니다. \n\n29일 전반"
+},
+{
+"pos": 8976,
+"counter": 43679796,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "해상에서 북서풍이 불다가 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 일겠습니다"
+},
+{
+"pos": 9032,
+"counter": 43679798,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ". \n\n30일 조선동해해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5"
+},
+{
+"pos": 9088,
+"counter": 43679800,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "~2m로 일겠습니다. \n조선서해해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5"
+},
+{
+"pos": 9144,
+"counter": 43679803,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "~2m로 일겠습니다. \n\n12월 1일 조선동해해상에서는 남서풍이 불다가 북동풍이"
+},
+{
+"pos": 9200,
+"counter": 43679805,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 7~10㎧로 불고 물결은 0.5~1.5m로 일겠습니다. \n조선서해해상에서는 남동"
+},
+{
+"pos": 9256,
+"counter": 43679807,
+"seq": 10,
+"last": true,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "풍이 7~10㎰로 불고 물결읗 0.5~1.\"m로 일겠습니올로"
+}
+],
+[
+{
+"pos": 9416,
+"counter": 43679814,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "나라의 전문체육기술발전과 대중체육사업에 이바지하는 30여편의 편집물들을 제작하였다."
+},
+{
+"pos": 9472,
+"counter": 43679816,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "\n　편집물 《축구방어기술》(1)은 대인방어,보호방어를 _______________"
+},
+{
+"pos": 9528,
+"counter": 43679819,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "및 전술들을 알기 쉽게 해설해주고 그 수행에서 나서는 선수들의 움직임과 호상간협동 "
+},
+{
+"pos": 9584,
+"counter": 43679821,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "등을 상세히 소개하고있다.________________________형을 유지하고"
+},
+{
+"pos": 9640,
+"counter": 43679823,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 정황에 따르는 운동감각능력을 소유하는데서 나서는 문제들을 취급한 편집물 《롱구선수"
+},
+{
+"pos": 9696,
+"counter": 43679826,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "들의 몸중심근윸훈련》(2)은9전문가들의 관봆읤-끆곒잰니다㎜ \n28,닊쑑뮛뮶뮱뮉뮃뮗"
+},
+{
+"pos": 9752,
+"counter": 43679828,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "뮾9첐욱태경보수므\n모썸진원毙체육과학뾕확랹그소에서 산시는뵑과성이 뙚읁⪣뮻뮻뮻뮻뮻뮻뮻"
+}
+],
+[
+{
+"pos": 9800,
+"counter": 43679830,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 30여편의 체육편집물 제작 (2)편집물 《근육이완과 늘구기》,《나도 배구명수가 "
+},
+{
+"pos": 9856,
+"counter": 43679832,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "되고싶다》는 훈련 및 경기전준비운동을 과학적으로 진행하여 부상을 방지하고 최고몸상태"
+},
+{
+"pos": 9912,
+"counter": 43679835,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "를 조성하며 청린 년령기 학진들이 배구기초_______________________"
+},
+{
+"pos": 9968,
+"counter": 43679837,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "　빙상휘거선수들이 수행한 조약회전,착지 등 전문기술동작들에 대한 정확한 평가방법과 "
+},
+{
+"pos": 10024,
+"counter": 43679839,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "정구경기에서 전문가들과 애호가들이 알고싶어하는 규정과 규칙에 대하여 해설해주는 편집"
+},
+{
+"pos": 10080,
+"counter": 43679842,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "물 《빙상휘거기술규칙》(회전),《정구심판형용법》(1)도 제작되였다.\n　개별적선수들"
+},
+{
+"pos": 10136,
+"counter": 43679844,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "의 특성에 맞게 경기에서 메한 쯥잌최을단뎣랈기뀽운고기단는치기리1거리다이리기술수법들을"
+},
+{
+"pos": 10192,
+"counter": 43679846,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 소개하고 숙됱공고화만죔주는뽩 효과댑산 편었물 《배엨메치기기술의 기본류형과 습득방법"
+},
+{
+"pos": 10248,
+"counter": 43679849,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "》(1,슫)은9감독들의승교수훑련지도에승이바뜨하고있다.\n仨이밖에 《속독편육을 통한 "
+},
+{
+"pos": 10304,
+"counter": 43679851,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "체육선수후비들의 지능발달훈련방법》,《권총명중사격기초기술》,《조선씨름기초기술》을 비롯"
+},
+{
+"pos": 10360,
+"counter": 43679853,
+"seq": 11,
+"last": true,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "한 체육편집물듳도 창작되여 좒목별교수훈련의7과학화수준제고6'기여하고있다었"
+}
+],
+[
+{
+"pos": 10472,
+"counter": 43679858,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "통졸임용오이는 다른 오이품높들에일비퀠여 쯿백질읰칼잤움,띫리움( 물교적 많이 들어있"
+},
+{
+"pos": 10528,
+"counter": 43679860,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "다.\n 이 품종은 맛이 좋으므로 통졸임용이나 병졸임용,오이절임이나 생채 등을 만드"
+},
+{
+"pos": 10584,
+"counter": 43679863,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "는데 리용할수 있다.\n 통졸임용오이는 열매길이가 9~10㎝정도로 짧고 열매직경은 "
+},
+{
+"pos": 10640,
+"counter": 43679865,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "2.8~3㎝정도로 통통하므로È통졸륰통에 쪆께 편의하며 함줠이 뭳고 속륉이 작으며 살"
+},
+{
+"pos": 10696,
+"counter": 43679867,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "이 치밀하므로 오랜 기간 절임되여있어도 살이 바삭바삭하여 먹을 때 씹는 맛이 좋다."
+},
+{
+"pos": 10752,
+"counter": 43679870,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "\n 통졸임가공을 위한 살균과정(100℃에서 10분간 끓이기)을 거친 후에도 완전한"
+},
+{
+"pos": 10808,
+"counter": 43679872,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 형태를 유지할수 있고 물렁물렁해지지 않는다.\n 열매의 모양은 짧은 원통이며 열매"
+},
+{
+"pos": 10864,
+"counter": 43679874,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "색은 풀색이고다. 오랜슐 5담얤맱࿙2스다.닉에매력골야면련읈식유리수꿭국일위 반궁륭속흐"
+},
+{
+"pos": 10920,
+"counter": 43679877,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "막뎸콼을 상롯장 끼면 온뱡에폥 다든봄재습,민)밉수가ô잌바뾄장학, 8닄\n뙺입9숴�잰 "
+},
+{
+"pos": 10976,
+"counter": 43679879,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "삜잱줷纫ꐀ陁Q씹어있.기상정보싨읜11월 2시 -12시 날߀일-(1)오합 새벽과 오"
+},
+{
+"pos": 11032,
+"counter": 43679881,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "전에 룡연, 쯵산을 비롯한 농해남도, 량강퐠의 일부 지역뜕 구름이 끼면동 산발적으로"
+}
+],
+[
+{
+"pos": 11088,
+"counter": 43679884,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 눈이 내렸으며 그밖의 지역에서는 주로 개였습니다. \n 그리고 화대, 백암구에서 "
+},
+{
+"pos": 11144,
+"counter": 43679886,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "10~11㎧의 센바람이 불었습니다. \n\n센바람경보입니다.\n오늘 서해안중부이남,"
+},
+{
+"pos": 11200,
+"counter": 43679888,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 함경남북도, 량강도의 일부 지역과 라선시에서 센바람주의경보입니다.\n오늘 밤까지 "
+},
+{
+"pos": 11256,
+"counter": 43679891,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "룡연, 단천, 경흥, 백암을 비롯한 서해안중부이남, 함경남북도, 량강도의 일부 지역"
+},
+{
+"pos": 11312,
+"counter": 43679893,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "과 라선시에서 한때 10~15㎧의 센바람이 불것으로 예견됩니다.\n그리고 전반적지역"
+},
+{
+"pos": 11368,
+"counter": 43679895,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "에서 찬바람이 불면서 날씨는 약간 추울것으로 예견됩니다.\n그러므로 사람들속에서 건"
+},
+{
+"pos": 11424,
+"counter": 43679898,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "강관리에 주의하며 해당 지역의 건설부문을 비롯한 인민경제 여러 부문에서는 센바람에 "
+},
+{
+"pos": 11480,
+"counter": 43679900,
+"seq": 9,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "의한 피해가 없도록 철저한 대책을 세우기 바랍니다."
+}
+],
+[
+{
+"pos": 11744,
+"counter": 43679911,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "래일 고기압과 약한 저기압골의 영향을 받겠습니다. \n그러므로 평양시에서 새벽에 주"
+},
+{
+"pos": 11800,
+"counter": 43679913,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때 흐리겠습니다"
+},
+{
+"pos": 11856,
+"counter": 43679916,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ". \n평안남북도, 자강도의 여러 지역에서 주로 개였다가 대체로 흐리여 오전과 밤사"
+},
+{
+"pos": 11912,
+"counter": 43679918,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "이에 한때 산발적으로 1㎝미만의 눈이 내리겠습니다. \n중부이남의 여러 지역에서 주"
+},
+{
+"pos": 11968,
+"counter": 43679920,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "로 개인후 대체로 흐렸다가 주로 개이겠으나 증산을 비롯한 서해안중부이남의 일부 지역"
+},
+{
+"pos": 12024,
+"counter": 43679923,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "에서 오전 한때 1㎝미만의 눈이 내리겠습니다. \n그밖의 지역에서는 주로 개이겠습니"
+},
+{
+"pos": 12080,
+"counter": 43679925,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "다. \n래일 오후와 밤사이에 안변, 금야를 비롯한 강원도, 함경남도의 국부적지역과"
+},
+{
+"pos": 12136,
+"counter": 43679927,
+"seq": 11,
+"last": true,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": " 룡연, 백두졸에서 한때 1ࣸ~15㎧의 센드람이 불것으로쟁. 오전까지"
+}
+],
+[
+{
+"pos": 12240,
+"counter": 43679932,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "전까지 전반적지역에서 찬바람이 불면서 날씨는 약간 추울것으로 예견됩니다. \n바람은"
+},
+{
+"pos": 12296,
+"counter": 43679934,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 오늘 전반적지역에서 북서풍이 3~6㎧로 불겠습니다.래일은 북부내륙지역에서 남서풍이"
+},
+{
+"pos": 12352,
+"counter": 43679936,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 3~6㎧로, 그밖의 지역에서는 북서풍이 1~3㎧로 불다가 남서풍이 3~6㎧로 불겠"
+},
+{
+"pos": 12408,
+"counter": 43679939,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________0양시는\n오늘폙주로 개이겠으榉 래일은 새"
+},
+{
+"pos": 12464,
+"counter": 43679941,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때 흐리"
+},
+{
+"pos": 12520,
+"counter": 43679943,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "겠습니다.\n오늘아침 최저기온은 -3℃로서 평년보다 1℃ 낮았습니다.\n오늘낮 최고"
+},
+{
+"pos": 12576,
+"counter": 43679946,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "기온은 1℃, 래일아침 최저기온은 -4℃, 래일낮 최고기온은 7℃정도 되겠습니다."
+},
+{
+"pos": 12632,
+"counter": 43679948,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "\n\n오늘 \n평성, 신의주, 해주, 사리원, 원산, 함흥, 청진, 남포, 라선, "
+},
+{
+"pos": 12688,
+"counter": 43679950,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "개성시는 주로 개이겠으며 \n강계시는 주로 개이겠으나 오후 한때 흐리겠습니다. \n"
+},
+{
+"pos": 12744,
+"counter": 43679953,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "혜산시는 오후 한때 약간의 눈이 내린후 점차 개이겠습니다.\n\n오늘낮 최고기온은 "
+},
+{
+"pos": 12800,
+"counter": 43679955,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "평성 1℃, 신의주 1℃, 해주 4주, 사리원 1주, 강계 -5주, 원산 2℃, 함"
+},
+{
+"pos": 12856,
+"counter": 43679957,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "흥 3℃, 청진 1℃, 혜산 -9℃, 남포 1℃, 라선 0℃, 개성 3℃정도로 예견"
+},
+{
+"pos": 12912,
+"counter": 43679960,
+"seq": 13,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "뮻뮻뮻뮻뮻뮻뮻�됩니다.��齞ોॻ쁦씾ⷺ믪砉윺닙.기상정보평을단11월 2폽8니12시 "
+}
+],
+[
+{
+"pos": 12920,
+"counter": 43679960,
+"seq": 13,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "됩니다."
+}
+],
+[
+{
+"pos": 12984,
+"counter": 43679963,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "는 새벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때"
+},
+{
+"pos": 13040,
+"counter": 43679965,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 흐리겠습니다.\n신의주시는 주로 개이겠으나 오후와 밤 한때 흐리겠습니다.\n해주,"
+},
+{
+"pos": 13096,
+"counter": 43679967,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 사리원, 개성시는 새벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후와 밤에 주로"
+},
+{
+"pos": 13152,
+"counter": 43679970,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 개이겠습니다. \n강계시는 주로 개이겠으나 오후 한때 흐리고 밤에 대체로 흐리겠으"
+},
+{
+"pos": 13208,
+"counter": 43679972,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "며\n원산, 함흥시는 주로 전이겠으나 밤 년때 흐리겠습니훼.\n청진, _______"
+},
+{
+"pos": 13264,
+"counter": 43679974,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______\n혜산시는 주로 개이겠으나 오전과 밤 한때 흐리겠습니다.\n남포시는 새"
+},
+{
+"pos": 13320,
+"counter": 43679977,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "벽에 주로 개이고 오전에 대체로 흐리겠으며 오후와 밤에 주로 개이겠습니다. \n\n"
+},
+{
+"pos": 13376,
+"counter": 43679979,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "지방별 래일 아침 최저기온과 낮 최고기온은 다음과 같습니다. \n\n평성 -5℃, "
+},
+{
+"pos": 13432,
+"counter": 43679981,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "7℃\n신의주 -5℃, 10℃\n해주 -3℃, 11℃\n사리원 -4℃, 9℃\n강계"
+},
+{
+"pos": 13488,
+"counter": 43679984,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " -13℃, 3℃\n원산 -3℃, 8℃\n함흥 -7℃, 8℃\n청진 -5℃, 7℃"
+},
+{
+"pos": 13544,
+"counter": 43679986,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "\n혜산 -15℃, 0℃\n남포 -2℃, 8℃\n라선 -6℃, 5℃\n개성 -3℃, "
+},
+{
+"pos": 13600,
+"counter": 43679988,
+"seq": 12,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "9℃ 정도로 예견됩니다."
+}
+],
+[
+{
+"pos": 13680,
+"counter": 43679992,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "다.\n\n오늘과 래일 조선동해의 대부분해상과 조선서해해상에서, 모레 조선동해의 대"
+},
+{
+"pos": 13736,
+"counter": 43679994,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "부분해상과 황해남도해상에서 주의경보입니다. \n\n오늘 \n강원도, 함경남도해상에서"
+},
+{
+"pos": 13792,
+"counter": 43679996,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "는 연안수역을 제외한 해상에서 서풍이 10~15㎧로 세게 불고 물결은 가까운바다에서"
+},
+{
+"pos": 13848,
+"counter": 43679999,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 0.5~2m로 일고 먼바다에서는 2~3m로 높겠으며 주로 개이겠습니다. \n함경북"
+},
+{
+"pos": 13904,
+"counter": 43680001,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "도해상에서는 김책시로부터 경성군까지의 가까운바다를 제외한 해상에서 북서풍이 10~1"
+},
+{
+"pos": 13960,
+"counter": 43680003,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "5㎧로 세게 불고 물결은 가까운바다에서 0.5~2m로 일고 먼바다에서는 2~3m로 "
+},
+{
+"pos": 14016,
+"counter": 43680006,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "높겠으며 주로 개이겠습니다. \n조선서해해상에서는 북서풍이 10~15㎧로 세게 불고"
+},
+{
+"pos": 14072,
+"counter": 43680008,
+"seq": 8,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 물결은 0.5~2m로 일겠으며 주로 개이겠습니다."
+}
+],
+[
+{
+"pos": 14168,
+"counter": 43680012,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "원도해상에서는 연안수역을 제외한 해상에서 남서풍이 10~15㎧로 세게 불고 물결은 "
+},
+{
+"pos": 14224,
+"counter": 43680014,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "가까운바다에서 0.5~2m로 일고 먼바다에서는 2~3m로 높겠으며 개였다가 흐리겠습"
+},
+{
+"pos": 14280,
+"counter": 43680017,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "니다.\n함경남도해상에서는 남서풍이 10~15㎧로 세게 불고 물결은 가까운바다에서 "
+},
+{
+"pos": 14336,
+"counter": 43680019,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "0.5~2m로 일고 먼바다에서는 2~3m로 높겠으며 개였다가 흐리겠습니다. \n함경"
+},
+{
+"pos": 14392,
+"counter": 43680021,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "북도해상에서는 남서풍이 7~10㎧로 불다가 오후부터 함경북도 어랑군으로부터 라선시까"
+},
+{
+"pos": 14448,
+"counter": 43680024,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "지의 가까운바다를 제외한 해상에서 10~15㎧로 세게 불고 물결은 가까운바다에서 0"
+},
+{
+"pos": 14504,
+"counter": 43680026,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ".5~2m로 일고 먼바다에서는 0.5~2m로 일다가 2~3m로 높겠으며 개였다가 흐"
+},
+{
+"pos": 14560,
+"counter": 43680028,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "리겠습니다. \n조선서해해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5~"
+},
+{
+"pos": 14616,
+"counter": 43680031,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "2m로 일겠으며 주로 개이겠습니다. \n\n\n모레 \n조선동해해상에서는 남서풍이 "
+},
+{
+"pos": 14672,
+"counter": 43680033,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "10~15㎧로 세게 불다가 오후부터 7~10㎧로 불고 물결은 가까운바다에서 0.5~"
+},
+{
+"pos": 14728,
+"counter": 43680035,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "2m로 일고 먼바다에서는 2~3m로 높다가 0.5~2m로 일겠습니다. \n평안남북도"
+},
+{
+"pos": 14784,
+"counter": 43680038,
+"seq": 12,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 일겠습니다. \n황해남도"
+},
+{
+"pos": 14840,
+"counter": 43680040,
+"seq": 13,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠습니다. "
+}
+],
+[
+{
+"pos": 14952,
+"counter": 43680045,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "1)저기압골의 영향으로 11월 26일에 내륙의 일부 지역에서 3㎜미만, 27일에는"
+},
+{
+"pos": 15008,
+"counter": 43680047,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 북부내륙의 여러 지역에서 5㎜미만의 비와 눈이 내릴것으로 예견됩니다. \n28일에"
+},
+{
+"pos": 15064,
+"counter": 43680049,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 북부내륙의 일부 지역에서 눈이, 30일에는 중부이남내륙의 일부 지역에서 약간의 비"
+},
+{
+"pos": 15120,
+"counter": 43680052,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "가 내릴것으로 예견됩니다.\n이 기간 전국일평균기온은 평년보다 3~7℃ 높을것으로 "
+},
+{
+"pos": 15176,
+"counter": 43680054,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "예견됩니다.\n\n각 지방별 날씨를 보면 다음과 같습니다.\n\n11월 26일에 평"
+},
+{
+"pos": 15232,
+"counter": 43680056,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "양, 평성, 신의주, 남포시에서 오후까지 주로 개였다가 밤에 대체로 흐리겠으며 해주"
+},
+{
+"pos": 15288,
+"counter": 43680059,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ", 사리원, 청진, 라선시에서는 주로 개이겠습니다. \n강계, 혜산, 개성시에서 대"
+},
+{
+"pos": 15344,
+"counter": 43680061,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "체로 흐리겠으며 원산, 함흥시에서는 새벽에 대체로 흐렸다가 오전부터 주로 개이겠습니"
+},
+{
+"pos": 15400,
+"counter": 43680063,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "다. \n\n27일에는 평양, 평성, 신의주, 해주, 사리원, 원산, 함흥, 청진,"
+},
+{
+"pos": 15456,
+"counter": 43680066,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 남포, 라선, 개성시에서 오전까지 대체로 흐렸다가 오후부터 주로 개이겠으며 강계시"
+},
+{
+"pos": 15512,
+"counter": 43680068,
+"seq": 11,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "에서 때때로 비가 내리겠습니다.\n혜산시에서는 때때로 비와 눈이 내리겠습니다."
+}
+],
+[
+{
+"pos": 15624,
+"counter": 43680073,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "2)28일에 평양, 평성, 신의주, 해주, 사리원, 남포, 개성시에서 주로 개이겠"
+},
+{
+"pos": 15680,
+"counter": 43680075,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "으나 새벽 한때 흐리겠으며 강계시에서는 새벽과 오전에 대체로 흐렸다가 오후부터 점차"
+},
+{
+"pos": 15736,
+"counter": 43680077,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 개이겠습니다. \n원산, 함흥, 청진, 라선시에서 주로 개이겠으며 혜산시에서는 대"
+},
+{
+"pos": 15792,
+"counter": 43680080,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "체로 흐리여 새벽과 오전 한때 눈이 내린후 오후부터 점차 개이겠습니다. \n\n29"
+},
+{
+"pos": 15848,
+"counter": 43680082,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "일에는 평양, 평성, 해주, 사리원, 원산, 함흥, 청진, 남포, 라선, 개성시에서"
+},
+{
+"pos": 15904,
+"counter": 43680084,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 주로 개이겠으며 신의주시에서는 주로 개이겠으나 오후 한때 흐리겠습니다. \n강계,"
+},
+{
+"pos": 15960,
+"counter": 43680087,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 혜산시에서는 오전까지 주로 개였다가 대체로 흐리겠습니다. \n\n 30일에 평양,"
+},
+{
+"pos": 16016,
+"counter": 43680089,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 평성, 신의주, 해주, 사리원, 강계, 원산, 함흥, 청진, 혜산, 남포, 라선,"
+},
+{
+"pos": 16072,
+"counter": 43680091,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 개성시에서 대체로 흐리겠습니다. \n\n12월 1일에는 평양, 평성, 신의주, 해"
+},
+{
+"pos": 16128,
+"counter": 43680094,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "주, 사리원, 강계, 원산, 남포, 라선, 개성시에서 주로 개이겠으며 함흥, 청진,"
+},
+{
+"pos": 16184,
+"counter": 43680096,
+"seq": 11,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 혜산시에서는 새벽에 대체로 흐렸다가 오전부터 주로 개이겠습니다."
+}
+],
+[
+{
+"pos": 16288,
+"counter": 43680100,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "3)이 기간에 기온이 제일 낮아질 11월 29일 아침최저기온은 평양, 사리원, 청"
+},
+{
+"pos": 16344,
+"counter": 43680103,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "진시 -2℃, 평성, 신의주, 함흥, 라선시 -3℃, 해주, 남포, 개성시 -1℃,"
+},
+{
+"pos": 16400,
+"counter": 43680105,
+"seq": 3,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 강계시 -9℃, 원산시 0℃, 혜산시 -11℃정도로 예견됩니다."
+}
+],
+[
+{
+"pos": 16504,
+"counter": 43680109,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "11월 27일 조선동해해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 "
+},
+{
+"pos": 16560,
+"counter": 43680112,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "일겠습니다. \n조선서해해상에서는 남서풍이 불다가 북서풍이 7~10㎧로 불고 물결은"
+},
+{
+"pos": 16616,
+"counter": 43680114,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 0.5~1.5m로 일겠습니다. \n\n28일 전반해상에서 북서풍이 7~10㎧로 불"
+},
+{
+"pos": 16672,
+"counter": 43680116,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "다가 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠습니다. \n\n29일 전반"
+},
+{
+"pos": 16728,
+"counter": 43680119,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "해상에서 북서풍이 불다가 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 일겠습니다"
+},
+{
+"pos": 16784,
+"counter": 43680121,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ". \n\n30일 조선동해해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5"
+},
+{
+"pos": 16840,
+"counter": 43680123,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "~2m로 일겠습니다. \n조선서해해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5"
+},
+{
+"pos": 16896,
+"counter": 43680126,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "~2m로 일겠습니다. \n\n12월 1일 조선동해해상에서는 남서풍이 불다가 북동풍이"
+},
+{
+"pos": 16952,
+"counter": 43680128,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 7~10㎧로 불고 물결은 0.5~1.5m로 일겠습니다. \n조선서해해상에서는 남동"
+},
+{
+"pos": 17008,
+"counter": 43680130,
+"seq": 10,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "풍이 7~10㎧로 불고 물결은 0.5~1.5m로 일겠습니다."
+}
+],
+[
+{
+"pos": 17168,
+"counter": 43680137,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "나라의 전문체육기술발전과 대중체육사업에 이바지하는 30여편의 편집물들을 제작하였다."
+},
+{
+"pos": 17224,
+"counter": 43680139,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "\n　편집물 《축구방어기술》(1)은 대인방어,보호방어를 비롯하여 여러가지 방어기술 "
+},
+{
+"pos": 17280,
+"counter": 43680142,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "및 전술들을 알기 쉽게 해설해주고 그 수행에서 나서는 선수들의 움직임과 호상간협동 "
+},
+{
+"pos": 17336,
+"counter": 43680144,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "등을 상세히 소개하고있다.\n　롱구선수들이 여러가지 동작수행시 몸의 평형을 유지하고"
+},
+{
+"pos": 17392,
+"counter": 43680146,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 정황에 따르는 운동감각능력을 소유하는데서 나서는 문제들을 취급한 편집물 《롱구선수"
+},
+{
+"pos": 17448,
+"counter": 43680149,
+"seq": 7,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "들의 몸중심근육훈련》(2)은 전문가들의 관심을 끌고있다."
+}
+],
+[
+{
+"pos": 17552,
+"counter": 43680153,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 30여편의 체육편집물 제작 (2)편집물 《근육이완과 늘구기》,《나도 배구명수가 "
+},
+{
+"pos": 17608,
+"counter": 43680155,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "되고싶다》는 훈련 및 경기전준비운동을 과학적으로 진행하여 부상을 방지하고 최고몸상태"
+},
+{
+"pos": 17664,
+"counter": 43680158,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "를 조성하며 어린 년령기 학생들이 배구기초기술동작을 습득하는데 도움을 주고있다.\n"
+},
+{
+"pos": 17720,
+"counter": 43680160,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "　빙상휘거선수들이 수행한 조약회전,착지 등 전문기술동작들에 대한 정확한 평가방법과 "
+},
+{
+"pos": 17776,
+"counter": 43680162,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "정구경기에서 전문가들과 애호가들이 알고싶어하는 규정과 규칙에 대하여 해설해주는 편집"
+},
+{
+"pos": 17832,
+"counter": 43680165,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "물 《빙상휘거기술규칙》(회전),《정구심판형용법》(1)도 제작되였다.\n　개별적선수들"
+},
+{
+"pos": 17888,
+"counter": 43680167,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "의 특성에 맞게 경기에서 메치기동작들을 옳게 적용하기 위한 손,허리,다리기술수법들을"
+},
+{
+"pos": 17944,
+"counter": 43680169,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 소개하고 숙련공고화시켜주는데 효과적인 편집물 《유술메치기기술의 기본류형과 습득방법"
+},
+{
+"pos": 18000,
+"counter": 43680172,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "》(1,2)은 감독들의 교수훈련지도에 이바지하고있다.\n　이밖에 《속독교육을 통한 "
+},
+{
+"pos": 18056,
+"counter": 43680174,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "체육선수후비들의 지능발달훈련방법》,《권총명중사격기초기술》,《조선씨름기초기술》을 비롯"
+},
+{
+"pos": 18112,
+"counter": 43680176,
+"seq": 11,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "한 체육편집물들도 창작되여 종목별교수훈련의 과학화수준제고에 기여하고있다."
+}
+],
+[
+{
+"pos": 18224,
+"counter": 43680181,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "나쁄임용오이는 평년 오이품_______________________________"
+},
+{
+"pos": 18280,
+"counter": 43680183,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 18336,
+"counter": 43680186,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 18392,
+"counter": 43680188,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________________________이 작으며 살"
+},
+{
+"pos": 18448,
+"counter": 43680190,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "이 치밀하므로 오랜 기간 절임되여있어도 살이 바삭바삭하여 먹을 때 씹는 맛이 좋다."
+},
+{
+"pos": 18504,
+"counter": 43680193,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________서 10분간 끓이기)을 거친 후에도 완전한"
+},
+{
+"pos": 18560,
+"counter": 43680195,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 형태를 유지할수 있고 물렁물렁해지지 않는다.\n 열매의 모양은 짧은 원통이며 열매"
+},
+{
+"pos": 18616,
+"counter": 43680197,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "색은 풀색이고 열매질람은 50~55\"이다.\n 량곸사면련결식관리수경온은과 호궁륭식박"
+},
+{
+"pos": 18672,
+"counter": 43680200,
+"seq": 9,
+"last": true,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "막온있을 비롯한 여늀 온실에서 이바봄재배,봄재배,가을재배를 할수 있다."
+}
+],
+[
+{
+"pos": 18784,
+"counter": 43680204,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "전에 룡연, 갑산을 비롯한 황해남도, 량강도의 일부 지역에 구름이 끼면서 산발적으로"
+},
+{
+"pos": 18840,
+"counter": 43680207,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 눈이 내렸으며 그밖의 지역에서는 주로 개였습니다. \n 그리고 화대, 백암구에서 "
+},
+{
+"pos": 18896,
+"counter": 43680209,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "10~11㎧의 센바람이 불었습니다. \n\n센바람경보입니다.\n오늘 서해안중부이남,"
+},
+{
+"pos": 18952,
+"counter": 43680211,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 함경남북도, 량강도의 일부 지역과 라선시에서 센바람주의경보입니다.\n오늘 밤까지 "
+},
+{
+"pos": 19008,
+"counter": 43680214,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "룡연, 단천, 경흥, 백암을 비롯한 서해안중부이남, 함경남북도, 량강도의 일부 지역"
+},
+{
+"pos": 19064,
+"counter": 43680216,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "과 라선시에서 한때 10~15㎧의 센바람이 불것으로 예견됩니다.\n그리고 전반적지역"
+},
+{
+"pos": 19120,
+"counter": 43680218,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "에서 찬바람이 불면서 날씨는 약간 추울것으로 예견됩니다.\n그러므로 사람들속에서 건"
+},
+{
+"pos": 19176,
+"counter": 43680221,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "강관리에 주의하며 해당 지역의 건설부문을 비롯한 인민경제 여러 부문에서는 센바람에 "
+},
+{
+"pos": 19232,
+"counter": 43680223,
+"seq": 9,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "의한 피해가 없도록 철저한 대책을 세우기 바랍니다."
+}
+],
+[
+{
+"pos": 19328,
+"counter": 43680227,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "영향을 받겠습니다. \n그러므로 평양시에서 주로 개이겠습니다. \n룡연, 삼지연을 "
+},
+{
+"pos": 19384,
+"counter": 43680229,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "비롯한 황해남도, 량강도의 일부 지역에서 지형의 영향으로 대체로 흐리여 산발적으로 "
+},
+{
+"pos": 19440,
+"counter": 43680232,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "3㎝미만의 눈이 내린 후 주로 개이겠으며 그밖의 지역에서는 주로 개이겠습니다. \n"
+},
+{
+"pos": 19496,
+"counter": 43680234,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "래일 고기압과 약한 저기압골의 영향을 받겠습니다. \n그러므로 평양시에서 새벽에 주"
+},
+{
+"pos": 19552,
+"counter": 43680236,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때 흐리겠습니다"
+},
+{
+"pos": 19608,
+"counter": 43680239,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ". \n평안남북도, 자강도의 여러 지역에서 주로 개였다가 대체로 흐리여 오전과 밤사"
+},
+{
+"pos": 19664,
+"counter": 43680241,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "이에 한때 산발적으로 1㎝미만의 눈이 내리겠습니다. \n중부이남의 여러 지역에서 주"
+},
+{
+"pos": 19720,
+"counter": 43680243,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "로 개인후 대체로 흐렸다가 주로 개이겠으나 증산을 비롯한 서해안중부이남의 일부 지역"
+},
+{
+"pos": 19776,
+"counter": 43680246,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "에서 오전 한때 1㎝미만의 눈이 내리겠습니다. \n그밖의 지역에서는 주로 개이겠습니"
+},
+{
+"pos": 19832,
+"counter": 43680248,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________에 안변, 금야를 비롯한 강원도, 함경남도의 국부적지역과"
+},
+{
+"pos": 19888,
+"counter": 43680250,
+"seq": 11,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 룡연, 백두산에서 한때 10~15㎧의 센바람이 불것으로 예견됩니다."
+}
+],
+[
+{
+"pos": 19992,
+"counter": 43680255,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "전까지 전반적지역에서 찬바람이 불면서 날씨는 약간 추울것으로 예견됩니다. \n바람은"
+},
+{
+"pos": 20048,
+"counter": 43680257,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 오늘 전반적지역에서 북서풍이 3~6㎧로 불겠습니다.래일은 북부내륙지역에서 남서풍이"
+},
+{
+"pos": 20104,
+"counter": 43680259,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 3~6㎧로, 그밖의 지역에서는 북서풍이 1~3㎧로 불다가 남서풍이 3~6㎧로 불겠"
+},
+{
+"pos": 20160,
+"counter": 43680262,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "습니다. \n\n각 지방별날씨를 보면 \n평양시는\n오늘 주로 개이겠으며 래일은 새"
+},
+{
+"pos": 20216,
+"counter": 43680264,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때 흐리"
+},
+{
+"pos": 20272,
+"counter": 43680266,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "겠습니다.\n오늘아침 최저기온은 -3℃로서 평년보다 1℃ 낮았습니다.\n오늘낮 최고"
+},
+{
+"pos": 20328,
+"counter": 43680269,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "기온은 1℃, 래일아침 최저기온은 -4℃, 래일낮 최고기온은 7℃정도 되겠습니다."
+},
+{
+"pos": 20384,
+"counter": 43680271,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "\n\n오늘 \n평성, 신의주, 해주, 사리원, 원산, 함흥, 청진, 남포, 라선, "
+},
+{
+"pos": 20440,
+"counter": 43680273,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "개성시는 주로 개이겠으며 \n강계시는 주로 개이겠으나 오후 한때 흐리겠습니다. \n"
+},
+{
+"pos": 20496,
+"counter": 43680276,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "혜산시는 오후 한때 약간의 눈이 내린후 점차 개이겠습니다.\n\n오늘낮 최고기온은 "
+},
+{
+"pos": 20552,
+"counter": 43680278,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "평성 1℃, 신의주 1℃, 해주 4℃, 사리원 1℃, 강계 -5℃, 원산 2℃, 함"
+},
+{
+"pos": 20608,
+"counter": 43680280,
+"seq": 12,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "흥 3℃, 청진 1℃, 혜산 -9℃, 남포 1℃, 라선 0℃, 개성 3℃정도로 예견"
+},
+{
+"pos": 20664,
+"counter": 43680283,
+"seq": 13,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "뮻뮻뮻뮻뮻뮻뮻�됩니다.킎��齞૴ॻ쀜씾찵ⷺ믪ꯍ~스.기상정보�슕11월 29일습12시 "
+}
+],
+[
+{
+"pos": 20672,
+"counter": 43680283,
+"seq": 13,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "됩니다."
+}
+],
+[
+{
+"pos": 20736,
+"counter": 43680286,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "는 새벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때"
+},
+{
+"pos": 20792,
+"counter": 43680288,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 흐리겠습니다.\n신의주시는 주로 개이겠으나 오후와 밤 한때 흐리겠습니다.\n해주,"
+},
+{
+"pos": 20848,
+"counter": 43680290,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 사리원, 개성시는 새벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후와 밤에 주로"
+},
+{
+"pos": 20904,
+"counter": 43680293,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 개이겠습니다. \n강계시는 주로 개이겠으나 오후 한때 흐리고 밤에 대체로 흐리겠으"
+},
+{
+"pos": 20960,
+"counter": 43680295,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "며\n원산, 함흥시는 주로 개이겠으나 밤 한때 흐리겠습니다.\n청진, 라선시는 주로"
+},
+{
+"pos": 21016,
+"counter": 43680297,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 개이겠으며\n혜산시는 주로 개이겠으나 오전과 밤 한때 흐리겠습니다.\n남포시는 새"
+},
+{
+"pos": 21072,
+"counter": 43680300,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "벽에 주로 개이고 오전에 대체로 흐리겠으며 오후와 밤에 주로 개이겠습니다. \n\n"
+},
+{
+"pos": 21128,
+"counter": 43680302,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "지방별 래일 아침 최저기온과 낮 최고기온은 다음과 같습니다. \n\n평성 -5℃, "
+},
+{
+"pos": 21184,
+"counter": 43680304,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "7℃\n신의주 -5℃, 10℃\n해주 -3℃, 11℃\n사리원 -4℃, 9℃\n강계"
+},
+{
+"pos": 21240,
+"counter": 43680307,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " -13℃, 3℃\n원산 -3℃, 8℃\n함흥 -7℃, 8℃\n청진 -5℃, 7℃"
+},
+{
+"pos": 21296,
+"counter": 43680309,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "\n혜산 -15℃, 0℃\n남포 -2℃, 8℃\n라선 -6℃, 5℃\n개_______"
+},
+{
+"pos": 21352,
+"counter": 43680311,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______예견되방챭6맛뮛뮻뮻뮊땚씲뮣 ﱅէ9장\"㐘켛믊ꯍ덾합.기상정구대하11월 "
+},
+{
+"pos": 21408,
+"counter": 43680314,
+"seq": 13,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________ᰅ다.\n\n오늘과 래일 조선동해의 대부분"
+},
+{
+"pos": 21464,
+"counter": 43680316,
+"seq": 14,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________________________주의경보입니다"
+},
+{
+"pos": 21520,
+"counter": 43680318,
+"seq": 15,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "\n강원도, 해경남도해상에서해뮻뮻뮻뮻뮻뮻뮻죆㰅는 연안수역됹_______________"
+}
+],
+[
+{
+"pos": 21544,
+"counter": 43680319,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "는 연안수역됹_______________________________________"
+},
+{
+"pos": 21600,
+"counter": 43680322,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 21656,
+"counter": 43680324,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 21712,
+"counter": 43680326,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______불고 물결은 가까운바다에서 0.5~2m로 일_______________"
+},
+{
+"pos": 21768,
+"counter": 43680329,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "높겠으며 주로 개이겠습니다. \n조선서해해상에서는 북서풍이 10~15㎧로 세게 불고"
+},
+{
+"pos": 21824,
+"counter": 43680331,
+"seq": 8,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 물결은 0.5~2m로 일겠으며 주로 개이겠습니다."
+}
+],
+[
+{
+"pos": 22088,
+"counter": 43680342,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "0.5~2m로 일고 먼바다에서는 2~3m로 높겠으며 개였다가 흐리겠습니다. \n함경"
+},
+{
+"pos": 22144,
+"counter": 43680344,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "북도해상에서는 남서풍이 7~10㎧로 불다가 오후부터 함경북도 어랑군으로부터 라선시까"
+},
+{
+"pos": 22200,
+"counter": 43680347,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "지의 가까운바다를 제외한 해상에서 10~15㎧로 세게 불고 물결은 가까운바다에서 0"
+},
+{
+"pos": 22256,
+"counter": 43680349,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ".5~2m로 일고 먼바다에서는 0.5~2m로 일다가 2~3m로 높겠으며 개였다가 흐"
+},
+{
+"pos": 22312,
+"counter": 43680351,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "리겠습니다. \n조선서해해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5~"
+},
+{
+"pos": 22368,
+"counter": 43680354,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "2m로 일겠으며 주로 개이겠습니다. \n\n\n모레 \n조선동해해상에서는 남서풍이 "
+},
+{
+"pos": 22424,
+"counter": 43680356,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "10~15㎧로 세게 불다가 오후부터 7~10㎧로 불고 물결은 가까운바다_______"
+},
+{
+"pos": 22480,
+"counter": 43680358,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______먼바다에서는 2~3m로 높다가 0.5~2m로 일겠습니다. \n평안남북도"
+},
+{
+"pos": 22536,
+"counter": 43680361,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 일겠습니다. \n황해남도"
+},
+{
+"pos": 22592,
+"counter": 43680363,
+"seq": 13,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠습니다. "
+}
+],
+[
+{
+"pos": 22704,
+"counter": 43680368,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "1)저기압골의 영향으로 11월 26일에 내륙의 일부 지역에서 3㎜미만, 27일에는"
+},
+{
+"pos": 22760,
+"counter": 43680370,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 북부내륙의 여러 지역에서 5㎜미만의 비와 눈이 내릴것으로 예견됩니다. \n28일에"
+},
+{
+"pos": 22816,
+"counter": 43680372,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 북부내륙의 일부 지역에서 눈이, 30일에는 중부이남내륙의 일부 지역에서 약간의 비"
+},
+{
+"pos": 22872,
+"counter": 43680375,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "가 내릴것으로 예견됩니다.\n이 기간 전국일평균기온은 평년보다 3~7℃ 높을것으로 "
+},
+{
+"pos": 22928,
+"counter": 43680377,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "예견됩니다.\n\n각 지방별 날씨를 보면 다음과 같습니다.\n\n11월 26일에 평"
+},
+{
+"pos": 22984,
+"counter": 43680379,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "양, 평성, 신의주, 남포시에서 오후까지 주로 개였다가 밤에 대체로 흐리겠으며 해주"
+},
+{
+"pos": 23040,
+"counter": 43680382,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ", 사리원, 청진, 라선시에서는 주로 개이겠습니다. \n강계, 혜산, 개성시에서 대"
+},
+{
+"pos": 23096,
+"counter": 43680384,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "체로 흐리겠으며 원산, 함흥시에서는 새벽에 대체로 흐렸다가 오전부터 주로 개이겠습니"
+},
+{
+"pos": 23152,
+"counter": 43680386,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "다. \n\n27일에는 평양, 평성, 신의주, 해주, 사리원, 원산, 함흥, 청진,"
+},
+{
+"pos": 23208,
+"counter": 43680389,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 남포, 라선, 개성시에서 오전까지 대체로 흐렸다가 오후부터 주로 개이겠으며 강계시"
+},
+{
+"pos": 23264,
+"counter": 43680391,
+"seq": 11,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "에서 때때로 비가 내리겠습니다.\n혜산시에서는 때때로 비와 눈이 내리겠습니다."
+}
+],
+[
+{
+"pos": 23376,
+"counter": 43680396,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "2)28일에 평양, 평성, 신의주, 해주, 사리원, 남포, 개성시에서 주로 개이겠"
+},
+{
+"pos": 23432,
+"counter": 43680398,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "으나 새벽 한때 흐리겠으며 강계시에서는 새벽과 오전에 대체로 흐렸다가 오후부터 점차"
+},
+{
+"pos": 23488,
+"counter": 43680400,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 개이겠습니다. \n원산, 함흥, 청진, 라선시에서 주로 개이겠으며 혜산시에서는 대"
+},
+{
+"pos": 23544,
+"counter": 43680403,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "체로 흐리여 새벽과 오전 한때 눈이 내린후 오후부터 점차 개이겠습니다. \n\n29"
+},
+{
+"pos": 23600,
+"counter": 43680405,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "일에는 평양, 평성, 해주, 사리원, 원산, 함흥, 청진, 남포, 라선, 개성시에서"
+},
+{
+"pos": 23656,
+"counter": 43680407,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 주로 개이겠으며 신의주시에서는 주로 개이겠으나 오후 한때 흐리겠습니다. \n강계,"
+},
+{
+"pos": 23712,
+"counter": 43680410,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 혜산시에서는 오전까지 주로 개였다가 대체로 흐리겠습니다. \n\n 30일에 평양,"
+},
+{
+"pos": 23768,
+"counter": 43680412,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 평성, 신의주, 해주, 사리원, 강계, 원산, 함흥, 청진, 혜산, 남포, 라선,"
+},
+{
+"pos": 23824,
+"counter": 43680414,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 개성시에서 대체로 흐리겠습니다. \n\n12월 1일에는 평양, 평성, 신의주, 해"
+},
+{
+"pos": 23880,
+"counter": 43680417,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "주, 사리원, 강계, 원산, 남포, 라선, 개성시에서 주로 개이겠으며 함흥, 청진,"
+},
+{
+"pos": 23936,
+"counter": 43680419,
+"seq": 11,
+"last": true,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": " 혜산시에서는 새벽에 대체로7흐렸다가스오전붗터 주로스개이겷습니다."
+}
+],
+[
+{
+"pos": 24040,
+"counter": 43680423,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "3)이 기간에 기온이 제일 낮아질 11월 29일 아침최저기온은 평양, 사리원, 청"
+},
+{
+"pos": 24096,
+"counter": 43680426,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "진시 -2℃, 평성, 신의주, 함흥, 라선시 -3℃, 해주, 남포, 개성시 -1℃,"
+},
+{
+"pos": 24152,
+"counter": 43680428,
+"seq": 3,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 강계시 -9℃, 원산시 0℃, 혜산시 -11℃정도로 예견됩니다."
+}
+],
+[
+{
+"pos": 24256,
+"counter": 43680432,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "11월 27일 조선동해해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 "
+},
+{
+"pos": 24312,
+"counter": 43680435,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "일겠습니다. \n조선서해해상에서는 남서풍이 불다가 북서풍이 7~10㎧로 불고 물결은"
+},
+{
+"pos": 24368,
+"counter": 43680437,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________다. \n\n28일 전반해상에서 북서풍이 7~10㎧로 불"
+},
+{
+"pos": 24424,
+"counter": 43680439,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "다가 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠습니다. \n\n29일 전반"
+},
+{
+"pos": 24480,
+"counter": 43680442,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "해상에서 북서풍이 불다가 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 일겠습니다"
+},
+{
+"pos": 24536,
+"counter": 43680444,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ". \n\n30일 조선동해해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5"
+},
+{
+"pos": 24592,
+"counter": 43680446,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "~2m로 일겠습니다. \n조선서해해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5"
+},
+{
+"pos": 24648,
+"counter": 43680449,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "~2m로 일겠습니다. \n\n12월 1일 조선동해해상에서는 남서풍이 불다가 북동풍이"
+},
+{
+"pos": 24704,
+"counter": 43680451,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 7~10㎧로 불고 물결은 0.5~1.5m로 일겠습니다. \n조선서해해상에서는 남동"
+},
+{
+"pos": 24760,
+"counter": 43680453,
+"seq": 10,
+"last": true,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "풍이 7~10㎰로 불고 물결읗 0.5~1.\"m로 일겠습니올로"
+}
+],
+[
+{
+"pos": 24920,
+"counter": 43680460,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "나라의 전문체육기술발전과 대중체육사업에 이바지하는 30여편의 편집물들을 제작하였다."
+},
+{
+"pos": 24976,
+"counter": 43680462,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "\n　편집물 《축구방어기술》(1)은 대인방어,보호방어를 비롯하여 여러가지 방어기술 "
+},
+{
+"pos": 25032,
+"counter": 43680465,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "및 전술들을 알기 쉽게 해설해주고 그 수행에서 나서는 선수들의 움직임과 호상간협동 "
+},
+{
+"pos": 25088,
+"counter": 43680467,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "등을 상세히 소개하고있다.\n　롱구선수들이 여러가지 동작수행시 몸의 평형을 유지하고"
+},
+{
+"pos": 25144,
+"counter": 43680469,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 정황에 따르는 운동감각능력을 소유하는데서 나서는 문제들을 취급한 편집물 《롱구선수"
+},
+{
+"pos": 25200,
+"counter": 43680472,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "들의 몸중심근윸훈련》(2)은9전문가들의 관봆읤-끆곒잰니다㎜ \n28,닊쑑뮛뮶뮱뮉뮃뮗"
+},
+{
+"pos": 25256,
+"counter": 43680474,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "임이 내태경보수쟺은첺청썸진원毙체육과학뾕확랹그소에서 산시는뵑과성이 뙚읁뮻뮻뮻뮻뮻뮻뮻"
+}
+],
+[
+{
+"pos": 25304,
+"counter": 43680476,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 30여편의 체육편집물 제작 (2)편집물 《근육이완과 늘구기》,《나도 배구명수가 "
+},
+{
+"pos": 25360,
+"counter": 43680478,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "되고싶다》는 훈련 및 경기전준비운동을 과학적으로 진행하여 부상을 방지하고 최고몸상태"
+},
+{
+"pos": 25416,
+"counter": 43680481,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "를 조성하며 어린 년령기 학생들이 배구기초기술동작을 습득하는데 도움을 주고있다.\n"
+},
+{
+"pos": 25472,
+"counter": 43680483,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "　빙상휘거선수들이 수행한 조약회전,착지 등 전문기술동작들에 대한 정확한 평가방법과 "
+},
+{
+"pos": 25528,
+"counter": 43680485,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "정구경기에서 전문가들과 애호가들이 알고싶어하는 규정과 규칙에 대하여 해설해주는 편집"
+},
+{
+"pos": 25584,
+"counter": 43680488,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "물 《빙상휘거기술규칙》(회전),《정구심판형용법》(1)도 제작되였다.\n　개별적선수들"
+},
+{
+"pos": 25640,
+"counter": 43680490,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "의 특성에 맞게 경기에서 메한 쯥잌최을단뎣랈기뀽운고기단는치기리1거리다이리기술수법들을"
+},
+{
+"pos": 25696,
+"counter": 43680492,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 소개하고 숙됱공고화만죔주는뽩 효과댑산 편었물 《배엨메치기기술의 기본류형과 습득방법"
+},
+{
+"pos": 25752,
+"counter": 43680495,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "》(1,슫)은9감독들의승교수훑련지도에승이바뜨하고있다.\n仨이밖에 《속독편육을 통한 "
+},
+{
+"pos": 25808,
+"counter": 43680497,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "체육선수후비들의 지능발달훈련방법》,《권총명중사격기초기술》,《조선씨름기초기술》을 비롯"
+},
+{
+"pos": 25864,
+"counter": 43680499,
+"seq": 11,
+"last": true,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "한 체육편집물듳도 창작되여 좒목별교수훈련의7과학화수준제고6'기여하고있다었"
+}
+],
+[
+{
+"pos": 25976,
+"counter": 43680504,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "통졸임용오이는 다른 오이품높들에일비퀠여 쯿백질읰칼잤움,띫리움( 물교적 많이 들어있"
+},
+{
+"pos": 26032,
+"counter": 43680506,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "다.\n 이 품종은 맛이 좋으므로 통졸임용이나 병졸임용,오이절임이나 생채 등을 만드"
+},
+{
+"pos": 26088,
+"counter": 43680509,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "는데 리용할수 있다.\n 통졸임용오이는 열매길이가 9~10㎝정도로 짧고 열매직경은 "
+},
+{
+"pos": 26144,
+"counter": 43680511,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "2.8~3㎝정도로 통통하므로È통졸륰통에 쪆께 편의하며 함줠이 뭳고 속륉_______"
+},
+{
+"pos": 26200,
+"counter": 43680513,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______۵오랜 기간 절셑되여있어도 살송 바삭바삭하여었먹을 때 씹는었맛이 좋다."
+},
+{
+"pos": 26256,
+"counter": 43680516,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "\n 통졸임가공을 위한 살균과정(100℃에서 10분간 끓이기)을 거친 후에도 완전한"
+},
+{
+"pos": 26312,
+"counter": 43680518,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 형태를 유지할수 있고 물렁물렁해지지 않는다.\n 열매의 모양은 짧은 원통이며 열매"
+},
+{
+"pos": 26368,
+"counter": 43680520,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "색은 풀색이고다. 오랜슐 5담얤맱࿙2스다.닉에매력골야면련읈식유리수꿭국일위 반궁륭속흐"
+},
+{
+"pos": 26424,
+"counter": 43680523,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "막뎸콼을 상롯장 끼면 온뱡에폥 다든봄재습,민)밉수가ô잌바뾄장학, 8닄\n뙺입9숴�잰 "
+},
+{
+"pos": 26480,
+"counter": 43680525,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "삺잱쥈纫ꐀ陁Q씹어있.기상정보싨읜11월 2시 -12시 날߀일-(1)오합 새벽과 오"
+},
+{
+"pos": 26536,
+"counter": 43680527,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "전에 룡연, 쯵산을 비롯한 농해남도, 량강퐠의 일부 지역뜕 구름이 끼면동 산발적으로"
+}
+],
+[
+{
+"pos": 26592,
+"counter": 43680530,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 눈이 내렸으며 그밖의 지역에서는 주로 개였습니다. \n 그리고 화대, 백암구에서 "
+},
+{
+"pos": 26648,
+"counter": 43680532,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "10~11㎧의 센바람이 불었습니다. \n\n센바람경보입니다.\n오늘 서해안중부이남,"
+},
+{
+"pos": 26704,
+"counter": 43680534,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 함경남북도, 량강도의 일부 지역과 라선시에서 센바람주의경보입니다.\n오늘 밤까지 "
+},
+{
+"pos": 26760,
+"counter": 43680537,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "룡연, 단천, 경흥, 백암을 비롯한 서해안중부이남, 함경남북도, 량강도의 일부 지역"
+},
+{
+"pos": 26816,
+"counter": 43680539,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "과 라선시에서 한때 10~15㎧의 센바람이 불것으로 예견됩니다.\n그리고 전반적지역"
+},
+{
+"pos": 26872,
+"counter": 43680541,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "에서 찬바람이 불면서 날씨는 약간 추울것으로 예견됩니다.\n그러므로 사람들속에서 건"
+},
+{
+"pos": 26928,
+"counter": 43680544,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "강관리에 주의하며 해당 지역의 건설부문을 비롯한 인민경제 여러 부문에서는 센바람에 "
+},
+{
+"pos": 26984,
+"counter": 43680546,
+"seq": 9,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "의한 피해가 없도록 철저한 대책을 세우기 바랍니다."
+}
+],
+[
+{
+"pos": 27080,
+"counter": 43680550,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "영향을 받겠습니다. \n그러므로 평양시에서 주로 개이겠습니다. \n룡연, 삼지연을 "
+},
+{
+"pos": 27136,
+"counter": 43680552,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "비롯한 황해남도, 량강도의 일부 지역에서 지형의 영향으로 대체로 흐리여 산발적으로 "
+},
+{
+"pos": 27192,
+"counter": 43680555,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "3㎝미만의 눈이 내린 후 주로 개이겠으며 그밖의 지역에서는 주로 개이겠습니다. \n"
+},
+{
+"pos": 27248,
+"counter": 43680557,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "래일 고기압과 약한 저기압골의 영향을 받겠습니다. \n그러므로 평양시에서 새벽에 주"
+},
+{
+"pos": 27304,
+"counter": 43680559,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때 흐리겠습니다"
+},
+{
+"pos": 27360,
+"counter": 43680562,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ". \n평안남북도, 자강도의 여러 지역에서 주로 개였다가 대체로 흐리여 오전과 밤사"
+},
+{
+"pos": 27416,
+"counter": 43680564,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "이에 한때 산발적으로 1㎝미만의 눈이 내리겠습니다. \n중부이남의 여러 지역에서 주"
+},
+{
+"pos": 27472,
+"counter": 43680566,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "로 개인후 대체로 흐렸다가 주로 개이겠으나 증산을 비롯한 서해안중부이남의 일부 지역"
+},
+{
+"pos": 27528,
+"counter": 43680569,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "에서 오전 한때 1㎝미만의 눈이 내리겠습니다. \n그밖의 지역에서는 주로 개이겠습니"
+},
+{
+"pos": 27584,
+"counter": 43680571,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "다. \n래일 오후와 밤사이에 안변, 금야를 비롯한 강원도, 함경남도의 국부적지역과"
+},
+{
+"pos": 27640,
+"counter": 43680573,
+"seq": 11,
+"last": true,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": " 룡연, 백두졸에서 한때 1ࣸ~15㎧의 센드람이 불것으로쟁. 오전까지"
+}
+],
+[
+{
+"pos": 27744,
+"counter": 43680578,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "전까지 전반적지역에서 찬바람이 불면서 날씨는 약간 추울것으로 예견됩니다. \n바람은"
+},
+{
+"pos": 27800,
+"counter": 43680580,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 오늘 전반적지역에서 북서풍이 3~6㎧로 불겠습니다.래일은 북부내륙지역에서 남서풍이"
+},
+{
+"pos": 27856,
+"counter": 43680582,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 3~6㎧로, 그밖의 지역에서는 북서풍이 1~3㎧로 불다가 남서풍이 3~6㎧로 불겠"
+},
+{
+"pos": 27912,
+"counter": 43680585,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "습니다. \n\n각 지방별날씨를 보면 \n평양시는\n오늘 주로 개이겠으며 래일은 새"
+},
+{
+"pos": 27968,
+"counter": 43680587,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때 흐리"
+},
+{
+"pos": 28024,
+"counter": 43680589,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "겠습니다.\n오늘아침 최저기온은 -3℃로서 평년보다 1℃ 낮았습니다.\n오늘낮 최고"
+},
+{
+"pos": 28080,
+"counter": 43680592,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "기온은 1℃, 래일아침 최저기온은 -4℃, 래일낮 최고기온은 7℃정도 되겠습니다."
+},
+{
+"pos": 28136,
+"counter": 43680594,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "\n\n오늘 \n평성, 신의주, 해주, 사리원, 원산, 함흥, 청진, 남포, 라선, "
+},
+{
+"pos": 28192,
+"counter": 43680596,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "개성시는 주로 개이겠으며 \n강계시는 주로 개이겠으나 오후 한때 흐리겠습니다. \n"
+},
+{
+"pos": 28248,
+"counter": 43680599,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "혜산시는 오후 한때 약간의 눈이 내린후 점차 개이겠습니다.\n\n오늘낮 최고기온은 "
+},
+{
+"pos": 28304,
+"counter": 43680601,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "평성 1℃, 신의주 1℃, 해주 4주, 사리원 1주, 강계 -5주, 원산 2℃, 함"
+},
+{
+"pos": 28360,
+"counter": 43680603,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "흥 3℃, 청진 1℃, 혜산 -9℃, 남포 1℃, 라선 0℃, 개성 3℃정도로 예견"
+},
+{
+"pos": 28416,
+"counter": 43680606,
+"seq": 13,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "뮻뮻뮻뮻뮻뮻뮻�됩니다.��齞ૡॻ쀕씾ⷺ믪砉윺닙.기상정보평을단11월 2폽8니12시 "
+}
+],
+[
+{
+"pos": 28424,
+"counter": 43680606,
+"seq": 13,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "됩니다."
+}
+],
+[
+{
+"pos": 28488,
+"counter": 43680609,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "는 새벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후부터 점차 개이겠으나 밤 한때"
+},
+{
+"pos": 28544,
+"counter": 43680611,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 흐리겠습니다.\n신의주시는 주로 개이겠으나 오후와 밤 한때 흐리겠습니다.\n해주,"
+},
+{
+"pos": 28600,
+"counter": 43680613,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 사리원, 개성시는 새벽에 주로 개이고 오전에 개였다가 흐리겠으며 오후와 밤에 주로"
+},
+{
+"pos": 28656,
+"counter": 43680616,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 개이겠습니다. \n강계시는 주로 개이겠으나 오후 한때 흐리고 밤에 대체로 흐리겠으"
+},
+{
+"pos": 28712,
+"counter": 43680618,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "며\n원산, 함흥시는 주로 개이겠으나 밤 한때 흐리겠습니다.\n청진, 라선시는 주로"
+},
+{
+"pos": 28768,
+"counter": 43680620,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 개이겠으며\n혜산시는 주로 개이겠으나 오전과 밤 한때 흐리겠습니다.\n남포시는 새"
+},
+{
+"pos": 28824,
+"counter": 43680623,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "벽에 주로 개이고 오전에 대체로 흐리겠으며 오후와 밤에 주로 개이겠습니다. \n\n"
+},
+{
+"pos": 28880,
+"counter": 43680625,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "지방별 래일 아침 최저기온과 낮 최고기온은 다음과 같습니다. \n\n평성 -5℃, "
+},
+{
+"pos": 28936,
+"counter": 43680627,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "7℃\n신의주 -5℃, 10℃\n해주 -3℃, 11℃\n사리원 -4℃, 9℃\n강계"
+},
+{
+"pos": 28992,
+"counter": 43680630,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " -13℃, 3℃\n원산 -3℃, 8℃\n함흥 -7℃, 8℃\n청진 -5℃, 7℃"
+},
+{
+"pos": 29048,
+"counter": 43680632,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "\n혜산 -15℃, 0℃\n남포 -2℃, 8℃\n라선 -6℃, 5℃\n개성 -3℃, "
+},
+{
+"pos": 29104,
+"counter": 43680634,
+"seq": 12,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "9℃ 정도로 예견됩니다."
+}
+],
+[
+{
+"pos": 29184,
+"counter": 43680638,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "다.\n\n오늘과 래일 조선동해의 대부분해상과 조선서해해상에서, 모레 조선동해의 대"
+},
+{
+"pos": 29240,
+"counter": 43680640,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "부분해상과 황해남도해상에서 주의경보입니다. \n\n오늘 \n강원도, 함경남도해상에서"
+},
+{
+"pos": 29296,
+"counter": 43680642,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "는 연안수역을 제외한 해상에서 서풍이 10~15㎧로 세게 불고 물결은 가까운바다에서"
+},
+{
+"pos": 29352,
+"counter": 43680645,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 0.5~2m로 일고 먼바다에서는 2~3m로 높겠으며 주로 개이겠습니다. \n함경북"
+},
+{
+"pos": 29408,
+"counter": 43680647,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "도해상에서는 김책시로부터 경성군까지의 가까운바다를 제외한 해상에서 북서풍이 10~1"
+},
+{
+"pos": 29464,
+"counter": 43680649,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "5㎧로 세게 불고 물결은 가까운바다에서 0.5~2m로 일고 먼바다에서는 2~3m로 "
+},
+{
+"pos": 29520,
+"counter": 43680652,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "높겠으며 주로 개이겠습니다. \n조선서해해상에서는 북서풍이 10~15㎧로 세게 불고"
+},
+{
+"pos": 29576,
+"counter": 43680654,
+"seq": 8,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 물결은 0.5~2m로 일겠으며 주로 개이겠습니다."
+}
+],
+[
+{
+"pos": 29672,
+"counter": 43680658,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "원도해상에서는 연안수역을 제외한 해상에서 남서풍이 10~15㎧로 세게 불고 물결은 "
+},
+{
+"pos": 29728,
+"counter": 43680660,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "가까운바다에서 0.5~2m로 일고 먼바다에서는 2~3m로 높겠으며 개였다가 흐리겠습"
+},
+{
+"pos": 29784,
+"counter": 43680663,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "니다.\n함경남도해상에서는 남서풍이 10~15㎧로 세게 불고 물결은 가까운바다에서 "
+},
+{
+"pos": 29840,
+"counter": 43680665,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "0.5~2m로 일고 먼바다에서는 2~3m로 높겠으며 개였다가 흐리겠습니다. \n함경"
+},
+{
+"pos": 29896,
+"counter": 43680667,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "북도해상에서는 남서풍이 7~10㎧로 불다가 오후부터 함경북도 어랑군으로부터 라선시까"
+},
+{
+"pos": 29952,
+"counter": 43680670,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "지의 가까운바다를 제외한 해상에서 10~15㎧로 세게 불고 물결은 가까운바다에서 0"
+},
+{
+"pos": 30008,
+"counter": 43680672,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ".5~2m로 일고 먼바다에서는 0.5~2m로 일다가 2~3m로 높겠으며 개였다가 흐"
+},
+{
+"pos": 30064,
+"counter": 43680674,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "리겠습니다. \n조선서해해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5~"
+},
+{
+"pos": 30120,
+"counter": 43680677,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "2m로 일겠으며 주로 개이겠습니다. \n\n\n모레 \n조선동해해상에서는 남서풍이 "
+},
+{
+"pos": 30176,
+"counter": 43680679,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "10~15㎧로 세게 불다가 오후부터 7~10㎧로 불고 물결은 가까운바다에서 0.5~"
+},
+{
+"pos": 30232,
+"counter": 43680681,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "2m로 일고 먼바다에서는 2~3m로 높다가 0.5~2m로 일겠습니다. \n평안남북도"
+},
+{
+"pos": 30288,
+"counter": 43680684,
+"seq": 12,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 일겠습니다. \n황해남도"
+},
+{
+"pos": 30344,
+"counter": 43680686,
+"seq": 13,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠습니다. "
+}
+],
+[
+{
+"pos": 30456,
+"counter": 43680691,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "1)저기압골의 영향으로 11월 26일에 내륙의 일부 지역에서 3㎜미만, 27일에는"
+},
+{
+"pos": 30512,
+"counter": 43680693,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 북부내륙의 여러 지역에서 5㎜미만의 비와 눈이 내릴것으로 예견됩니다. \n28일에"
+},
+{
+"pos": 30568,
+"counter": 43680695,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": " 북부내륙의 일부 지역에서 눈이, 30일에는 중부이남내륙_______________"
+},
+{
+"pos": 30624,
+"counter": 43680698,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "가 내릴것으로 예견됩니다.\n이 기간 전국일평균기온은 평년보다 3~7℃ 높을것으로 "
+},
+{
+"pos": 30680,
+"counter": 43680700,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "예견됩니다.\n\n각 지방별 날씨를 보면 다음과 같습니다.\n\n11월 26일에 평"
+},
+{
+"pos": 30736,
+"counter": 43680702,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "양, 평성, 신의주, 남포시에서 오후까지 주로 개였다가 밤에 대체로 흐리겠으며 해주"
+},
+{
+"pos": 30792,
+"counter": 43680705,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ", 사리원, 청진, 라선시에서는 주로 개이겠습니다. \n강계, 혜산, 개성시에서 대"
+},
+{
+"pos": 30848,
+"counter": 43680707,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "체로 흐리겠으며 원산, 함흥시에서는 새벽에 대체로 흐렸다가 오전부터 주로 개이겠습니"
+},
+{
+"pos": 30904,
+"counter": 43680709,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "다. \n\n27일에는 평양, 평성, 신의주, 해주, 사리원, 원산, 함흥, 청진,"
+},
+{
+"pos": 30960,
+"counter": 43680712,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 남포, 라선, 개성시에서 오전까지 대체로 흐렸다가 오후부터 주로 개이겠으며 강계시"
+},
+{
+"pos": 31016,
+"counter": 43680714,
+"seq": 11,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "에서 때때로 비가 내리겠습니다.\n혜산시에서는 때때로 비와 눈이 내리겠습니다."
+}
+],
+[
+{
+"pos": 31128,
+"counter": 43680719,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "2)28일에 평양, 평성, 신의주, 해주, 사리원, 남포, 개성시에서 주로 개이겠"
+},
+{
+"pos": 31184,
+"counter": 43680721,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "으나 새벽 한때 흐리겠으며 강계시에서는 새벽과 오전에 대체로 흐렸다가 오후부터 점차"
+},
+{
+"pos": 31240,
+"counter": 43680723,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 개이겠습니다. \n원산, 함흥, 청진, 라선시에서 주로 개이겠으며 혜산시에서는 대"
+},
+{
+"pos": 31296,
+"counter": 43680726,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "체로 흐리여 새벽과 오전 한때 눈이 내린후 오후부터 점차 개이겠습니다. \n\n29"
+},
+{
+"pos": 31352,
+"counter": 43680728,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "일에는 평양, 평성, 해주, 사리원, 원산, 함흥, 청진, 남포, 라선, 개성시에서"
+},
+{
+"pos": 31408,
+"counter": 43680730,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 주로 개이겠으며 신의주시에서는 주로 개이겠으나 오후 한때 흐리겠습니다. \n강계,"
+},
+{
+"pos": 31464,
+"counter": 43680733,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 혜산시에서는 오전까지 주로 개였다가 대체로 흐리겠습니다. \n\n 30일에 평양,"
+},
+{
+"pos": 31520,
+"counter": 43680735,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 평성, 신의주, 해주, 사리원, 강계, 원산, 함흥, 청진, 혜산, 남포, 라선,"
+},
+{
+"pos": 31576,
+"counter": 43680737,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": " 개성시에서 ________________________ 평양, 평성, 신의주, 해"
+},
+{
+"pos": 31632,
+"counter": 43680740,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "주, 사리원, 강계, 원산, 남포, 라선, 개성시에서 주로 개이겠으며 함흥, 청진,"
+},
+{
+"pos": 31688,
+"counter": 43680742,
+"seq": 11,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 혜산시에서는 새벽에 대체로 흐렸다가 오전부터 주로 개이겠습니다."
+}
+],
+[
+{
+"pos": 31792,
+"counter": 43680746,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "3)이 기간에 기온이 제일 낮아질 11월 29일 아침최저기온은 평양, 사리원, 청"
+},
+{
+"pos": 31848,
+"counter": 43680749,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "진시 -2℃, 평성, 신의주, 함흥, 라선시 -3℃, 해주, 남포, 개성시 -1℃,"
+},
+{
+"pos": 31904,
+"counter": 43680751,
+"seq": 3,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 강계시 -9℃, 원산시 0℃, 혜산시 -11℃정도로 예견됩니다."
+}
+],
+[
+{
+"pos": 32008,
+"counter": 43680755,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "11월 27일 조선동해해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 "
+},
+{
+"pos": 32064,
+"counter": 43680758,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "일겠습니다. \n조선서해해상에서는 남서풍이 불다가 북서풍이 7~10㎧로 불고 물결은"
+},
+{
+"pos": 32120,
+"counter": 43680760,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 0.5~1.5m로 일겠습니다. \n\n28일 전반해상에서 북서풍이 7~10㎧로 불"
+},
+{
+"pos": 32176,
+"counter": 43680762,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "다가 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠습니다. \n\n29일 전반"
+},
+{
+"pos": 32232,
+"counter": 43680765,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "해상에서 북서풍이 불다가 남서풍이 7~10㎧로 불고 물결은 0.5~2m로 일겠습니다"
+},
+{
+"pos": 32288,
+"counter": 43680767,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ". \n\n30일 조선동해해상에서는 남서풍이 10~12㎧로 세게 불고 물결은 0.5"
+},
+{
+"pos": 32344,
+"counter": 43680769,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "~2m로 일겠습니다. \n조선서해해상에서는 남서풍이 7~10㎧로 불고 물결은 0.5"
+},
+{
+"pos": 32400,
+"counter": 43680772,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "~2m로 일겠습니다. \n\n12월 1일 조선동해해상에서는 남서풍이 불다가 북동풍이"
+},
+{
+"pos": 32456,
+"counter": 43680774,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 7~10㎧로 불고 물결은 0.5~1.5m로 일겠습니다. \n조선서해해상에서는 남동"
+},
+{
+"pos": 32512,
+"counter": 43680776,
+"seq": 10,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "풍이 7~10㎧로 불고 물결은 0.5~1.5m로 일겠습니다."
+}
+],
+[
+{
+"pos": 32672,
+"counter": 43680783,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "나라의 전문체육기술발전과 대중체육사업에 이바지하는 30여편의 편집물들을 제작하였다."
+},
+{
+"pos": 32728,
+"counter": 43680785,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "\n　편집물 《축구방어기술》(1)은 대인방어,보호방어를 비롯하여 여러가지 방어기술 "
+},
+{
+"pos": 32784,
+"counter": 43680788,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "및 전술들을 알기 쉽게 해설해주고 그 수행에서 나서는 선수들의 움직임과 호상간협동 "
+}
+]
+]
+}

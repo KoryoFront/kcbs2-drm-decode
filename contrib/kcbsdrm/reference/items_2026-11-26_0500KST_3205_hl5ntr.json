@@ -1,0 +1,3031 @@
+{
+"tag": "2026-11-26_0500KST_3205_hl5ntr",
+"items": [
+[
+{
+"pos": 24,
+"counter": 43752040,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "최고기온은 평성 7℃, 신의주 8℃, 해주 11℃, 사리원 9℃, 강계 3℃, 원산"
+},
+{
+"pos": 80,
+"counter": 43752042,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": " 8℃, 함흥 8℃, 청진 _______________________________"
+},
+{
+"pos": 136,
+"counter": 43752044,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 192,
+"counter": 43752047,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________는 대체로 흐리겠으나 오전과 오후 한때 개"
+},
+{
+"pos": 248,
+"counter": 43752049,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "이겠습니다. \n원산, 함흥, 라선시는 주로 개이겠으나 오후와 밤 한때 흐리겠으며 "
+},
+{
+"pos": 304,
+"counter": 43752051,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "청진시는 주로 개이겠습니다. \n혜산시는 주로 개이겠으나_______________"
+},
+{
+"pos": 360,
+"counter": 43752054,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 416,
+"counter": 43752056,
+"seq": 13,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "ႍ�턻纫⌀韎Qꯈ~1.기상정보씀읜앬11월 2씵 알12시 날(일아4)지방별 래일 아침"
+}
+],
+[
+{
+"pos": 472,
+"counter": 43752058,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 최저기온과 낮 최고기온은 다음과 같습니다. \n\n평성 4℃, 15℃\n신의주 4"
+},
+{
+"pos": 528,
+"counter": 43752061,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "℃, 14℃\n해주 9℃, 16℃\n사리원 4℃, 16℃\n강계 -2℃, 9℃\n원"
+},
+{
+"pos": 584,
+"counter": 43752063,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "산 5℃, 14℃\n함흥 1_______________________________"
+},
+{
+"pos": 640,
+"counter": 43752065,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________________, 15℃ 정도로 예견됩니다"
+},
+{
+"pos": 696,
+"counter": 43752068,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": ".\n\n-바다날씨\n해상경보입니다.\n오분 조선동해의 발부분해상과 조츼서해해상에서"
+},
+{
+"pos": 752,
+"counter": 43752070,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ", 래일 조선동해의 대부분해상과 황해남도해상에서 주의경보입니다. \n\n오늘 조선동"
+},
+{
+"pos": 808,
+"counter": 43752072,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "해해상에서는 강원도의 연안수역과 함경북도 어랑군으로부터 _______________"
+},
+{
+"pos": 864,
+"counter": 43752075,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 920,
+"counter": 43752077,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________________________해상에서는 남"
+},
+{
+"pos": 976,
+"counter": 43752079,
+"seq": 10,
+"last": true,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "서풍이 10~12㎧로 세게 불고 물결은 0.5~2m로 일______________"
+}
+],
+[
+{
+"pos": 1088,
+"counter": 43752084,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "에서는 강원도의 연안수역과 ________________________다를 제외한 "
+},
+{
+"pos": 1144,
+"counter": 43752086,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "해상에서 남서________________________~10㎧로 불고 물결은 가까"
+},
+{
+"pos": 1200,
+"counter": 43752089,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "운바다에서 0.5~2m로 일고 먼바다에서는 2~3m로 높다가 0.5~2m로 일겠으며"
+},
+{
+"pos": 1256,
+"counter": 43752091,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 대체로 흐리겠습니다. \n평안남북도해상에서는 남서풍이 7~10㎧로 불고 물결은 0"
+},
+{
+"pos": 1312,
+"counter": 43752093,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ".5~2m로 일겠으며 주로 개이겠습니다. \n황해남도해상에서는 남서풍이 10~12㎧"
+},
+{
+"pos": 1368,
+"counter": 43752096,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 1424,
+"counter": 43752098,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 1480,
+"counter": 43752100,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 1536,
+"counter": 43752103,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 1592,
+"counter": 43752105,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 1648,
+"counter": 43752107,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 1704,
+"counter": 43752110,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 1760,
+"counter": 43752112,
+"seq": 13,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "쉦뮂.기상정보명수뮳11월 2송일부터 12℃솹2일까지 예䭻疁는 바다날씨룤육부터 12월"
+},
+{
+"pos": 1816,
+"counter": 43752114,
+"seq": 14,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "뮻뮻뮻뮻뮻뮻 _______________________________________"
+},
+{
+"pos": 1872,
+"counter": 43752117,
+"seq": 15,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+}
+],
+[
+{
+"pos": 1928,
+"counter": 43752119,
+"seq": 0,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________ 29일 \n그웺도, 함경북눩핞상과 조서서ᔗ_______"
+}
+],
+[
+{
+"pos": 1984,
+"counter": 43752121,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________________~m로 일향경남믷뮻뮻뮻뮻슾햳"
+},
+{
+"pos": 2040,
+"counter": 43752124,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "남도해상에서는'남서풍이 7~60㎧로 불다가 10~12㎧의 세게 불고 과뮻뮻뮻뮻뮻뮻뮻"
+},
+{
+"pos": 2096,
+"counter": 43752126,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 2152,
+"counter": 43752128,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 2208,
+"counter": 43752131,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 2264,
+"counter": 43752133,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________0~10㎧로 불곧 물결은 0.2~1.5m로囊뮻뮻뮻뮻뮻뮻뮻"
+}
+],
+[
+{
+"pos": 2312,
+"counter": 43752135,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": " 일겠습니다. \n\n2일 얙\n조선동해해상D서는 북동풍이어7~10㎧로 괴고 물결은 "
+},
+{
+"pos": 2368,
+"counter": 43752137,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "0.5~2m로운일겠습니다. 욙\n조선서해해상̈́서는 북동풍이_______________"
+},
+{
+"pos": 2424,
+"counter": 43752140,
+"seq": 12,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 2480,
+"counter": 43752142,
+"seq": 13,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 2536,
+"counter": 43752144,
+"seq": 14,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 2592,
+"counter": 43752147,
+"seq": 15,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________해당 성,중앙⮣뮻뮻뮻뮻뮻뮻뮻뮻㲅기관에서 전"
+}
+],
+[
+{
+"pos": 2632,
+"counter": 43752148,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "기관에서 전국적 또는 부문별로 조직하는 대중체육경기(주요체육경기)와 해당 지역의 인"
+},
+{
+"pos": 2688,
+"counter": 43752151,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "민정권기관 또는 근로단체조직에서 지역별로 욐직하는 대중로직경기(지역별로직경기)가 속"
+},
+{
+"pos": 2744,
+"counter": 43752153,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "하며 체육성(중앙체육지도기관)과 조선태권도위원회,기관,기업소,단체는 대_______"
+},
+{
+"pos": 2800,
+"counter": 43752155,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 2856,
+"counter": 43752158,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 2912,
+"counter": 43752160,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 2968,
+"counter": 43752162,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________________회 체육부서가 다양하게 선정"
+}
+],
+[
+{
+"pos": 3024,
+"counter": 43752165,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "하여 작성 니똳데 대하여한귰첻하였다.笊핼,픫믈뮅뮘씰뮻뮻뮻鋕ტ6텢 �钹Q씨\n얳화정"
+},
+{
+"pos": 3080,
+"counter": 43752167,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": " 경기규률규정할 일부 내용이 수정보충되였哔뮻뮻뮻뮻뮻뮻뮻뮻ᰅ다 (2)이와 함께 중앙"
+}
+],
+[
+{
+"pos": 3112,
+"counter": 43752168,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "다 (2)이와 함께 중앙체육지도기관은 주요체육경기계획을_______________"
+},
+{
+"pos": 3168,
+"counter": 43752171,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 3224,
+"counter": 43752173,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 3280,
+"counter": 43752175,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 3336,
+"counter": 43752178,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 3392,
+"counter": 43752180,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________________________승24  화정"
+},
+{
+"pos": 3448,
+"counter": 43752182,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "럔하늚문습관이로씨야의 어뾉한 학자는 여 뮻뮻뮻뮻뮻뮻뮻뚢ᲅ러가지 습관으로 인하여 점"
+}
+],
+[
+{
+"pos": 3480,
+"counter": 43752184,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "러가지 습관으로 인하여 점차적으로 포도당대사의 조절이 장애되는데 이것은 당뇨병을 발"
+},
+{
+"pos": 3536,
+"counter": 43752186,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "생시키는 요인으로 될수 있다고 말하였다.\n　그는 당뇨병의 주요발생기전_______"
+},
+{
+"pos": 3592,
+"counter": 43752188,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 3648,
+"counter": 43752191,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 3704,
+"counter": 43752193,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 3760,
+"counter": 43752195,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 3816,
+"counter": 43752198,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________잉상태에 있고 근육이 자기 기능을 잘 수행"
+},
+{
+"pos": 3872,
+"counter": 43752200,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________통이 오래동안 과부하를 받을 때 주로 당뇨병_______"
+},
+{
+"pos": 3928,
+"counter": 43752202,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______緉유하.기상정보혁읞합11월 2혴\"핉12시 날씨 (1)-날씨\n오늘 새"
+}
+],
+[
+{
+"pos": 3984,
+"counter": 43752205,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "벽과 오전에 우리 나라는 운전, 신양을 비롯한 서해안, 내륙의 일부 지역에서 주로 "
+},
+{
+"pos": 4040,
+"counter": 43752207,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "개였다가 대체로 흐리여 선천에서 오전 한때 약간의 눈이 내렸으며 그밖의_______"
+},
+{
+"pos": 4096,
+"counter": 43752209,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 4152,
+"counter": 43752212,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 4208,
+"counter": 43752214,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 4264,
+"counter": 43752216,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 4320,
+"counter": 43752219,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 4376,
+"counter": 43752221,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 4432,
+"counter": 43752223,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 4488,
+"counter": 43752226,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "고기상과 약한 저기상골의 영향을 릏겠습니다업 \n평 주로ӷ 새벽에양시에엋개였다가양찄"
+},
+{
+"pos": 4544,
+"counter": 43752228,
+"seq": 11,
+"last": true,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "전부터 대체로 흐리겠습니다."
+}
+],
+[
+{
+"pos": 4688,
+"counter": 43752234,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "덕천, 철원을 비롯한 내륙의 일부 지역에서 한때 2㎜미만의 비가 내릴것_______"
+},
+{
+"pos": 4744,
+"counter": 43752236,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________________한 강원도, 함경남도의 국부"
+},
+{
+"pos": 4800,
+"counter": 43752239,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "적지역과 룡연, 백두산에서 한때 10~15㎧의 센바람이 불것으로 예견됩니다. \n래"
+},
+{
+"pos": 4856,
+"counter": 43752241,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 4912,
+"counter": 43752243,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 4968,
+"counter": 43752246,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5024,
+"counter": 43752248,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5080,
+"counter": 43752250,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5136,
+"counter": 43752253,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5192,
+"counter": 43752255,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5248,
+"counter": 43752257,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________________芺~1.기릢정보아ꭐ뮂櫖欠’"
+},
+{
+"pos": 5304,
+"counter": 43752260,
+"seq": 13,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "읜서 1월 29 센 2시 날씤일섴\")오늘 평성, 해주❱뮻뮻뮻뮻뮻뮻뮻뮻ᰅ, 사리원시"
+}
+],
+[
+{
+"pos": 5344,
+"counter": 43752261,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": ", 사리원시는 오후에 흐렸다가 개이고 밤에 주로 개이겠으며 신의주, 혜산시는 주로 "
+},
+{
+"pos": 5400,
+"counter": 43752264,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "개이겠으나 오후와 밤 한때 흐리겠습니다. \n강계시는 주로 개이겠으나 오후 한때 흐"
+},
+{
+"pos": 5456,
+"counter": 43752266,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "리고 밤에 대체로 흐리겠으며 원산, 함흥시는 주로 개이겠으나 밤 한때 흐리겠습니다."
+},
+{
+"pos": 5512,
+"counter": 43752268,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "\n청진, 라선시는 주로 개이겠으며 남포시는 주로 개이겠_______________"
+},
+{
+"pos": 5568,
+"counter": 43752271,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5624,
+"counter": 43752273,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5680,
+"counter": 43752275,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5736,
+"counter": 43752278,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5792,
+"counter": 43752280,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5848,
+"counter": 43752282,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5904,
+"counter": 43752285,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 5960,
+"counter": 43752287,
+"seq": 12,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________________________.뻬(텣스5℃"
+},
+{
+"pos": 6016,
+"counter": 43752289,
+"seq": 13,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "“  및⌵뛍Q჉윢당.기상정보묁읜니11월 2무 단12시 날씨 (4)지방별 래일 아침"
+}
+],
+[
+{
+"pos": 6072,
+"counter": 43752292,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 최저기온과 낮 최고기온은 다음과 같습니다. \n\n평성 4℃, 15℃\n신의주 4"
+},
+{
+"pos": 6128,
+"counter": 43752294,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "℃, 14℃\n해주 9℃, 16℃\n사리원 4℃, 16℃\n강계 -2℃, 9℃\n원"
+},
+{
+"pos": 6184,
+"counter": 43752296,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "산 5℃, 14℃\n함흥 1℃, 13℃\n청진 0℃, 12℃\n혜산 -6℃, 7℃"
+},
+{
+"pos": 6240,
+"counter": 43752299,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "\n남포 7℃, 16℃\n라선 -1℃, 10℃\n개성에5℃, 15℃에정도로 예견됩眸다"
+},
+{
+"pos": 6296,
+"counter": 43752301,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": ".\n\n-바다날씨\n해상경________________________선서해해상에서"
+},
+{
+"pos": 6352,
+"counter": 43752303,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": ", 래일 조선동해의 대부분해상과 황해남도해상에서 주의경보_______________"
+},
+{
+"pos": 6408,
+"counter": 43752306,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 6464,
+"counter": 43752308,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 6520,
+"counter": 43752310,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 6576,
+"counter": 43752313,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 6632,
+"counter": 43752315,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 6688,
+"counter": 43752317,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 6744,
+"counter": 43752320,
+"seq": 13,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 6800,
+"counter": 43752322,
+"seq": 14,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 6856,
+"counter": 43752324,
+"seq": 15,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________________7~10㎧로 불고 물결은 0"
+}
+],
+[
+{
+"pos": 6912,
+"counter": 43752327,
+"seq": 0,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+}
+],
+[
+{
+"pos": 6968,
+"counter": 43752329,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 7024,
+"counter": 43752331,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______상에서는 남서풍이 7~10㎧로 불고 물결은 _______________"
+},
+{
+"pos": 7080,
+"counter": 43752334,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+}
+],
+[
+{
+"pos": 7136,
+"counter": 43752336,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "로 일겠습니다. \n조선서해해상에서는 남서풍이 불다가 북서풍이 7~10㎧로 불고 물"
+},
+{
+"pos": 7192,
+"counter": 43752338,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "결은 0.5~________________________의 대부분해상과 조선서해해상"
+},
+{
+"pos": 7248,
+"counter": 43752341,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "에서, 래일 조선동해의 대부분해상과 황해남도해상에서 센바람과 높은 물결에 의한 피해"
+},
+{
+"pos": 7304,
+"counter": 43752343,
+"seq": 12,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "가 없도록 수산, 해운부문에서는 철저한 안전대책을 세우기 바랍니다."
+}
+],
+[
+{
+"pos": 8024,
+"counter": 43752373,
+"seq": 12,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "로 불고 물결은 0.5~1.5m로 일겠습니다."
+}
+],
+[
+{
+"pos": 8232,
+"counter": 43752382,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "기관에서 전국적 또는 부문별로 조직하는 대중체육경기(주요체육경기)와 해당 지역의 인"
+},
+{
+"pos": 8288,
+"counter": 43752384,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "민정권기관 또는 근로단체조직에서 지역별로 조직하는 대중체육경기(지역별체육경기)가 속"
+},
+{
+"pos": 8344,
+"counter": 43752386,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "하며 체육성(중앙체육지도기관)과 조선태권도위원회,기관,기업소,단체는 대중체육경기조직"
+},
+{
+"pos": 8400,
+"counter": 43752389,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "과 집행에서 객관성,공정성의 원칙을 철저히 지켜야 한다는 내용 등을 수정보충하였다."
+},
+{
+"pos": 8456,
+"counter": 43752391,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "\n　대중체육경기계획작성 및 시달과 관련한 제2장에서는 대중체육경기계획은 경기명칭,"
+},
+{
+"pos": 8512,
+"counter": 43752393,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "종목,장소,기________________________계획이며 주요체육경기계획은 "
+},
+{
+"pos": 8568,
+"counter": 43752396,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 8624,
+"counter": 43752398,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________제하였다.ㅠeq뮻뮻뮻뮻뮻들믞믊ﳅႚ�텆纫홟铜 _______"
+},
+{
+"pos": 8680,
+"counter": 43752400,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________________스다 (2)\nᡡ 함께 중앙"
+},
+{
+"pos": 8736,
+"counter": 43752403,
+"seq": 12,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 8792,
+"counter": 43752405,
+"seq": 13,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "체육지도기관은 지역별체육경기계획을 작성하椬뮻뮻뮻뮻뮻뮻뮻뮻㲅여 상급체육지_______"
+}
+],
+[
+{
+"pos": 8824,
+"counter": 43752406,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "여 상급체육지_______________________________________"
+},
+{
+"pos": 8880,
+"counter": 43752409,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "　해당 기관,기업소,단체의 책임일군과 선수_______________________"
+},
+{
+"pos": 8936,
+"counter": 43752411,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "어긴것을 비롯하여 제정된 규률과 질서를 위반하였을 때 적용되는 처벌내용_______"
+},
+{
+"pos": 8992,
+"counter": 43752413,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______으로 명싰되였니.ႉ��,��,뮻뮻뮻뮻뮗뮻뮻뮗 화10~构鶰경埝욱텘역에서"
+},
+{
+"pos": 9048,
+"counter": 43752416,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "래부되 습관튕로귰쏰의 어퓡한 북서는 여 뮻뮻뮻뮻뮻뮻뮻뮻ᰅ러가지 습관으로 인하여 점"
+}
+],
+[
+{
+"pos": 9080,
+"counter": 43752417,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "러가지 습관으로 인하여 점차적으로 포도당대사의 조절이 장애되는데 이것은 당뇨병을 발"
+},
+{
+"pos": 9136,
+"counter": 43752419,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "생시키는 요인________________________의 주요발생기전이 인슐린저항"
+},
+{
+"pos": 9192,
+"counter": 43752422,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 9248,
+"counter": 43752424,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "섭취할 때 오래동안 취장이 과부하를 받는 상태에 있게 된다고 설명하였다_______"
+},
+{
+"pos": 9304,
+"counter": 43752426,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 9360,
+"counter": 43752429,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 9416,
+"counter": 43752431,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________________________능을 잘 수행"
+},
+{
+"pos": 9472,
+"counter": 43752433,
+"seq": 8,
+"last": true,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "하지 못하며 유기체의 조절계통이 오래동안 과부하를 받을 _______________"
+}
+],
+[
+{
+"pos": 9584,
+"counter": 43752438,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "벽과 오전에 우리 나라는 운________________________역에서 주로 "
+},
+{
+"pos": 9640,
+"counter": 43752440,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "개였다가 대체________________________내렸으며 그밖의 지역에서는 "
+},
+{
+"pos": 9696,
+"counter": 43752443,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 9752,
+"counter": 43752445,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 9808,
+"counter": 43752447,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 9864,
+"counter": 43752450,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 9920,
+"counter": 43752452,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 9976,
+"counter": 43752454,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 10032,
+"counter": 43752457,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 10088,
+"counter": 43752459,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 10144,
+"counter": 43752461,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 10200,
+"counter": 43752464,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 10256,
+"counter": 43752466,
+"seq": 13,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________름이 끼면서 ‿뮻뮻뮻뮻뮻뮻뮻뮻Ⰵ덕천, 철원을스비롯한 내륙"
+}
+],
+[
+{
+"pos": 10288,
+"counter": 43752467,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "덕천, 철원을스비롯한 내륙의스일부 지역에서스한때 2㎜미만의 비가 내릴것으로 예견됩니"
+},
+{
+"pos": 10344,
+"counter": 43752470,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 10400,
+"counter": 43752472,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________한때 10~15㎧의 센바람이 불것으로 예견됩니다. \n래"
+},
+{
+"pos": 10456,
+"counter": 43752474,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "일 문천, 온천, 은률을 비롯한 중부이남의 일부 지역에서 한때 7~10㎧의 비교적 "
+},
+{
+"pos": 10512,
+"counter": 43752477,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "센바람이 불것으로 예견됩니다. \n그러므로 사람들속에서 건강관리에 주의하며 건설부문"
+},
+{
+"pos": 10568,
+"counter": 43752479,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "을 비롯한 인민경제 여러 부문에서는 센바람에 의한 피해가 없도록 철저한 대책을 세우"
+},
+{
+"pos": 10624,
+"counter": 43752481,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "기 바랍니다.________________________로 불겠습니다. \n\n각 "
+},
+{
+"pos": 10680,
+"counter": 43752484,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "지방별날씨를 보면 \n평양시는 오늘 오후에 흐렸다가 개이고 밤에 주로 개이겠으며 래"
+},
+{
+"pos": 10736,
+"counter": 43752486,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "일은 새벽에 주로 개였다가 ________________________저기온은 -6"
+},
+{
+"pos": 10792,
+"counter": 43752488,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "℃로서 평년보다 4℃ 낮았습니다.\n오늘낮 최고기온은 7℃, 래일아침 최저기온은 4"
+},
+{
+"pos": 10848,
+"counter": 43752491,
+"seq": 12,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________다.걾8 seq뮻뮻뮝뮃뮛믈믞믊ﳅ႞.텿纋≳鞫"
+},
+{
+"pos": 10904,
+"counter": 43752493,
+"seq": 13,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": "8뮊 1월 2문을뮪 2시 날씨 (3)오늘 평성, 해주뮻뮻뮻뮻뮻뮻뮻뮻명, 사리원시"
+},
+{
+"pos": 10960,
+"counter": 43752495,
+"seq": 14,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": " 개이고 밤  주로 개이겠화며 신의주, 이산시는 주로 ~_______________"
+},
+{
+"pos": 11016,
+"counter": 43752498,
+"seq": 15,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________오후 한때 흙뮻뮻뮻뮻뮻뮻뮻뮻㲅리고 밤에 "
+}
+],
+[
+{
+"pos": 11056,
+"counter": 43752499,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "리고 밤에 대체로 흐리겠으며 원산, 함흥시는 주로 개이겠_______________"
+},
+{
+"pos": 11112,
+"counter": 43752502,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 11168,
+"counter": 43752504,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 11224,
+"counter": 43752506,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 11280,
+"counter": 43752509,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 11336,
+"counter": 43752511,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "도로 예견됩니다.\n\n래일_______________________________"
+},
+{
+"pos": 11392,
+"counter": 43752513,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______부터 대체로 흐리겠으며 강계시는 대체로 흐리_______________"
+},
+{
+"pos": 11448,
+"counter": 43752516,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 11504,
+"counter": 43752518,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 11560,
+"counter": 43752520,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 11616,
+"counter": 43752523,
+"seq": 13,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 11672,
+"counter": 43752525,
+"seq": 14,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 11728,
+"counter": 43752527,
+"seq": 15,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+}
+],
+[
+{
+"pos": 11784,
+"counter": 43752530,
+"seq": 0,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+}
+],
+[
+{
+"pos": 11840,
+"counter": 43752532,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 11896,
+"counter": 43752534,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________________________대부분해상과 조선서해해상에서"
+}
+],
+[
+{
+"pos": 11952,
+"counter": 43752537,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": ", 래일 조선동해의 대부분해상과 황해남도해_______________________"
+},
+{
+"pos": 12008,
+"counter": 43752539,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "해해상에서는 강원도의 연안수역과 함경북도 어랑군으로부터 라선시까지의 가까운바다를 제"
+},
+{
+"pos": 12064,
+"counter": 43752541,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "외한 해상에서 남서풍이 10~15㎧로 세게 불고 물결은 가까운바다에서 0.5~2m로"
+},
+{
+"pos": 12120,
+"counter": 43752544,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": " 일고 먼바다에서는 2~3m로 높겠으며 주_______________________"
+},
+{
+"pos": 12176,
+"counter": 43752546,
+"seq": 10,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "서풍이 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠으며 주로 개이겠습니다."
+}
+],
+[
+{
+"pos": 12288,
+"counter": 43752551,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "에서는 강원도의 연안수역과 함경북도 어랑군으로부터 라선시까지의 가까운바다를 제외한 "
+},
+{
+"pos": 12344,
+"counter": 43752553,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "해상에서 남서풍이 10~15㎧로 세게 불다가 오후부터 7~10㎧로 불고_______"
+},
+{
+"pos": 12400,
+"counter": 43752555,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 12456,
+"counter": 43752558,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 12512,
+"counter": 43752560,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 12568,
+"counter": 43752562,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 12624,
+"counter": 43752565,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 12680,
+"counter": 43752567,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________이 불다가 북서풍이 7~10㎧로 불고 물결은 0.5~2m"
+},
+{
+"pos": 12736,
+"counter": 43752569,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "로 일겠습니다. \n조선서해해상에서는 남서풍이 불다가 북서풍이 7~10㎧로 불고 물"
+},
+{
+"pos": 12792,
+"counter": 43752572,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "결은 0.5~1.5m로 일겠습니다. \n\n오늘 조선동해의 대부분해상과 조선서해해상"
+},
+{
+"pos": 12848,
+"counter": 43752574,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "에서, 래일 조선동해의 대부분해상과 황해남도해상에서 센바람과 높은 물결에 의한 피해"
+},
+{
+"pos": 12904,
+"counter": 43752576,
+"seq": 12,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "가 없도록 수산, 해운부문에서는 철저한 안전대책을 세우기 바랍니다."
+}
+],
+[
+{
+"pos": 13400,
+"counter": 43752597,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "서해해상에서는 남서풍이 7~_______________________________"
+},
+{
+"pos": 13456,
+"counter": 43752599,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 13512,
+"counter": 43752602,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 13568,
+"counter": 43752604,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________\n조선서해해상에서는 북동풍이 불다가 북서풍이 7~10㎧"
+},
+{
+"pos": 13624,
+"counter": 43752606,
+"seq": 12,
+"last": true,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "로 불고 물결__________________"
+}
+],
+[
+{
+"pos": 13720,
+"counter": 43752610,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "다 (1)대중체육부문 경기규률규정이 수정보충되였다.\n　제1장 총칙에서는 대중체육"
+},
+{
+"pos": 13776,
+"counter": 43752613,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "부문 경기조불과 집행에서 농격한 제도와 북서를 세우며 대중체육경기에는 해당 성,중앙"
+},
+{
+"pos": 13832,
+"counter": 43752615,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "기관에서 전국적 또는 부문별로 조직하는 대중체육경기(주요체육경기)와 해당 지역의 인"
+},
+{
+"pos": 13888,
+"counter": 43752617,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "민정권기관 또는 근로단체조직에서 지역별로 조직하는 대중체육경기(지역별체육경기)가 속"
+},
+{
+"pos": 13944,
+"counter": 43752620,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "하며 체육성(중앙체육지도기관)과 조선태권도_______________________"
+},
+{
+"pos": 14000,
+"counter": 43752622,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 14056,
+"counter": 43752624,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 14112,
+"counter": 43752627,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 14168,
+"counter": 43752629,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 14224,
+"counter": 43752631,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 14280,
+"counter": 43752634,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 14336,
+"counter": 43752636,
+"seq": 12,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "_______________ 체육경기행사烉뮻뮻뮻뮻뮻뮻뮻뮻Ⰵ계획에 반영한 다음 내각의"
+}
+],
+[
+{
+"pos": 14368,
+"counter": 43752637,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "계획에 반영한 다음 내각의 승인을,도,시,군체육지도기관은 지역별체육경기계획을 작성하"
+},
+{
+"pos": 14424,
+"counter": 43752640,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "여 상급체육지도기관의 승인을 받아야 한다는 내용 등을 해당 조문들에 첨부하였다.\n"
+},
+{
+"pos": 14480,
+"counter": 43752642,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "　해당 기관,기업소,단체의 책임일군과 선수,감독,심판원들이 경기기간 정해진 규정을 "
+},
+{
+"pos": 14536,
+"counter": 43752644,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "어긴것을 비롯하여 제정된 규률과 질서를 위반하였을 때 적용되는 처벌내용들이 제5장에"
+},
+{
+"pos": 14592,
+"counter": 43752647,
+"seq": 6,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 보다 구체적으로 명시되였다."
+}
+],
+[
+{
+"pos": 15184,
+"counter": 43752671,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "벽과 오전에 우리 나라는 운전, 신양을 비롯한 서해안, 내륙의 일부 지역에서 주로 "
+},
+{
+"pos": 15240,
+"counter": 43752674,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "개였다가 대체로 흐리여 선천에서 오전 한때 약간의 눈이 내렸으며 그밖의 지역에서는 "
+},
+{
+"pos": 15296,
+"counter": 43752676,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "주로 개였습니다. \n그리고 백암구에서 10~15㎧의 센바람이 불었으며_______"
+},
+{
+"pos": 15352,
+"counter": 43752678,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 15408,
+"counter": 43752681,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 15464,
+"counter": 43752683,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 15520,
+"counter": 43752685,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 15576,
+"counter": 43752688,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "에서 대체로 흐렸다가 주로 개이겠으나 증산, 은천을 비롯한 일부 지역에서 오후 한때"
+},
+{
+"pos": 15632,
+"counter": 43752690,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 1㎝미만의 눈이 내리겠습니다. \n그밖의 지역에서는 주로 개이겠습니다. \n래일 "
+},
+{
+"pos": 15688,
+"counter": 43752692,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "고기압과 약한 저기압골의 영향을 받겠습니다. \n평양시에서 새벽에 주로 개였다가 오"
+}
+],
+[
+{
+"pos": 15744,
+"counter": 43752695,
+"seq": 7,
+"last": true,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "젷뷾턆습니다.스흣맒겖 대체로숆3~6슕ǈ繐롲씪91.기몢듚,艔ꬤ뮂櫞欠’颯믆학민뮻뮻뮻쇘이"
+}
+],
+[
+{
+"pos": 15832,
+"counter": 43752698,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "을 비롯한 북부내륙의 일부 지역에서 주로 개이겠으며 그밖의 지역에는 구름이 끼면서 "
+},
+{
+"pos": 15888,
+"counter": 43752701,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": false,
+"text": "덕천, 철원을 비롯한 내륙의 일부 지역에서_______________________"
+},
+{
+"pos": 15944,
+"counter": 43752703,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "다. \n그리고 오늘 오후와 밤사이에 안변, 금야를 비롯한 강원도, 함경남도의 국부"
+},
+{
+"pos": 16000,
+"counter": 43752705,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "적지역과 룡연, 백두산에서 한때 10~15㎧의 센바람이 불것으로 예견됩니다. \n래"
+},
+{
+"pos": 16056,
+"counter": 43752708,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "일 문천, 온천, 은률을 비롯한 중부이남의 일부 지역에서 한때 7~10㎧의 비교적 "
+},
+{
+"pos": 16112,
+"counter": 43752710,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "센바람이 불것으로 예견됩니다. \n그러므로 사람들속에서 건강관리에 주의하며 건설부문"
+},
+{
+"pos": 16168,
+"counter": 43752712,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "을 비롯한 인민경제 여러 부문에서는 센바람에 의한 피해가 없도록 철저한 대책을 세우"
+},
+{
+"pos": 16224,
+"counter": 43752715,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "기 바랍니다. \n바람은 전반적지역에서 남서풍이 3~6㎧로 불겠습니다. \n\n각 "
+},
+{
+"pos": 16280,
+"counter": 43752717,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "지방별날씨를 보면 \n평양시는 오늘 오후에 흐렸다가 개이고 밤에 주로 개이겠으며 래"
+},
+{
+"pos": 16336,
+"counter": 43752719,
+"seq": 10,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "일은 새벽에 주로 개였다가 오전부터 대체로 흐리겠습니다.\n오늘아침 최저기온은 -6"
+},
+{
+"pos": 16392,
+"counter": 43752722,
+"seq": 11,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "℃로서 평년보다 4℃ 낮았습니다.\n오늘낮 최고기온은 7℃, 래일아침 최저기온은 4"
+},
+{
+"pos": 16448,
+"counter": 43752724,
+"seq": 12,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "℃, 래일낮 최고기온은 16℃정도 되겠습니다."
+}
+],
+[
+{
+"pos": 16544,
+"counter": 43752728,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": true,
+"text": ", 사리원시는 오후에 흐렸다에 개이고 밤에槰주로 개이겠으펠 신의주, 혜산시는 주로 "
+},
+{
+"pos": 16600,
+"counter": 43752730,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "개이겠으나 오후와 밤 한때 흐리겠습니다. \n강계시는 주로 개이겠으나 오후 한때 흐"
+},
+{
+"pos": 16656,
+"counter": 43752733,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "리고 밤에 대체로 흐리겠으며 원산, 함흥시는 주로 개이겠으나 밤 한때 흐리겠습니다."
+},
+{
+"pos": 16712,
+"counter": 43752735,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "\n청진, 라선시는 주로 개이겠으며 남포시는 주로 개이겠으나 오후 한때 약간의 눈이"
+},
+{
+"pos": 16768,
+"counter": 43752737,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 내리겠습니다.\n개성시는 주로 개이겠으나 오후 한때 흐리겠습니다. \n\n오늘낮 "
+},
+{
+"pos": 16824,
+"counter": 43752740,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "최고기온은 평성 7℃, 신의주 8℃, 해주 11℃, 사리원 9℃, 강계 3℃, 원산"
+},
+{
+"pos": 16880,
+"counter": 43752742,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " 8℃, 함흥 8℃, 청진 7℃, 혜산 0℃, 남포 8℃, 라선 5℃, 개성 9℃정"
+},
+{
+"pos": 16936,
+"counter": 43752744,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "도로 예견됩니다.\n\n래일 평성, 신의주, 해주, 사리원, 남포시는 새벽에 주로 "
+},
+{
+"pos": 16992,
+"counter": 43752747,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "개였다가 오전부터 대체로 흐리겠으며 강계시는 대체로 흐리겠으나 오전과 오후 한때 개"
+},
+{
+"pos": 17048,
+"counter": 43752749,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "이겠습니다. \n원산, 함흥, 라선시는 주로 개이겠으나 오후와 밤 한때 흐리겠으며 "
+},
+{
+"pos": 17104,
+"counter": 43752751,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "청진시는 주로 개이겠습니다. \n혜산시는 주로 개이겠으나 새벽과 밤 한때 흐리겠으며"
+},
+{
+"pos": 17160,
+"counter": 43752754,
+"seq": 12,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": " \n개성시는 새벽과 오전에 대체로 흐렸다가 오후부터 주로 개이겠습니다."
+}
+],
+[
+{
+"pos": 17328,
+"counter": 43752761,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": false,
+"complete": true,
+"text": "℃, 14℃\n해주 9℃, 16℃\n사리원 4℃, 163\n강계 -23, 9℃\n원"
+},
+{
+"pos": 17384,
+"counter": 43752763,
+"seq": 3,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "산 5℃, 14℃\n함흥 1℃, 13℃\n청진 0℃, 12℃\n혜산 -6℃, 7℃"
+},
+{
+"pos": 17440,
+"counter": 43752765,
+"seq": 4,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "\n남포 7℃, 16℃\n라선 -1℃, 10℃\n개성 5℃, 15℃ 정도로 예견됩니다"
+},
+{
+"pos": 17496,
+"counter": 43752768,
+"seq": 5,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ".\n\n-바다날씨\n해상경보입니다.\n오늘 조선동해의 대부분해상과 조선서해해상에서"
+},
+{
+"pos": 17552,
+"counter": 43752770,
+"seq": 6,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": ", 래일 조선동해의 대부분해상과 황해남도해상에서 주의경보입니다. \n\n오늘 조선동"
+},
+{
+"pos": 17608,
+"counter": 43752772,
+"seq": 7,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "해해상에서는 강원도의 연안수역과 함경북도 어랑군으로부터 라선시까지의 가까운바다를 제"
+},
+{
+"pos": 17664,
+"counter": 43752775,
+"seq": 8,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "외한 해상에서 남서풍이 10~15㎧로 세게 불고 물결은 가까운바다에서 0.5~2m로"
+},
+{
+"pos": 17720,
+"counter": 43752777,
+"seq": 9,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": " 일고 먼바다에서는 2~3m로 높겠으며 주로 개이겠습니다. \n조선서해해상에서는 남"
+},
+{
+"pos": 17776,
+"counter": 43752779,
+"seq": 10,
+"last": true,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "서풍이 10~12㎧로 세게 불고 물결은 0.5~2m로 일겠으며 주로 개이겠습니다."
+}
+],
+[
+{
+"pos": 17888,
+"counter": 43752784,
+"seq": 1,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "에서는 강원도의 연안수역과 함경북도 어랑군으로부터 라선시까지의 가까운바다를 제외한 "
+},
+{
+"pos": 17944,
+"counter": 43752786,
+"seq": 2,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "해상에서 남서_______________________________________"
+},
+{
+"pos": 18000,
+"counter": 43752789,
+"seq": 3,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 18056,
+"counter": 43752791,
+"seq": 4,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 18112,
+"counter": 43752793,
+"seq": 5,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______일겠으며 주로 개이겠습니다. \n황해남도해상에서는 남서풍이 10~12㎧"
+},
+{
+"pos": 18168,
+"counter": 43752796,
+"seq": 6,
+"last": false,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "로 세게 불고 물결은 0.5~2m로 일겠으며 주로 개이겠습니다. \n\n모레 강원도"
+},
+{
+"pos": 18224,
+"counter": 43752798,
+"seq": 7,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": ", 함경남도해상에서는 남서풍_______________________________"
+},
+{
+"pos": 18280,
+"counter": 43752800,
+"seq": 8,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 18336,
+"counter": 43752803,
+"seq": 9,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 18392,
+"counter": 43752805,
+"seq": 10,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "______________________________________________"
+},
+{
+"pos": 18448,
+"counter": 43752807,
+"seq": 11,
+"last": false,
+"tog": 0,
+"ok": false,
+"complete": false,
+"text": "_______________________________람과 높은 물결에 의한 피해"
+},
+{
+"pos": 18504,
+"counter": 43752810,
+"seq": 12,
+"last": true,
+"tog": 0,
+"ok": true,
+"complete": true,
+"text": "가 없도록 수산, 해운부문에서는 철저한 안전대책을 세우기 바랍니다."
+}
+],
+[
+{
+"pos": 18608,
+"counter": 43752814,
+"seq": 1,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "11월 28일부터 12월 2일까지 예견되는 바다날씨를 알려드리겠습니다. \n\n1"
+},
+{
+"pos": 18664,
+"counter": 43752816,
+"seq": 2,
+"last": false,
+"tog": 128,
+"ok": true,
+"complete": true,
+"text": "1월 28일  \n전반해상에서 북서풍이 7~10㎧로 불다가 10~12㎧로 세게 불고"
+}
+]
+]
+}

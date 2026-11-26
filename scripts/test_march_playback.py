@@ -1,0 +1,73 @@
+"""Exercise the March listening renderer without Dream or EVS."""
+import unittest
+
+import numpy as np
+
+from kcbs_decode_fast import assemble_frames, group_runs, render_timeline
+from march_listening_filter import reduce_flutter
+
+
+class MarchPlaybackTests(unittest.TestCase):
+    def test_only_unknown_role1_bytes_are_replaced(self):
+        du = np.random.default_rng(12).integers(0, 256, (1, 3, 716), dtype=np.uint8)
+        key = np.arange(1, 17, dtype=np.uint8)
+        frames, supplied = assemble_frames(du, key[None, :], [1], span=2)
+        self.assertFalse(supplied[:60].any())
+        self.assertFalse(frames[:60].any())
+        np.testing.assert_array_equal(supplied[60:], np.arange(60) % 4 < 2)
+        for phase in range(3):
+            for cycle in range(5):
+                shift = 131*cycle
+                base = 60 + 20*phase + 4*cycle
+                original = du[0, phase]
+                role0 = original[shift+7:shift+39].copy()
+                role1 = original[shift+40:shift+72].copy()
+                role0[::3] ^= key[:11]
+                role1[:15:3] ^= key[11:]
+                role1[15::3] = role0[15::3]
+                self.assertEqual(frames[base, 0], original[2+cycle])
+                self.assertEqual(frames[base+1, 0], original[shift+39])
+                np.testing.assert_array_equal(frames[base, 1:], role0)
+                np.testing.assert_array_equal(frames[base+1, 1:], role1)
+
+    def test_gap_limit_and_singleton_runs(self):
+        offsets = [0, 5, 11, 12]
+        self.assertEqual(group_runs(offsets, 4), [(0, 6), (11, 13)])
+        self.assertEqual(group_runs(offsets, 0), [(0, 1), (5, 6), (11, 13)])
+        self.assertEqual(group_runs([0], 4), [(0, 1)])
+
+    def test_alignment_and_fades_do_not_change_gap_length(self):
+        rate = 16000
+        per_frame = rate//50
+        per_group = per_frame*60
+        frames = np.zeros((4*60, 33), dtype=np.uint8)
+        supplied = np.array([True]*60 + [False]*120 + [True]*60)
+        calls = []
+
+        def decode(part, keep):
+            calls.append(len(part))
+            self.assertTrue(keep.all())
+            return np.full(len(part)*per_frame, 1234, dtype=np.int16)
+
+        pcm = render_timeline(frames, supplied, [(0, 1), (3, 4)], rate, decode)
+        self.assertEqual(calls, [60, 60])
+        self.assertEqual(len(pcm), 4*per_group)
+        self.assertFalse(pcm[per_group:3*per_group].any())
+        self.assertEqual(pcm[per_group-1], 0)
+        self.assertEqual(pcm[3*per_group], 0)
+        self.assertEqual(pcm[per_group-per_frame], 1234)
+        self.assertEqual(pcm[3*per_group+per_frame-1], 1234)
+
+    def test_listening_filter_is_attenuation_only(self):
+        n = 16000//50
+        source = np.tile(np.repeat([14000, -12000, 8000, -5000], n), 120).astype(np.int16)
+        source[:3*4*n] = 0
+        out, stats = reduce_flutter(source, 16000)
+        self.assertEqual(out.shape, source.shape)
+        self.assertFalse(out[source == 0].any())
+        self.assertTrue((np.abs(out) <= np.abs(source)).all())
+        self.assertLess(stats['held_out_slot_spread_db_after'], stats['held_out_slot_spread_db_before'])
+
+
+if __name__ == '__main__':
+    unittest.main()

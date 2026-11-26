@@ -1,482 +1,186 @@
 # KCBS-2 DRM decoder
 
-Tools for decoding the **KCBS-2** Digital Radio Mondiale shortwave service (Korean
-Central Broadcasting Station, DPRK) from raw KiwiSDR IQ recordings.
+Tools for analysing the **KCBS-2** Digital Radio Mondiale shortwave broadcast from
+raw KiwiSDR IQ recordings. The repo parses the DRM container, recovers some
+side-channel text, and renders experimental audio through a candidate codec.
+**There is no verified broadcast audio decode** and no demonstrated complete
+Korean-text recovery in this repo.
 
-The payload is partly encrypted. These scripts parse the DRM container, extract the
-side-channel text stream, recover the keystream bytes that stream exposes, and decode
-the audio frames those keys cover.
+## Render the bundled 19:06 recording
 
-**Three consecutive recordings are bundled** — 19 minutes of 3205 kHz from Daegu, the
-best-performing frequency and receiver combination measured here — together with their
-demodulated bitstreams, so the main path runs end to end in about 30 seconds without
-building the demodulator.
+Three adjacent Daegu 3205 kHz captures from March 16, 2026 are in `recordings/`.
+Their MSC dumps are in `dumps/`, so this example does not require a demodulator.
 
----
+1. Install Python 3.10+, `pip install -r requirements.txt`, and WSL2 with Ubuntu.
+   The Python codec wrappers invoke the Linux binary through WSL.
+2. Obtain the 3GPP TS 26.443 EVS floating-point reference source (not bundled)
+   and place it at `work/ref/evs/src/c-code`. Build with:
 
-## Scope
+   ```bash
+   python scripts/build_evs_gcc_independent.py --out work/evs_gcc_independent
+   ```
 
-| | Status |
+3. From the repo root in Git Bash, run:
+
+   ```bash
+   python scripts/kcbs_decode_fast.py recordings/*_iq.wav --out work/march_1906
+   ```
+
+The output, `work/march_1906/KCBS2_MARCH_UNVERIFIED_32k_25463783-25464737.wav`,
+is 19:06 of mono 32 kHz PCM. Rendering from cached dumps takes about 30 seconds
+with the codec already built. Use a new `--out` directory for each run.
+
+- **865 of 955** timeline groups (90.6%) have a CRC-supported 16-byte mask prefix.
+  That leaves **12,975 fully unmasked frame slots out of 57,300**. Unmasked
+  bytes are not the same as verified speech.
+- In each keyed group, one in four slots is fully unmasked. The next slot uses
+  six substitute bytes from the preceding slot. The last two are marked lost.
+- Counter gaps keep their original duration. By default the decoder bridges up
+  to four missing groups; longer gaps are silent with 20 ms fades at the edges.
+  The longest silence is **3:18–4:00**. See `report.json` for all intervals.
+- `--merge-gap 0` silences every missing group. `--rate` accepts 16000, 32000,
+  or 48000. `--fresh` ignores the bundled dumps and requires patched Dream.
+
+An optional listening filter reduces the repeating four-slot loudness swing. It
+only attenuates samples, leaves silent gaps intact, and does not recover speech:
+
+```bash
+python scripts/march_listening_filter.py \
+    work/march_1906/KCBS2_MARCH_UNVERIFIED_32k_25463783-25464737.wav \
+    --out work/march_1906/KCBS2_MARCH_UNVERIFIED_32k_LESS_FLUTTER.wav
+```
+
+## Record and decode your own captures
+
+Use **IQ**, not the KiwiSDR’s audio output. A good starting point is
+`hl5ntr.ddns.net:8074` in Daegu on **3205 kHz**. **6140 kHz** can carry the same
+payload and can be better under different reception conditions. Our pooled
+windows yielded 76% CRC-good on 3205 and 30% on 6140; those are sample results,
+not intrinsic properties of the frequencies. Daejeon (`hik.iptime.org`) and
+Japanese receivers are also useful for simultaneous captures. Reported DRM hours
+are **05:00–03:00 KST** (20:00–18:00 UTC); a failed lock does not prove it was off-air.
+
+```bash
+python kiwirecorder.py -s hl5ntr.ddns.net -p 8074 -f 3205 -m iq \
+    --tlimit=1800 --station=drm -d ./captures
+```
+
+`kiwirecorder.py` is from [kiwiclient](https://github.com/jks-prv/kiwiclient).
+For new IQ captures, install FFmpeg and build patched Dream with `bash build/build.sh`
+in WSL Ubuntu (see [build/README.md](build/README.md)). The patch writes the MSC
+stream via `KCBS_DUMP_MSC`. The general pipeline demodulates the IQ, salvages
+packets, and writes `text/kcbs2_text.txt` and experimental audio:
+
+```bash
+python scripts/kcbs_decode_audio.py captures/mycapture_iq.wav --out work/mycapture
+```
+
+The text output distinguishes CRC-supported records from heuristic candidates.
+`--allow-candidate-keys` permits the per-run renderer to use heuristic keys when
+no full CRC-supported keys are available. The experimental `--montage` path can
+also use heuristics without that flag; do not treat montage output as CRC-only.
+
+To combine simultaneous length-prefixed MSC dumps without re-demodulating:
+
+```bash
+python scripts/salvage_msc_packets.py receiver-a.msc.bin receiver-b.msc.bin \
+    --out work/msc_salvage
+```
+
+Salvage merges packet-CRC-good payloads at the same counter and phase, rejects
+conflicting copies, and requires the reassembled data unit to pass its CRC.
+The March fast path instead uses complete CRC-good groups in the cached dumps.
+
+## Container and partial mask
+
+- An MSC record has a four-byte little-endian length, then normally four 182-byte
+  packets. Each packet has a one-byte header, 179 payload bytes, and a two-byte
+  CRC. The concatenated 716-byte data unit (`du`) has its own CRC at `du[714:716]`.
+  CRC-16 uses polynomial `0x1021`, initial value `0xFFFF`, and final XOR `0xFFFF`.
+- Three data units with `du[1] >> 4` equal to 0, 1, and 2 make a 1.2 s group.
+  The big-endian counter in phase 0 at `du[664:668]` increments once per group.
+- Each data unit has 20 nominal 20 ms frames. The four 32-byte payloads in cycle
+  `c` start at `7`, `40`, `73`, and `106` plus `131*c`, for `c=0..4`. The
+  first mode byte is at `du[2+c]`; the others immediately precede their payload.
+- Payload bytes 0, 3, 6, …, 30 are XOR-masked. For `role = frame_index % 4`,
+  `plain[3*j] = cipher[3*j] XOR ks[11*role+j]`, for `j=0..10`. The 44-byte
+  mask is reused within the group. The 21 other bytes per frame are unmasked.
+
+The text tail `du[698:714]` shares `ks[0..15]` with the audio layout. This covers
+all 11 role-0 mask bytes and five of role 1’s 11. The other six role-1 bytes and
+all 22 role-2/3 bytes have not been recovered. Similarity checks between roles do
+not establish independence. A one-step change of counter changes about 64 of the
+128 known bits on average; that does not identify AES-CTR, establish cipher
+strength, or locate a secret in receiver hardware. Byte-identical payloads across
+two transmitters support a common upstream masked stream.
+
+**Opaque trailer.** All 865 bundled March groups match this layout immediately
+before the text tail:
+
+| Phase | Layout, starting at `du[662]` |
 |---|---|
-| DRM container, packet and data-unit CRCs | Fully parsed and CRC-checked |
-| Side-channel keystream `ks[0..15]` | Recovered wherever a crib exists |
-| Korean broadcast text | 24–36% of groups on scrolling-text captures |
-| Audio, role-0 frames (1 in 4) | Exact keys wherever a crib exists |
-| Audio, role-1 frames (1 in 4) | 5 of 11 keyed bytes known, 6 substituted |
-| Audio, role-2 and role-3 frames (2 in 4) | Not recovered — decoder concealment |
-| Codec identity | EVS 13.2 passes syntax checks; not confirmed |
-| Match to the broadcast | Not demonstrated |
+| 0 | 2 zero bytes, 4-byte counter, `du[668:698]` (30 variable bytes) |
+| 1 | 3 zero bytes, `du[665:698]` (33 variable bytes) |
+| 2 | 2 zero bytes, `du[664:697]` (33 variable bytes), 1 zero byte |
 
-There is **no complete audio decode** and **no complete text decode**. At most half the
-audio frames carry real data. Audio output is labelled `UNVERIFIED` throughout.
+The resulting 96-byte blocks are distinct in the merged capture; their pooled
+bit-one fraction is 0.5005. Their function is unknown. Simple mappings tested so
+far did not produce supported recovery of additional mask bytes.
 
----
+## Text recovery and validation
 
-## Two kinds of capture
+**Idle text:** In bundled March groups the phase-0 plaintext tail is sixteen
+`0xFF` bytes. The mask derived from it makes phases 1 and 2 match the framed
+`TextMessage is sending...` placeholder and its CRC. This validates the 16-byte
+prefix, not codec identity or the resulting audio.
 
-Everything depends on whether the text channel provides a known-plaintext crib.
+**Scrolling text:** The implemented path uses `0xBB` fill and repeated text to
+recover prefixes. It checks a common 112-byte layout: header `05` or `85`, then
+`(seq << 4) | 0x0C`, 92 bytes of UTF-16LE text, a big-endian CRC over the header
+and text, and 16 bytes of `0xBB` fill. CRC is an integrity check, not authentication.
+Hangul density is only a heuristic: even the fill word `0xBBBB` counts as a Hangul
+syllable, and forcing a fill biases this score.
 
-**Idle captures.** When the text channel is idle the phase-0 tail is sixteen `0xFF`
-bytes, so `ks[0..15] = tail XOR 0xFF` falls straight out, and the other two phases
-decode to a framed message whose CRC-16 confirms the key. The bundled March recording
-is one of these: **708 of 708 groups verify, 93.8% coverage**. The text is only the
-placeholder `TextMessage is sending...`, so idle captures are excellent for audio and
-carry no text content.
+**Variable-length records:** External analysis reports a block-aligned header
+with length `((b0 & 7) << 4) | (b1 & 0x0f)`, a last-record flag and sequence
+number. It reports zero padding after the text CRC and fill after non-final
+records; final records and titles do not fit the fixed grid. Text recurs after
+323 groups (6:27.6); the reported per-item toggle can require two loops for exact
+header equality. The external counts **469/505** and **247/267** are fractions
+of records, not fractions of unique groups with all 16 mask bytes. The parser
+and those results have not been reproduced in this repo. A fair comparison
+needs per-counter byte masks and provenance, against both the number of received
+groups and the full timeline. Fixed-grid coverage is not a ceiling.
 
-**Scrolling-text captures.** With real Korean text scrolling there is no idle seed. The
-crib is the `0xBB` fill padding each 112-byte segment: where a tail is all fill,
-`ks = tail XOR 0xBB`. Only a minority of groups contain a fill, which caps coverage
-near a third. These captures carry **real broadcast text** and give choppier audio.
+## Audio evidence and limitations
 
-Which one you get is luck, so record long and record 3205 kHz — see
-[Frequencies and receivers](#frequencies-and-receivers).
+- The `[mode byte][32-byte payload]` reading gives 264 bits, consistent with
+  EVS 13.2. In a GCC decoder test, **0/255** supplied frames raised error flags,
+  versus **53–79** for uniform wrong-key controls. Those controls also change
+  byte statistics; this does not identify the codec. Stronger controls preserve
+  byte or bit statistics within each mode and use the same frame-loss pattern.
+- The candidate did not beat wrong-key controls against the paired November
+  stream. At the selected lag, held-out correlation was **−0.025**. Known EVS
+  audio provided a positive control; a successful round-trip validates the build,
+  not that the broadcast uses EVS.
+- The old March 1 kHz audio reference was **KCBS-1**, not KCBS-2. A change in
+  DRM frame statistics does not identify a 1 kHz tone or digital silence. An
+  independently verified KCBS-2 recording is needed to label those intervals.
+- The role-1 continuity pilot substituted a constant plaintext byte across
+  different frames. It did not apply a shared XOR mask to those frames and does
+  not establish that the six bytes are impossible to recover. Substitutes and
+  decoder concealment can sound unnatural or speech-like without matching speech.
 
----
-
-## Requirements
-
-To decode the bundled recording:
-
-- Python 3.10+ — `pip install -r requirements.txt`
-- The **3GPP EVS reference codec**, built by `scripts/build_evs_gcc_independent.py`
-- Linux, or Windows with **WSL2 (Ubuntu)** (the codec is invoked through WSL)
-
-To decode **your own** captures you also need:
-
-- `ffmpeg` on `PATH`
-- A **patched Dream** demodulator, built from `build/` and `patches/`
-
-### Build the demodulator (only for new captures)
-
-Stock Dream does not expose the MSC bitstream and its FAAD2 rejects this stream. The
-patches add a `KCBS_DUMP_MSC` environment variable that writes every super-frame to a
-file.
-
-```bash
-# from WSL Ubuntu
-bash build/build.sh          # manual steps in build/README.md
-```
-
-Produces `/root/kcbs/dream-src/dream`. Not needed for the bundled recording: its
-demodulated super-frames ship in `dumps/`, and `kcbs_decode_fast.py` finds them by
-capture name.
-
-### Build the codec
-
-Obtain the 3GPP TS 26.443 EVS floating-point reference source (not redistributable
-here) and place it at `work/ref/evs/src/c-code`, then:
+## Tests and licensing
 
 ```bash
-python scripts/build_evs_gcc_independent.py --out work/evs_gcc_independent
-```
-
-This compiles the **unmodified** reference sources with GCC. A miscompiled codec can
-degrade audio silently while still appearing to run, so verify any build by
-round-tripping known speech through its own encoder and decoder: a sound build scores
-roughly +4 to +5 dB SNR and STOI above 0.8 at 13.2 kbps.
-
----
-
-## Decode the bundled recording
-
-```bash
-python scripts/kcbs_decode_fast.py \
-    recordings/hl5ntr.ddns.net_2026-03-16T19_53_42Z_3205.000_iq.wav \
-    --out work/march
-```
-
-```
-idle keys: 708 of 708 groups pass the known text + CRC (708 verified)
-{
-  "file": "KCBS2_MARCH_IDLEKEYS_32k_25463983-25464737.wav",
-  "seconds": 906.0,
-  "keyed_groups": 708,
-  "coverage": 0.938,
-  "wall_seconds": 25.9
-}
-```
-
-About **25 seconds for 906 seconds of audio**: nearly all of it is the codec, since the
-keys need no search and the whole capture goes through in one call. The shipped
-`dumps/` are used automatically, so this run needs no demodulator.
-
-Options: `--rate 16000|32000|48000`, and `--fresh` to ignore the shipped dumps and
-re-demodulate from the IQ (requires patched Dream, and takes several minutes).
-
----
-
-## Decode a scrolling-text capture
-
-```bash
-python scripts/kcbs_decode_audio.py mycapture_iq.wav \
-    --out work/mycapture --allow-candidate-keys --montage
-```
-
-Stages, each resumable:
-
-1. **demod** — bounded 600 s windows through patched Dream
-2. **salvage** — packet and data-unit CRCs, groups deduplicated by counter
-3. **keys** — fill cribs plus XOR propagation across repeated text, kept only when a
-   full 112-byte segment passes header, fill and CRC checks
-4. **text** — writes `text/kcbs2_text.txt`
-5. **audio** — one WAV per contiguous run, or a full timeline with `--montage`
-
-| Flag | Effect |
-|---|---|
-| `--allow-candidate-keys` | use Korean-text-validated keys when none pass CRC; output marked `HANGULKEYS` |
-| `--montage` | one continuous timeline, silence where no key exists |
-| `--merge-gap N` | bridge up to N unkeyed groups within one decoder call (default 4; 8 covers more timeline with more concealment) |
-| `--rate` | 16000, 32000 or 48000 |
-
-Passing several captures of the same broadcast raises coverage: they merge by counter.
-Two transmitters of one June broadcast took 354 groups to 408.
-
-`text/kcbs2_text.txt` separates CRC-valid segments, deduplicated text bodies, candidates
-that failed a check with their flags, and text from Korean-validated keys.
-
----
-
-## Key validation
-
-Two independent tests, because a plausible-looking key can still be wrong.
-
-**CRC-16.** A segment's CRC covers its header and text, so a wrong key fails with
-probability 65535/65536. This is the acceptance test wherever a complete 112-byte
-segment can be reconstructed. CRC-16 is an integrity check, not authentication.
-
-**Korean text density.** Where no complete segment is available, each group's 24
-decrypted characters are counted for Hangul syllables (U+AC00–U+D7A3). A wrong key
-yields uniform 16-bit values, which land in that block with probability 0.171 — about
-4 of 24. Against a random-key control measured on the same data:
-
-| Set | Hangul per 24 characters |
-|---|---|
-| genuine fill keys | mean **17.2–17.6**, min 10 |
-| random keys | mean **4.1**, max 12 |
-
-The distributions separate above 13. The control is measured per capture, not assumed.
-
----
-
-## Frequencies and receivers
-
-### Frequencies
-
-KCBS-2 carries the DRM service on two shortwave frequencies. They are not equivalent —
-measured across every capture in this project, by CRC-good super-frames and usable
-1.2 s groups:
-
-| Frequency | Records | CRC-good | Usable groups | Verdict |
-|---|---|---|---|---|
-| **3205 kHz** | 16,289 | **76%** | **2,600** | the one to record |
-| 6140 kHz | 6,725 | 30% | 320 | works, much weaker |
-| 3200 kHz | 407 | 98% | 76 | same signal received slightly low |
-| 3250 kHz | 36 | 17% | 0 | nothing usable |
-
-**Record 3205 kHz.** It produced eight times the usable groups of 6140 kHz at more than
-twice the CRC rate. The 6140 window is also prone to interference from an AM station on
-6145 kHz. Since coverage is capped by how much of the capture survives CRC, frequency
-choice matters more than anything else under your control.
-
-KCBS also runs AM shortwave on **3250, 3320, 6100 and 11680 kHz**. Those are not DRM and
-cannot be decoded by these tools, but 11680 and 6100 do carry the same programme and are
-useful as an audio reference for checking what the DRM stream should sound like.
-
-### Schedule
-
-The DRM service is on air **05:00 to 03:00 KST** (20:00 to 18:00 UTC), i.e. off for
-roughly two hours each night. Recording outside that window yields nothing — an empty
-capture usually means off-air rather than a tooling fault.
-
-### Receivers
-
-There are no public KiwiSDRs close to the DMZ, so every option is a compromise. Pooled
-across all captures:
-
-| Receiver | Location | Records | CRC-good | Usable groups |
-|---|---|---|---|---|
-| **hl5ntr.ddns.net** | Daegu, KR | 8,040 | 77% | **1,357** |
-| hl5ntr-sdr.ddns.net | Daegu, KR | 9,267 | 62% | 1,110 |
-| hik.iptime.org | Daejeon, KR | 1,901 | **87%** | 353 |
-| ds1tuw.iptime.org | KR | 574 | 89% | 89 |
-| kiwi.web-sdr.net | Oita, JP | 542 | 74% | 49 |
-| sdr.7z8d.com | JP | 264 | 50% | 12 |
-
-**Best single combination: `hl5ntr.ddns.net` on 3205 kHz** — 96% CRC and 1,134 groups
-from one 15-minute capture. That is the bundled recording in `recordings/`.
-
-Practical notes:
-
-- `hl5ntr.ddns.net` and `hl5ntr-sdr.ddns.net` are separate hosts at the same site, so
-  both can be recorded at once for a two-receiver merge.
-- One connection per IP per host. Check `http://<host>:<port>/status` for free slots
-  before starting; Daejeon is frequently full.
-- Japanese receivers work but yield noticeably less. `kiwi.web-sdr.net` has returned 403
-  to automated clients at times.
-- Propagation dominates: the same receiver on the same frequency ranged from 56% to 96%
-  CRC on different days. If a capture comes out weak, try again rather than concluding
-  the signal is unusable.
-
-### Recording
-
-Capture **IQ**, not audio — the demodulator needs the complex baseband:
-
-```bash
-python kiwirecorder.py -s hl5ntr.ddns.net -p 8074 -f 3205 -m iq     --tlimit=1800 --station=drm -d ./captures
-```
-
-This writes a two-channel ~12 kHz WAV, which is exactly what `kcbs_decode_fast.py` and
-`kcbs_decode_audio.py` expect. `kiwirecorder.py` comes from the
-[kiwiclient](https://github.com/jks-prv/kiwiclient) project.
-
-Longer is better: coverage depends on how many groups contain a usable crib, so a 30- to
-60-minute capture recovers proportionally more than a 5-minute one. Recording two
-receivers simultaneously and passing both files raises coverage further, since they merge
-by counter.
-
----
-
-## How the encryption works
-
-The audio payload is encrypted, but not the whole of it, and the scheme leaks through
-its own structure rather than through any weakness in the cipher.
-
-### What is encrypted
-
-Each 32-byte audio packet has **every third byte** XORed with a keystream:
-
-```
-byte  0  1  2  3  4  5  6  7  8 ...  30 31
-      ^        ^        ^             ^
-   encrypted            encrypted (11 of 32 bytes)
-```
-
-Positions 0, 3, 6 … 30 — **11 bytes** — are ciphertext. The other **21 bytes are
-plaintext codec data**, transmitted in the clear. The mode byte preceding each packet
-is also clear. So roughly two thirds of every frame is readable without any key, which
-is why frame layout, modes and gross structure can be studied directly.
-
-### Key lifetime and reuse
-
-The keystream is organised per group and per packet position:
-
-```
-role = frame_index % 4                       four roles, 20 frames per super-frame
-plain[3j] = cipher[3j] XOR ks[11*role + j]   j = 0..10
-```
-
-- One key covers a whole **1.2 s group** (3 super-frames, 60 packets).
-- It is **44 bytes** total: 4 roles × 11 bytes.
-- Each key byte is **reused 15 times per group** (60 packets ÷ 4 roles).
-
-That reuse is the first structural weakness: XORing two packets 4 apart in the same
-group cancels the keystream entirely, exposing the difference of two plaintexts.
-
-The four role keys are independent — comparing role-0 and role-1 bytes gives an equality
-rate of 0.0040 against a chance value of 0.0039 — so recovering one role says nothing
-about another.
-
-### The keystream generator
-
-Each group carries a 32-bit counter at `du[664:668]`, incrementing by one per group.
-The keystream behaves like a strong counter-driven pseudorandom function, `E_K(counter)`
-in the manner of AES-CTR:
-
-| Counter delta | Mean Hamming distance between keystreams |
-|---|---|
-| 1 | 63.9 / 128 |
-| 2 | 64.5 / 128 |
-| 4 | 64.1 / 128 |
-| 16 | 63.9 / 128 |
-| 256 | 64.0 / 128 |
-
-A random pair would average 64.0, so a single counter increment already produces full
-avalanche. There is no linear relation between counter and keystream, and MT19937 and
-LCG recovery both fail. **The cipher is not the way in** — attacking it would need the
-key, which is held in the receiver hardware.
-
-### The way in: known plaintext in the side channel
-
-Every data unit ends with a 16-byte tail at `du[698:714]` carrying a DRM text-message
-stream, and that tail is encrypted with **the same first 16 keystream bytes the audio
-uses**:
-
-```
-du[698:714]  =  ks[0..15]  XOR  text
-                 |
-                 +-- ks[0..10]  = role-0 audio key  (all 11 bytes)
-                     ks[11..15] = role-1 audio key  (first 5 of 11 bytes)
-```
-
-So any guessable byte of that text yields audio keystream directly. Two situations make
-the text guessable:
-
-1. **Idle text.** When the text channel is idle the phase-0 tail is sixteen `0xFF`
-   bytes, giving `ks[0..15] = tail XOR 0xFF` immediately. The remaining two phases then
-   decrypt to a framed message ending in a CRC-16 that confirms the key — the check that
-   validates 708 of 708 groups in the bundled recording.
-2. **Segment fill.** Each 112-byte text segment ends with sixteen `0xBB` fill bytes.
-   Wherever a tail lands entirely inside that fill, `ks = tail XOR 0xBB`.
-
-Both are classic known-plaintext cribs. The cipher is untouched; the implementation
-simply reuses keystream across two channels with very different plaintext entropy.
-
-### Why it stops there
-
-The tail is only 16 bytes, so it can only ever expose `ks[0..15]`. The remaining 28
-bytes of each group's key —
-
-```
-ks[16..21]   role 1, remaining 6 bytes
-ks[22..32]   role 2, all 11 bytes
-ks[33..43]   role 3, all 11 bytes
-```
-
-— are never covered by any known plaintext. Role 0 decodes exactly; role 1 decodes
-partially; roles 2 and 3 do not decode at all. Since each role is a quarter of the
-frames, **at most half the audio frames can ever carry real data from this route**, and
-in practice role 1 is approximate because 6 of its 11 keyed bytes are substituted.
-
-### Where the encryption is applied
-
-Two transmitters carrying the same programme were compared across 106 shared counters
-and are **byte-identical over `du[:714]`** — identical ciphertext, identical counters.
-The encryption therefore happens once, upstream of distribution, not per transmitter.
-No DRM conditional access is signalled in the multiplex, so this is a private scheme
-layered inside an otherwise standard DRM stream rather than a DRM feature.
-
-### Attack chain in brief
-
-```
-IQ capture
-  -> patched Dream           DRM demodulation, MSC super-frames
-  -> container parse         packet + data-unit CRC, group assembly, counter
-  -> side-channel tail       du[698:714] = ks[0..15] XOR text
-  -> crib                    idle 0xFF, or 0xBB segment fill
-  -> ks[0..15]               validated by segment CRC-16 or Korean text density
-  -> audio frames            role 0 exact, role 1 partial, roles 2/3 concealed
-  -> EVS 13.2 (hypothesis)   264-bit frames, 20 ms, explicit loss for unkeyed roles
-```
-
----
-
-## Format
-
-- **Super-frame.** 4 packets of 182 bytes: 1 header, 179 payload, 2 CRC. Concatenated
-  payloads give a 716-byte data unit; `du[714:716]` is its own CRC-16.
-- **Group.** Three super-frames with `du[1] >> 4` = 0, 1, 2 form one 1.2 s group.
-- **Counter.** `du[664:668]`, big-endian, +1 per group — the timebase throughout.
-- **Audio frames.** 20 packets of 32 bytes per super-frame, starting at
-  `7 + 131c`, `40 + 131c`, `73 + 131c`, `106 + 131c` for c = 0..4. Mode bytes: role 0
-  hoisted to `du[2+c]`, roles 1–3 inline immediately before their packet.
-- **Encryption.** Packet bytes 0, 3, 6 … 30 are XORed with a keystream. One key serves
-  a whole group and repeats every 4 packets:
-  `role = frame_index % 4`, `plain[3j] = cipher[3j] XOR ks[11*role + j]`.
-- **Side channel.** `du[698:714]` is 16 bytes of keystream XOR text. This exposes
-  `ks[0..15]`: all of role 0, plus the first five keyed bytes of role 1.
-- **Text segment.** 112 bytes — header `05`/`85`, `(seq << 4) | 0x0C`, 46 UTF-16LE
-  characters, big-endian CRC-16 over bytes 0:94, then sixteen `0xBB` fill bytes.
-- **Carousel.** The text stream repeats with a measured period of 323 groups (387.6 s).
-- **Upstream encryption.** Two transmitters carrying one programme are byte-identical
-  over `du[:714]` — verified across 106 shared counters — so the payload is encrypted
-  before distribution. No DRM conditional access is signalled.
-
----
-
-## Limitations
-
-**The missing keystream.** The side channel only ever exposes `ks[0..15]`. The
-remainder — `ks[16..21]` for role 1 and `ks[22..43]` for roles 2 and 3 — never appears
-in the signal and is not derivable by any method here. Roles 2 and 3 are always decoder
-concealment, which is why at most half the audio frames carry real data.
-
-**Role 1 cannot be completed.** Its six unknown bytes were tested for identifiability
-against genuine speech with known values: **0 of 18 ranked first, median rank 152 of
-256**, and all 256 candidates decode with zero decoder error flags. With no constraint
-to search against, those bytes are substitutes chosen for continuity, not recovered
-keys — a search would invent plausible values rather than find true ones.
-
-**The codec is unconfirmed.** Reading each frame as `[mode byte][32-byte payload]`
-MSB-first gives 264 bits, matching EVS 13.2. Across 255 frames the reference decoder
-raised **zero** bad-frame or bit-error flags against **53–79** for same-mode wrong-key
-controls. That is genuine syntax evidence, but a wrong-but-valid parse can also pass.
-Directly RFC-packed AMR-WB 12.65 is excluded: its required padding bits were non-zero
-in 10,448 of 11,520 slots versus 0 of 1,200 genuine controls.
-
-**No demonstrated match to the broadcast.** Scoring decoded audio against a
-simultaneously recorded reference stream performed **no better than wrong-key
-controls**, and a lag chosen on three runs scored −0.025 on two held-out runs. The same
-scorer recovers a planted offset at 0.799 on genuine audio, so the test is sound — the
-decoded audio did not match.
-
-**Coverage is capped by the capture.** Idle captures reach ~94%; scrolling-text
-captures reach ~24–36%, limited by how many groups contain a fill. Longer captures,
-multiple receivers, and intervals containing idle text all raise coverage; no analysis
-of an existing capture can.
-
----
-
-## Layout
-
-```
-scripts/
-  kcbs_decode_fast.py            idle-tail captures, one command (start here)
-  kcbs_decode_audio.py           general pipeline: demod, keys, text, audio
-  demod_iq_window.py             one bounded IQ window through patched Dream
-  tail_fill_audit.py             CRC-checked group parsing and fill cribs
-  salvage_msc_packets.py         recover groups from partially corrupt observations
-  repeated_text_keys.py          XOR propagation across repeated text, CRC-gated
-  hangul_key_filter.py           Korean-text key validation, carousel propagation
-  render_continuous.py           continuous timeline rendering
-  partial_frame_quality.py       role-1 fill strategies, scored on genuine controls
-  role1_key_search.py            identifiability test for unknown role-1 bytes
-  role1_smooth_fill.py           continuity-chosen role-1 substitutes
-  build_evs_gcc_independent.py   GCC build of the unmodified EVS reference
-  kcbs_tail_key.py               reference CRC and loader implementation
-  evs_dll_cli.py                 Windows DLL fallback for the codec
-  test_*.py                      regression tests
-build/                           patched Dream build tooling
-patches/                         Dream and FAAD2 source patches
-recordings/                      three consecutive bundled March captures (IQ)
-dumps/                           their demodulated super-frames, so no Dream build needed
-docs/                            third-party notices
-```
-
-## Tests
-
-```bash
-for t in test_key_recovery test_november_recovery test_speech_reconstruction test_aio_pipeline; do
-    python scripts/$t.py
+for t in test_key_recovery test_november_recovery test_speech_reconstruction test_aio_pipeline test_march_playback; do
+    python scripts/$t.py || exit 1
 done
 ```
 
-All synthetic, no capture required. They cover CRC against a known vector, fill-crib
-recovery with a random-ciphertext negative control, packet salvage, XOR constraint
-consistency, alignment scoring at a known offset, fills leaving known bytes untouched,
-and timeline stretch grouping.
-
-## Legal and attribution
-
-Recorded from a publicly transmitted shortwave broadcast. Dream is GPL; FAAD2 patches
-fall under its own licence (`docs/COPYING.FAAD2`, `docs/NOTICE.md`). The EVS reference
-codec is 3GPP TS 26.443 and is **not** redistributed here — obtain it from 3GPP.
+The tests use synthetic inputs to check CRC and salvage, key evidence, alignment,
+frame placement, donor-byte coordinates, gap length, and fades. The bundled March
+command is the end-to-end check. Dream is GPL; see [docs/NOTICE.md](docs/NOTICE.md)
+and [docs/COPYING.FAAD2](docs/COPYING.FAAD2) for third-party notices. The 3GPP EVS
+reference codec is not redistributed here.

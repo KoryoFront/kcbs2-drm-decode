@@ -1,0 +1,7 @@
+numpy>=1.24
+scipy>=1.10
+soundfile>=0.12
+
+# optional: speech-intelligibility scoring in partial_frame_quality.py
+# and role1_smooth_fill.py
+pystoi==0.4.1

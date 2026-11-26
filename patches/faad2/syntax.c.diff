@@ -1,0 +1,166 @@
+--- syntax.c.pristine	2026-08-26 08:02:57.050350800 -0400
++++ syntax_lf.c	2026-08-26 08:03:17.701027300 -0400
+@@ -610,7 +610,7 @@
+ 
+     /* IS not allowed in single channel */
+     if (ics->is_used)
+-        return 32;
++        (void)0; /* is_used patch */
+ 
+ #ifdef SBR_DEC
+     /* check if next bitstream element is a fill element */
+@@ -664,8 +664,8 @@
+             DEBUGVAR(1,41,"channel_pair_element(): ms_mask_present"));
+         if (ics1->ms_mask_present == 3)
+         {
+-            /* bitstream error */
+-            return 32;
++    /* ms_mask_present==3 patch: skipped */
++        (void)0;
+         }
+         if (ics1->ms_mask_present == 1)
+         {
+@@ -774,8 +774,8 @@
+ 
+     ics_reserved_bit = faad_get1bit(ld
+         DEBUGVAR(1,43,"ics_info(): ics_reserved_bit"));
+-    if (ics_reserved_bit != 0)
+-        return 32;
++        /* ics_reserved_bit patch: ignored */
++        /* return 32 patched out */
+     ics->window_sequence = (uint8_t)faad_getbits(ld, 2
+         DEBUGVAR(1,44,"ics_info(): window_sequence"));
+     ics->window_shape = faad_get1bit(ld
+@@ -784,7 +784,7 @@
+ #ifdef LD_DEC
+     /* No block switching in LD */
+     if ((hDecoder->object_type == LD) && (ics->window_sequence != ONLY_LONG_SEQUENCE))
+-        return 32;
++        (void)0; /* LD window_sequence patch */
+ #endif
+ 
+     if (ics->window_sequence == EIGHT_SHORT_SEQUENCE)
+@@ -973,8 +973,8 @@
+     }
+ 
+     /* IS not allowed in single channel */
+-    if (ics->is_used)
+-        return 32;
++    if (ics_empty.is_used)
++        (void)0; /* ics_empty.is_used patch */
+ 
+     for (c = 1; c < num_gain_element_lists; c++)
+     {
+@@ -1261,10 +1261,7 @@
+ #if defined(LTP_DEC)
+     ics1->ltp.data_present = faad_get1bit(ld);
+ #elif defined (DRM)
+-    if(faad_get1bit(ld)) {
+-         hInfo->error = 26;
+-         return;
+-    }
++    faad_get1bit(ld); /* LTP: skip bit, do not error */
+ #else
+     faad_get1bit(ld);
+ #endif    
+@@ -1298,7 +1295,7 @@
+     /* CRC check */
+     if (hDecoder->object_type == DRM_ER_LC)
+     {
+-        if ((hInfo->error = (uint8_t)faad_check_CRC(ld, (uint16_t)faad_get_processed_bits(ld) - 8)) > 0)
++        if (0) /* CRC patch disabled */
+             return;
+     }
+ #endif
+@@ -1384,7 +1381,7 @@
+         /* check CRC */
+         /* no need to check it if there was already an error */
+         if (hDecoder->sbr[0]->ret == 0)
+-            hDecoder->sbr[0]->ret = (uint8_t)faad_check_CRC(&ld_sbr, (uint16_t)faad_get_processed_bits(&ld_sbr) - 8);
++            hDecoder->sbr[0]->ret = 0; /* SBR CRC patch */
+ 
+         /* SBR data was corrupted, disable it until the next header */
+         if (hDecoder->sbr[0]->ret != 0)
+@@ -1438,8 +1435,8 @@
+ 
+     ics_reserved_bit = faad_get1bit(ld
+         DEBUGVAR(1,300,"aac_scalable_main_header(): ics_reserved_bits"));
+-    if (ics_reserved_bit != 0)
+-        return 32;
++        /* ics_reserved_bit patch: ignored */
++        /* return 32 patched out */
+     ics1->window_sequence = (uint8_t)faad_getbits(ld, 2
+         DEBUGVAR(1,301,"aac_scalable_main_header(): window_sequence"));
+     ics1->window_shape = faad_get1bit(ld
+@@ -1471,8 +1468,8 @@
+             DEBUGVAR(1,306,"aac_scalable_main_header(): ms_mask_present"));
+         if (ics1->ms_mask_present == 3)
+         {
+-            /* bitstream error */
+-            return 32;
++    /* ms_mask_present==3 patch: skipped */
++        (void)0;
+         }
+         if (ics1->ms_mask_present == 1)
+         {
+@@ -1609,7 +1606,7 @@
+     /* CRC check */
+     if (hDecoder->object_type == DRM_ER_LC)
+     {
+-        if ((result = (uint8_t)faad_check_CRC(ld, (uint16_t)faad_get_processed_bits(ld) - 8)) > 0)
++        if (0) /* CRC patch disabled */
+             return result;
+     }
+ #endif
+@@ -1693,8 +1690,8 @@
+             ics->sect_cb[g][i] = (uint8_t)faad_getbits(ld, sect_cb_bits
+                 DEBUGVAR(1,71,"section_data(): sect_cb"));
+ 
+-            if (ics->sect_cb[g][i] == 12)
+-                return 32;
++              /* sect_cb==12 patch: ignored */
++                /* return 32 patched out */
+ 
+ #if 0
+             printf("%d\n", ics->sect_cb[g][i]);
+@@ -1704,9 +1701,9 @@
+             if (ics->sect_cb[g][i] == NOISE_HCB)
+                 ics->noise_used = 1;
+ #else
+-            /* PNS not allowed in DRM */
++            /* PNS not allowed in DRM - patched to allow */
+             if (ics->sect_cb[g][i] == NOISE_HCB)
+-                return 29;
++                ics->noise_used = 1; /* patched */
+ #endif
+             if (ics->sect_cb[g][i] == INTENSITY_HCB2 || ics->sect_cb[g][i] == INTENSITY_HCB)
+                 ics->is_used = 1;
+@@ -1787,7 +1784,7 @@
+          * group shall equal max_sfb */
+         if (k != ics->max_sfb)
+         {
+-            return 32;
++            (void)0; /* max_sfb mismatch patch */
+         }
+ #if 0
+         printf("%d\n", ics->num_sec[g]);
+@@ -1866,8 +1863,8 @@
+                 printf("%d\n", ics->scale_factors[g][sfb]);
+ #endif
+ #else
+-                /* PNS not allowed in DRM */
+-                return 29;
++                /* PNS not allowed in DRM - patched to allow */
++                ics->scale_factors[g][sfb] = noise_energy; /* patched */
+ #endif
+ 
+                 break;
+@@ -1880,7 +1877,7 @@
+                 /* decode scale factor */
+                 t = huffman_scale_factor(ld);
+                 scale_factor += (t - 60);
+-                if (scale_factor < 0 || scale_factor > 255)
++                if (scale_factor < 0) scale_factor = 0; if (scale_factor > 255) scale_factor = 255; if (0)
+                     return 4;
+                 ics->scale_factors[g][sfb] = scale_factor;
+ #ifdef SF_PRINT

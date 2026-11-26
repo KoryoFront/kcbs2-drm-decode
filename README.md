@@ -8,7 +8,7 @@ side-channel text stream, recover the keystream bytes that stream exposes, and d
 the audio frames those keys cover.
 
 A **working recording is bundled**, together with its demodulated bitstream, so the
-main path runs end to end in about 20 seconds without building the demodulator.
+main path runs end to end in about 25 seconds without building the demodulator.
 
 ---
 
@@ -107,11 +107,11 @@ idle keys: 708 of 708 groups pass the known text + CRC (708 verified)
   "seconds": 906.0,
   "keyed_groups": 708,
   "coverage": 0.938,
-  "wall_seconds": 25.0
+  "wall_seconds": 25.9
 }
 ```
 
-About **20 seconds for 906 seconds of audio**: nearly all of it is the codec, since the
+About **25 seconds for 906 seconds of audio**: nearly all of it is the codec, since the
 keys need no search and the whole capture goes through in one call. The shipped
 `dumps/` are used automatically, so this run needs no demodulator.
 

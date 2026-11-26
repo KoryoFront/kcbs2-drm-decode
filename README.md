@@ -7,8 +7,10 @@ The payload is partly encrypted. These scripts parse the DRM container, extract 
 side-channel text stream, recover the keystream bytes that stream exposes, and decode
 the audio frames those keys cover.
 
-A **working recording is bundled**, together with its demodulated bitstream, so the
-main path runs end to end in about 25 seconds without building the demodulator.
+A **working recording is bundled** — 15 minutes of 3205 kHz from Daegu, the
+best-performing frequency and receiver combination measured here — together with its
+demodulated bitstream, so the main path runs end to end in about 25 seconds without
+building the demodulator.
 
 ---
 
@@ -45,6 +47,9 @@ carry no text content.
 crib is the `0xBB` fill padding each 112-byte segment: where a tail is all fill,
 `ks = tail XOR 0xBB`. Only a minority of groups contain a fill, which caps coverage
 near a third. These captures carry **real broadcast text** and give choppier audio.
+
+Which one you get is luck, so record long and record 3205 kHz — see
+[Frequencies and receivers](#frequencies-and-receivers).
 
 ---
 
@@ -170,6 +175,84 @@ yields uniform 16-bit values, which land in that block with probability 0.171 �
 | random keys | mean **4.1**, max 12 |
 
 The distributions separate above 13. The control is measured per capture, not assumed.
+
+---
+
+## Frequencies and receivers
+
+### Frequencies
+
+KCBS-2 carries the DRM service on two shortwave frequencies. They are not equivalent —
+measured across every capture in this project, by CRC-good super-frames and usable
+1.2 s groups:
+
+| Frequency | Records | CRC-good | Usable groups | Verdict |
+|---|---|---|---|---|
+| **3205 kHz** | 16,289 | **76%** | **2,600** | the one to record |
+| 6140 kHz | 6,725 | 30% | 320 | works, much weaker |
+| 3200 kHz | 407 | 98% | 76 | same signal received slightly low |
+| 3250 kHz | 36 | 17% | 0 | nothing usable |
+
+**Record 3205 kHz.** It produced eight times the usable groups of 6140 kHz at more than
+twice the CRC rate. The 6140 window is also prone to interference from an AM station on
+6145 kHz. Since coverage is capped by how much of the capture survives CRC, frequency
+choice matters more than anything else under your control.
+
+KCBS also runs AM shortwave on **3250, 3320, 6100 and 11680 kHz**. Those are not DRM and
+cannot be decoded by these tools, but 11680 and 6100 do carry the same programme and are
+useful as an audio reference for checking what the DRM stream should sound like.
+
+### Schedule
+
+The DRM service is on air **05:00 to 03:00 KST** (20:00 to 18:00 UTC), i.e. off for
+roughly two hours each night. Recording outside that window yields nothing — an empty
+capture usually means off-air rather than a tooling fault.
+
+### Receivers
+
+There are no public KiwiSDRs close to the DMZ, so every option is a compromise. Pooled
+across all captures:
+
+| Receiver | Location | Records | CRC-good | Usable groups |
+|---|---|---|---|---|
+| **hl5ntr.ddns.net** | Daegu, KR | 8,040 | 77% | **1,357** |
+| hl5ntr-sdr.ddns.net | Daegu, KR | 9,267 | 62% | 1,110 |
+| hik.iptime.org | Daejeon, KR | 1,901 | **87%** | 353 |
+| ds1tuw.iptime.org | KR | 574 | 89% | 89 |
+| kiwi.web-sdr.net | Oita, JP | 542 | 74% | 49 |
+| sdr.7z8d.com | JP | 264 | 50% | 12 |
+
+**Best single combination: `hl5ntr.ddns.net` on 3205 kHz** — 96% CRC and 1,134 groups
+from one 15-minute capture. That is the bundled recording in `recordings/`.
+
+Practical notes:
+
+- `hl5ntr.ddns.net` and `hl5ntr-sdr.ddns.net` are separate hosts at the same site, so
+  both can be recorded at once for a two-receiver merge.
+- One connection per IP per host. Check `http://<host>:<port>/status` for free slots
+  before starting; Daejeon is frequently full.
+- Japanese receivers work but yield noticeably less. `kiwi.web-sdr.net` has returned 403
+  to automated clients at times.
+- Propagation dominates: the same receiver on the same frequency ranged from 56% to 96%
+  CRC on different days. If a capture comes out weak, try again rather than concluding
+  the signal is unusable.
+
+### Recording
+
+Capture **IQ**, not audio — the demodulator needs the complex baseband:
+
+```bash
+python kiwirecorder.py -s hl5ntr.ddns.net -p 8074 -f 3205 -m iq     --tlimit=1800 --station=drm -d ./captures
+```
+
+This writes a two-channel ~12 kHz WAV, which is exactly what `kcbs_decode_fast.py` and
+`kcbs_decode_audio.py` expect. `kiwirecorder.py` comes from the
+[kiwiclient](https://github.com/jks-prv/kiwiclient) project.
+
+Longer is better: coverage depends on how many groups contain a usable crib, so a 30- to
+60-minute capture recovers proportionally more than a 5-minute one. Recording two
+receivers simultaneously and passing both files raises coverage further, since they merge
+by counter.
 
 ---
 

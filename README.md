@@ -7,9 +7,9 @@ The payload is partly encrypted. These scripts parse the DRM container, extract 
 side-channel text stream, recover the keystream bytes that stream exposes, and decode
 the audio frames those keys cover.
 
-A **working recording is bundled** — 15 minutes of 3205 kHz from Daegu, the
-best-performing frequency and receiver combination measured here — together with its
-demodulated bitstream, so the main path runs end to end in about 25 seconds without
+**Three consecutive recordings are bundled** — 19 minutes of 3205 kHz from Daegu, the
+best-performing frequency and receiver combination measured here — together with their
+demodulated bitstreams, so the main path runs end to end in about 30 seconds without
 building the demodulator.
 
 ---
@@ -457,8 +457,8 @@ scripts/
   test_*.py                      regression tests
 build/                           patched Dream build tooling
 patches/                         Dream and FAAD2 source patches
-recordings/                      bundled March capture (IQ)
-dumps/                           its demodulated super-frames, so no Dream build needed
+recordings/                      three consecutive bundled March captures (IQ)
+dumps/                           their demodulated super-frames, so no Dream build needed
 docs/                            third-party notices
 ```
 

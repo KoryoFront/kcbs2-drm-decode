@@ -12,7 +12,12 @@ codec call instead of one call per group.
 Role 0 is exact and role 1 has five of eleven keyed bytes; the six unknown role-1
 bytes are substitutes and roles 2/3 are erased.
 
-Usage: python scripts/kcbs_decode_fast.py <iq.wav or msc.bin> --out <dir>
+Several captures of the same broadcast may be passed at once. Sequential recordings
+extend the decoded span and simultaneous ones fill each other's gaps, because groups
+merge by their 32-bit counter.
+
+Usage:
+  python scripts/kcbs_decode_fast.py <iq.wav> [more.wav ...] --out <dir>
 """
 import argparse
 import glob
@@ -37,11 +42,7 @@ KNOWN = b'\x68\xf0TextMessage is sending...'
 
 
 def find_dumps(source):
-    """Existing MSC dumps for this capture, so demodulation is not repeated.
-
-    Looked up by capture stem in dumps/ (shipped alongside a bundled recording) and
-    in work/drmradio/_chunks/ (written by earlier runs of the demodulator).
-    """
+    """Existing dumps for this capture, so demodulation is not repeated."""
     stem = Path(source).stem.replace('_iq', '')
     found = sorted(glob.glob(str(ROOT/'dumps'/(stem + '*.msc.bin'))))
     found += sorted(glob.glob(str(ROOT/'work/drmradio/_chunks'/(stem + '__c*')/'msc.bin')))
@@ -64,7 +65,9 @@ def idle_keys(groups_npz):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('source')
+    ap.add_argument('source', nargs='+',
+                    help='one or more captures; sequential or simultaneous recordings of '
+                         'the same broadcast merge by counter and raise coverage')
     ap.add_argument('--out', required=True)
     ap.add_argument('--rate', type=int, default=32000)
     ap.add_argument('--fresh', action='store_true', help='ignore cached dumps')
@@ -74,13 +77,19 @@ def main():
     started = time.monotonic()
     timings = {}
 
-    dumps = [] if a.fresh else find_dumps(a.source)
+    dumps, need_demod = [], []
+    for src in a.source:
+        found = [] if a.fresh else find_dumps(src)
+        if found:
+            dumps += found
+        else:
+            need_demod.append(Path(src).resolve())
     if dumps:
-        print('reusing %d cached dump(s); no demodulation' % len(dumps), flush=True)
-    else:
+        print('reusing %d cached dump(s)' % len(dumps), flush=True)
+    if need_demod:
         from kcbs_decode_audio import stage_demod
         log = []
-        dumps = stage_demod([Path(a.source).resolve()], out, 0, 0, log)
+        dumps += stage_demod(need_demod, out, 0, 0, log)
     timings['dumps_seconds'] = round(time.monotonic() - started, 1)
 
     if not dumps:
@@ -159,7 +168,7 @@ def main():
         w.writeframes(pcm.tobytes())
     stream.unlink(); raw.unlink()
 
-    report = dict(source=a.source, file=path.name, seconds=round(len(pcm)/a.rate, 2),
+    report = dict(source=list(a.source), dumps=len(dumps), file=path.name, seconds=round(len(pcm)/a.rate, 2),
                   keyed_groups=verified, groups_in_span=span,
                   coverage=round(verified/span, 3),
                   supplied_frames=int(supplied.sum()), total_frames=int(len(frames)),

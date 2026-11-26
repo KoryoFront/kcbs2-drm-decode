@@ -10,8 +10,8 @@ keys come from one vectorised pass, and the codec runs once per stretch of
 usable groups instead of once per group.
 
 The mask is known for all role-0 bytes and five of eleven role-1 bytes. The six
-unknown role-1 bytes are substitutes and roles 2/3 are erased. The codec and
-broadcast audio are unverified.
+unknown role-1 bytes are substitutes. Roles 2/3 are erased by default, or replay
+nearby supplied frames with --replay-nearby. The codec and audio are unverified.
 
 Several captures of the same broadcast may be passed at once. Sequential recordings
 extend the decoded span and simultaneous ones fill each other's gaps, because groups
@@ -87,6 +87,48 @@ def group_runs(offsets, merge_gap):
             for lo, hi in zip(np.r_[0, breaks+1], np.r_[breaks, len(offsets)-1])]
 
 
+def replay_nearby(frames, supplied):
+    """Fill loss slots only inside received four-frame cycles; keep supplied bytes intact."""
+    out, keep = frames.copy(), supplied.copy()
+    rows = np.arange(len(frames))
+    active = np.repeat(supplied[::4], 4)
+    for role, shift in ((2, -1), (3, 1), (3, -2)):
+        targets = rows[active & (rows % 4 == role) & ~keep]
+        targets = targets[(targets + shift >= 0) & (targets + shift < len(frames))]
+        targets = targets[supplied[targets + shift]]
+        out[targets] = frames[targets + shift]
+        keep[targets] = True
+    return out, keep
+
+
+def attenuate(pcm, db):
+    if not db:
+        return pcm
+    gain = np.float32(10**(-db/20))
+    return np.rint(pcm.astype(np.float32)*gain).astype('<i2')
+
+
+def decode_evs(part, keep, rate, temporary):
+    stream, raw = temporary/'stream.192', temporary/'stream.raw'
+    with stream.open('wb') as f:
+        for bits, good in zip(np.unpackbits(part, axis=1), keep):
+            if good:
+                f.write(np.array([0x6b21, 264], '<u2').tobytes())
+                f.write(np.where(bits, 0x81, 0x7f).astype('<u2').tobytes())
+            else:
+                f.write(np.array([0x6b20, 0], '<u2').tobytes())
+    command = ['wsl', '-d', 'Ubuntu', '--', linux(ROOT/'work/evs_gcc_independent/EVS_dec'),
+               '-q', '-no_delay_cmp', str(rate//1000), linux(stream), linux(raw)]
+    proc = subprocess.run(command, capture_output=True, timeout=7200)
+    if proc.returncode:
+        raise SystemExit(proc.stderr.decode(errors='replace')[-2000:])
+    expected_bytes = 2*len(part)*(rate//50)
+    if not raw.is_file() or raw.stat().st_size != expected_bytes:
+        raise SystemExit(f'EVS decoder did not write the expected {expected_bytes} PCM bytes')
+    got = np.fromfile(raw, '<i2')
+    raw.unlink()
+    return got
+
 def render_timeline(frames, supplied, runs, rate, decode):
     per_frame = rate//50
     pcm = np.zeros(len(frames)*per_frame, dtype='<i2')
@@ -113,7 +155,13 @@ def main():
     ap.add_argument('--merge-gap', type=int, default=4,
                     help='bridge at most N missing groups with decoder concealment; '
                          'silence longer gaps (default: 4; 0 silences every gap)')
+    ap.add_argument('--replay-nearby', action='store_true',
+                    help='replay neighbouring supplied frames instead of concealing roles 2/3')
+    ap.add_argument('--attenuate-db', type=float, default=0,
+                    help='lower the final PCM level without compression or limiting')
     a = ap.parse_args()
+    if not 0 <= a.attenuate_db <= 60:
+        ap.error('--attenuate-db must be between 0 and 60')
     if a.merge_gap < 0:
         ap.error('--merge-gap must be nonnegative')
     out = (ROOT/a.out).resolve()
@@ -154,36 +202,22 @@ def main():
     offsets = counters - first
     stage = time.monotonic()
     frames, supplied = assemble_frames(du, keys, offsets, span)
+    supplied_frames = int(supplied.sum())
+    if a.replay_nearby:
+        frames, supplied = replay_nearby(frames, supplied)
+    replayed_frames = int(supplied.sum()) - supplied_frames
     runs = group_runs(offsets, a.merge_gap)
     timings['frames_seconds'] = round(time.monotonic() - stage, 1)
-
-    def decode_slice(part, keep):
-        stream, raw = temporary/'stream.192', temporary/'stream.raw'
-        with stream.open('wb') as f:
-            for bits, good in zip(np.unpackbits(part, axis=1), keep):
-                if good:
-                    f.write(np.array([0x6b21, 264], '<u2').tobytes())
-                    f.write(np.where(bits, 0x81, 0x7f).astype('<u2').tobytes())
-                else:
-                    f.write(np.array([0x6b20, 0], '<u2').tobytes())
-        command = ['wsl', '-d', 'Ubuntu', '--', linux(ROOT/'work/evs_gcc_independent/EVS_dec'),
-                   '-q', '-no_delay_cmp', str(a.rate//1000), linux(stream), linux(raw)]
-        proc = subprocess.run(command, capture_output=True, timeout=7200)
-        if proc.returncode:
-            raise SystemExit(proc.stderr.decode(errors='replace')[-2000:])
-        expected_bytes = 2*len(part)*(a.rate//50)
-        if not raw.is_file() or raw.stat().st_size != expected_bytes:
-            raise SystemExit(f'EVS decoder did not write the expected {expected_bytes} PCM bytes')
-        got = np.fromfile(raw, '<i2')
-        raw.unlink()
-        return got
 
     stage = time.monotonic()
     with tempfile.TemporaryDirectory(prefix='evs_', dir=out) as tmp:
         temporary = Path(tmp)
-        pcm = render_timeline(frames, supplied, runs, a.rate, decode_slice)
+        pcm = render_timeline(frames, supplied, runs, a.rate,
+                              lambda f, s: decode_evs(f, s, a.rate, temporary))
     timings['decode_seconds'] = round(time.monotonic() - stage, 1)
-    path = out/('KCBS2_MARCH_UNVERIFIED_%dk_%d-%d.wav' % (a.rate//1000, first, last))
+    pcm = attenuate(pcm, a.attenuate_db)
+    tag = ('_REPLAY' if a.replay_nearby else '') + ('_QUIETER' if a.attenuate_db else '')
+    path = out/f'KCBS2_MARCH_UNVERIFIED{tag}_{a.rate//1000}k_{first}-{last}.wav'
     with wave.open(str(path), 'wb') as w:
         w.setparams((1, 2, a.rate, 0, 'NONE', 'not compressed'))
         w.writeframes(pcm.tobytes())
@@ -196,14 +230,15 @@ def main():
     report = dict(source=list(a.source), dumps=len(dumps), file=path.name,
                   seconds=round(len(pcm)/a.rate, 2), pcm_samples=len(pcm),
                   keyed_groups=verified, groups_in_span=span,
-                  coverage=round(verified/span, 3), supplied_frames=int(supplied.sum()),
+                  coverage=round(verified/span, 3), supplied_frames=supplied_frames,
+                  replayed_frames=replayed_frames, attenuation_db=a.attenuate_db,
                   fully_unmasked_frames=verified*15, total_frames=len(frames),
                   rms=round(float(np.sqrt(np.mean(norm**2))), 4), peak_pcm=peak,
                   full_scale_samples=clipped, clipped_fraction=clipped/len(pcm),
                   merge_gap=a.merge_gap, decoder_calls=len(runs), silenced_gaps=silenced,
                   timings=timings, wall_seconds=round(time.monotonic() - started, 1),
                   note='The idle text and CRC support the 16-byte mask prefix, not codec identity '
-                       'or an audio match. Role 1 has six role-0 donor bytes; roles 2/3 are erased.')
+                       'or an audio match. Role 1 has six role-0 donor bytes; replayed frames are copies.')
     (out/'report.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
     print(json.dumps(report, indent=2), flush=True)
 

@@ -1,10 +1,13 @@
 """Exercise the March listening renderer without Dream or EVS."""
+from pathlib import Path
+import tempfile
 import unittest
 
 import numpy as np
 
-from kcbs_decode_fast import assemble_frames, group_runs, render_timeline
+from kcbs_decode_fast import assemble_frames, attenuate, group_runs, render_timeline, replay_nearby
 from march_listening_filter import reduce_flutter
+from render_supported_nonidle import join_supported
 
 
 class MarchPlaybackTests(unittest.TestCase):
@@ -29,6 +32,40 @@ class MarchPlaybackTests(unittest.TestCase):
                 self.assertEqual(frames[base+1, 0], original[shift+39])
                 np.testing.assert_array_equal(frames[base, 1:], role0)
                 np.testing.assert_array_equal(frames[base+1, 1:], role1)
+
+    def test_replay_keeps_sources_and_reception_holes_intact(self):
+        frames = np.repeat(np.arange(16, dtype=np.uint8)[:, None], 33, axis=1)
+        supplied = np.array([True, True, False, False]*4)
+        supplied[8:12] = False
+        out, keep = replay_nearby(frames, supplied)
+        np.testing.assert_array_equal(out[:, 0], [0, 1, 1, 4, 4, 5, 5, 5, 8, 9, 10, 11, 12, 13, 13, 13])
+        np.testing.assert_array_equal(out[supplied], frames[supplied])
+        np.testing.assert_array_equal(keep, np.repeat([True, True, False, True], 4))
+
+    def test_attenuation_is_signed_and_does_not_change_length(self):
+        source = np.array([-32768, -5000, 0, 5000, 32767], dtype='<i2')
+        got = attenuate(source, 20)
+        np.testing.assert_array_equal(got, [-3277, -500, 0, 500, 3277])
+        self.assertEqual(got.dtype, source.dtype)
+
+    def test_nonidle_requires_every_byte_to_have_crc_support(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            du = np.zeros((3, 3, 716), dtype=np.uint8)
+            du[:, 0, 0] = [70, 71, 72]
+            groups, keys = root/'groups.npz', root/'keys.npz'
+            np.savez(groups, counters=[70, 71, 72], du=du)
+            key_bytes = np.tile(np.arange(16, dtype=np.uint8), (4, 1))
+            key_bytes[:, 0] = [71, 132, 70, 72]
+            mask = np.ones((4, 16), dtype=bool)
+            mask[0, 15] = False
+            mask[3, :] = False
+            np.savez(keys, counters=[71, 900, 70, 72], ks=key_bytes, crc_supported=mask,
+                     candidate_mask=np.ones_like(mask))
+            matched, matched_key, matched_du, _ = join_supported(groups, keys)
+            np.testing.assert_array_equal(matched, [70])
+            np.testing.assert_array_equal(matched_key, key_bytes[2:3])
+            np.testing.assert_array_equal(matched_du, du[:1])
 
     def test_gap_limit_and_singleton_runs(self):
         offsets = [0, 5, 11, 12]

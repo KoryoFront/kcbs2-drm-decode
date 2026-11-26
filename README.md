@@ -6,10 +6,13 @@ side-channel text, and renders experimental audio through a candidate codec.
 **There is no verified broadcast audio decode** and no demonstrated complete
 Korean-text recovery in this repo.
 
-## Render the bundled 19:06 recording
+## Play or render the bundled 19:06 recording
 
-Three adjacent Daegu 3205 kHz captures from March 16, 2026 are in `recordings/`.
-Their MSC dumps are in `dumps/`, so this example does not require a demodulator.
+[**Download the quieter listening WAV**](https://github.com/KoryoFront/kcbs2-drm-decode/releases/download/march-19m-quiet/KCBS2_MARCH_UNVERIFIED_REPLAY_QUIETER_32k.wav)
+(19:06, mono 32 kHz PCM, −24.4 LUFS). It is a reconstruction from three adjacent
+Daegu 3205 kHz captures from March 16, 2026, not a verified broadcast decode.
+
+To reproduce it from the bundled MSC dumps without rebuilding the DRM demodulator:
 
 1. Install Python 3.10+, `pip install -r requirements.txt`, and WSL2 with Ubuntu.
    The Python codec wrappers invoke the Linux binary through WSL.
@@ -23,32 +26,28 @@ Their MSC dumps are in `dumps/`, so this example does not require a demodulator.
 3. From the repo root in Git Bash, run:
 
    ```bash
-   python scripts/kcbs_decode_fast.py recordings/*_iq.wav --out work/march_1906
+   python scripts/kcbs_decode_fast.py recordings/*_iq.wav --out work/march_1906 \
+       --replay-nearby --attenuate-db 2.2
    ```
 
-The output, `work/march_1906/KCBS2_MARCH_UNVERIFIED_32k_25463783-25464737.wav`,
-is 19:06 of mono 32 kHz PCM. Rendering from cached dumps takes about 30 seconds
-with the codec already built. Use a new `--out` directory for each run.
+This writes `KCBS2_MARCH_UNVERIFIED_REPLAY_QUIETER_32k_25463783-25464737.wav`
+and `report.json`. Use a new `--out` directory for each render.
 
 - **865 of 955** timeline groups (90.6%) have a CRC-supported 16-byte mask prefix.
-  That leaves **12,975 fully unmasked frame slots out of 57,300**. Unmasked
-  bytes are not the same as verified speech.
-- In each keyed group, one in four slots is fully unmasked. The next slot uses
-  six substitute bytes from the preceding slot. The last two are marked lost.
-- Counter gaps keep their original duration. By default the decoder bridges up
-  to four missing groups; longer gaps are silent with 20 ms fades at the edges.
-  The longest silence is **3:18–4:00**. See `report.json` for all intervals.
-- `--merge-gap 0` silences every missing group. `--rate` accepts 16000, 32000,
-  or 48000. `--fresh` ignores the bundled dumps and requires patched Dream.
-
-An optional listening filter reduces the repeating four-slot loudness swing. It
-only attenuates samples, leaves silent gaps intact, and does not recover speech:
-
-```bash
-python scripts/march_listening_filter.py \
-    work/march_1906/KCBS2_MARCH_UNVERIFIED_32k_25463783-25464737.wav \
-    --out work/march_1906/KCBS2_MARCH_UNVERIFIED_32k_LESS_FLUTTER.wav
-```
+  That gives **12,975 fully unmasked frame slots out of 57,300**, not 90.6%
+  verified audio.
+- Within a keyed four-frame cycle, the first slot is fully unmasked and the
+  second has six substitute bytes. With `--replay-nearby`, the third copies the
+  second, and the fourth copies the next fully unmasked frame when available
+  or falls back to the second. These copies do not restore missing frames.
+- The quieter edition uses a fixed **2.2 dB attenuation** relative to the raw
+  replay render, with no compression or peak limiting.
+- Counter gaps retain their duration. Gaps of up to four groups use decoder
+  concealment; longer gaps are digital silence with 20 ms fades at the edges.
+  The longest silence is **3:18–4:00**. `--merge-gap 0` silences every gap.
+- Omit `--replay-nearby` to use decoder concealment in the last two slots of each
+  keyed cycle instead. `--rate` accepts 16000, 32000, or 48000. `--fresh` ignores
+  the bundled dumps and requires patched Dream.
 
 ## Record and decode your own captures
 
@@ -57,8 +56,9 @@ Use **IQ**, not the KiwiSDR’s audio output. A good starting point is
 payload and can be better under different reception conditions. Our pooled
 windows yielded 76% CRC-good on 3205 and 30% on 6140; those are sample results,
 not intrinsic properties of the frequencies. Daejeon (`hik.iptime.org`) and
-Japanese receivers are also useful for simultaneous captures. Reported DRM hours
-are **05:00–03:00 KST** (20:00–18:00 UTC); a failed lock does not prove it was off-air.
+Japanese receivers are also useful for simultaneous captures. Current reported DRM
+hours are **05:00–23:00 KST** (20:00 UTC the previous day to 14:00 UTC), confirmed
+on 2026-11-26. A failed lock does not prove the transmitter was off-air.
 
 ```bash
 python kiwirecorder.py -s hl5ntr.ddns.net -p 8074 -f 3205 -m iq \
@@ -90,6 +90,25 @@ python scripts/salvage_msc_packets.py receiver-a.msc.bin receiver-b.msc.bin \
 Salvage merges packet-CRC-good payloads at the same counter and phase, rejects
 conflicting copies, and requires the reassembled data unit to pass its CRC.
 The March fast path instead uses complete CRC-good groups in the cached dumps.
+
+For a non-idle capture, the same replay can render excerpts from a complete
+CRC-supported mask prefix. It never promotes the Hangul-density candidates:
+
+```bash
+python scripts/render_supported_nonidle.py \
+    --groups work/mycapture/salvage/groups.npz \
+    --keys work/mycapture/keys/keys.npz --out work/nonidle_replay
+```
+
+The output joins contiguous supported runs with half-second silent separators.
+Its report maps excerpt positions back to source counters. It is an excerpt reel,
+not a continuous capture or a verification of the audio.
+
+To check for a pre-programme RF pulse from two overlapping recordings, use
+`python scripts/rf_pulse_check.py --help`. In one June pair on 3205 and 6140 kHz
+no consistent period stood out in both receivers and both halves of the shared
+interval. This does not rule out a pulse in programme audio. If confirmed, a
+pulse can help with alignment; it does not recover missing frame bytes.
 
 ## Container and partial mask
 
@@ -170,6 +189,25 @@ groups and the full timeline. Fixed-grid coverage is not a ceiling.
   different frames. It did not apply a shared XOR mask to those frames and does
   not establish that the six bytes are impossible to recover. Substitutes and
   decoder concealment can sound unnatural or speech-like without matching speech.
+
+## Playback controls
+
+The replay method improved held-out eSTOI from **0.437 to 0.520** on four genuine
+EVS speech excerpts with the March loss pattern. The metric compares against the
+full EVS encode, not the broadcast. Three synthetic instrumental controls showed
+no meaningful gain in spectral similarity. Music in the listening copy remains
+rough. These results neither identify the broadcast codec nor verify speech.
+
+To benchmark your own local speech material after building the codec, install
+FFmpeg and `pystoi`, then run:
+
+```bash
+python scripts/benchmark_loss_handling.py --speech local_speech.wav --out work/replay_controls
+```
+
+The benchmark needs at least 18 minutes of audio for the selected offsets. It
+encodes independent controls locally, compares seven strategies, and keeps its
+selection and held-out slices separate.
 
 ## Tests and licensing
 

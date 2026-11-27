@@ -70,7 +70,7 @@ class TextRecordsTest(unittest.TestCase):
             parse_record(make_record(b"\x00\xd8"), check_charset=False)
 
     def test_printable_text_and_character_controls(self):
-        text = "한글\t12.5㎏ / 漢字\r\nNext \U0001f326"
+        text = "한글\t12.5㎏ / 漢字\r\n　Next \U0001f326"
         row = make_record(text.encode("utf-16le"))
         self.assertEqual(parse_record(row).text, text)
         for text in ("A\x00", "A\x1b", "A‮", "A​", "뮻" * 3, "--\r\n", ""):
@@ -98,11 +98,10 @@ class TextRecordsTest(unittest.TestCase):
         with self.assertRaisesRegex(RecordError, "truncated header"):
             parse_record(row[:1])
 
-    def test_final_neither_requires_nor_allows_immediate_fill(self):
+    def test_final_accepts_optional_known_fill_and_ignores_other_trailing_blocks(self):
         row = make_record(b"A\0", final=True)
         self.assertEqual(parse_record(row).size, len(row))
-        with self.assertRaisesRegex(RecordError, "unexpected fill block"):
-            parse_record(row + b"\xbb" * 16)
+        self.assertEqual(parse_record(row + b"\xbb" * 16).size, len(row) + 16)
         with self.assertRaisesRegex(RecordError, "truncated record"):
             parse_record(row[:-1])
         self.assertEqual(parse_record(row + bytes(16)).size, len(row))

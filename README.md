@@ -116,21 +116,26 @@ verified text prefixes.
 
 [**Download the quieter 17:40.8 listening WAV**](https://github.com/KoryoFront/kcbs2-drm-decode/releases/download/november-quiet-review/KCBS2_NOV25_UNVERIFIED_QUIET_17m40_32k.wav).
 It uses the same counter span as the previous November 24 UTC / November 25 KST
-sample. This time **671 of 884 timeline groups** have full 16-byte prefixes checked
-against repeated records. This is group coverage, not a percentage of verified
-speech or music. Role 2 is concealed; role 3 can replay the next fully unmasked
-frame. The copy measures **−26.7 LUFS**, with a **−2.6 dBTP** true peak and
-11 silent gaps of their original durations. The March release is unchanged.
+sample. The `november-quiet-review` release binary covered 671 of 884 timeline
+groups (−26.7 LUFS, −2.6 dBTP, 11 silent gaps). After updating
+`parse_text_records.py` to accept CJK paragraph-indent spaces (`U+3000`) and
+optional `0xBB` fill blocks after item-final records, all **717 of 884 timeline
+groups** (`860.4 s`, leaving **8** silent gaps) pass both strict record CRC and
+969-block carousel repeat checks. This is group coverage, not a percentage of
+verified speech or music. Role 2 is concealed; role 3 can replay the next fully
+unmasked frame.
 
 [Martyn’s contribution](contrib/kcbsdrm/README.md) supplies six matching groups of
 dumps, prefix archives, record reports and Korean text. All **3,517** exported full prefixes matched complete received groups by
-counter; the six captures contain **4,421** complete groups in total. Rechecking header/body CRC, padding, fill, and matching records
-at the same position in the carousel kept **3,007 full prefixes**. Repeat agreement
-is an extra consistency check, not authentication; the exports are not a source
-of keys for future broadcasts.
+counter; the six captures contain **4,421** complete groups in total. Rechecking header/body CRC, padding, fill, and matching carousel
+copies on the four multi-loop captures (plus strict CRC/framing on the two
+single-loop captures) kept **3,435 full prefixes** (up from 3,007 before the
+`U+3000` and item-final fill fixes). Repeat agreement is an extra consistency
+check, not authentication; the exports are not a source of keys for future
+broadcasts.
 
-With FFmpeg and the EVS build from the March quickstart, reproduce the release
-from the contributed data (Git Bash):
+With FFmpeg and the EVS build from the March quickstart, render the updated
+717-group timeline from the contributed data (Git Bash):
 
 ```bash
 python scripts/salvage_msc_packets.py \
@@ -249,16 +254,18 @@ syllable, and forcing a fill biases this score.
 
 **Variable-length records:** `scripts/parse_text_records.py` checks already-available
 plaintext using the reported block-aligned header, length `((b0 & 7) << 4) | (b1 & 0x0f)`,
-last-record flag, sequence number, CRC, zero padding and a fill block after a non-final
-record. The optional same-length `--known-bytes` map (0 or 1 per input byte) prevents
-unknown bytes from being treated as evidence. Title and item signalling are not parsed.
+last-record flag, sequence number, CRC, zero padding, a mandatory fill block after a
+non-final record, and an optional fill block after an item-final record. The optional
+same-length `--known-bytes` map (0 or 1 per input byte) prevents unknown bytes from
+being treated as evidence. Binary item-metadata blocks and title headers are not parsed.
 
 ```bash
 python scripts/parse_text_records.py plaintext.bin --known-bytes known_mask.bin
 ```
 
-In the contributed archives, the parser rechecked **1,324** full records,
-including **42** final records. Observed bodies span 8–92 bytes rather than a
+In the contributed archives, the parser rechecked **1,469** full records,
+including **123** final records (469 and 247 on the first two November 25
+sets, matching the contributed record counts). Observed bodies span 8–92 bytes rather than a
 fixed 92. The reported ~93% figures count records; the group counts above use
 a different denominator. `review_supplied_records.py` only narrows existing
 masks to observations that pass the review; it never infers new mask bytes.

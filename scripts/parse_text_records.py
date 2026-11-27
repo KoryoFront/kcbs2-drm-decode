@@ -42,13 +42,13 @@ def crc(data: bytes) -> int:
 
 
 def plausible_text(text: str) -> bool:
-    """Allow printable Unicode and TAB/CR/LF; require a non-fill letter/number.
+    """Allow printable Unicode, TAB/CR/LF, and CJK indent U+3000; require a non-fill letter/number.
 
     This is a conservative display-text heuristic, not language detection.
     Empty, punctuation-only, and fill-only fragments can pass the structural
     checks but not this gate. U+BBBB is itself a printable Hangul syllable.
     """
-    return all(ch.isprintable() or ch in "\t\r\n" for ch in text) and any(
+    return all(ch.isprintable() or ch in "\t\r\n　" for ch in text) and any(
         ch != "뮻" and unicodedata.category(ch)[0] in "LN" for ch in text
     )
 
@@ -58,10 +58,11 @@ def parse_record(plaintext: bytes, offset: int = 0, *,
                  check_charset: bool = True) -> TextRecord:
     """Check one aligned candidate. When supplied, 0x01 marks a known byte.
 
-    A record must be fully known through its padding (and mandatory fill if
-    nonfinal). A final record consumes no fill; a fully known, immediately
-    following fill block is rejected. Other following bytes are not consumed.
-    Unspecified header bits are retained in header_hex, not interpreted.
+    A nonfinal record must be fully known through its mandatory trailing fill.
+    An item-final record requires known bytes through its zero-padded block and
+    additionally consumes an immediately following fill block when known and
+    present before item metadata. Unspecified header bits are retained in
+    header_hex, not interpreted.
     """
     if known_bytes is not None and len(known_bytes) != len(plaintext):
         raise ValueError("known-byte map must be exactly the input length")
@@ -84,21 +85,24 @@ def parse_record(plaintext: bytes, offset: int = 0, *,
     crc_end = body_end + 2
     pad_end = ((crc_end + BLOCK_SIZE - 1) // BLOCK_SIZE) * BLOCK_SIZE
     fill_end = pad_end + BLOCK_SIZE
-    end = pad_end if final else fill_end
+    required_end = pad_end if final else fill_end
 
-    if end > len(plaintext):
+    if required_end > len(plaintext):
         raise RecordError("truncated record")
-    if not known(offset, end):
+    if not known(offset, required_end):
         raise RecordError("unknown record bytes")
     if crc(plaintext[offset:body_end]) != int.from_bytes(plaintext[body_end:crc_end], "big"):
         raise RecordError("CRC mismatch")
     if any(plaintext[crc_end:pad_end]):
         raise RecordError("nonzero padding")
     if final:
-        if plaintext[pad_end:fill_end] == FILL and known(pad_end, fill_end):
-            raise RecordError("unexpected fill block after final record")
-    elif plaintext[pad_end:fill_end] != FILL:
-        raise RecordError("invalid nonfinal fill block")
+        has_known_fill = (fill_end <= len(plaintext) and known(pad_end, fill_end)
+                          and plaintext[pad_end:fill_end] == FILL)
+        end = fill_end if has_known_fill else pad_end
+    else:
+        if plaintext[pad_end:fill_end] != FILL:
+            raise RecordError("invalid nonfinal fill block")
+        end = fill_end
     try:
         text = plaintext[offset + 2:body_end].decode("utf-16le")
     except UnicodeDecodeError as exc:

@@ -1,12 +1,14 @@
 # KCBS-2 DRM decoder
 
 Tools for analysing the **KCBS-2** Digital Radio Mondiale shortwave broadcast from
-raw KiwiSDR IQ recordings. The repo parses the DRM container, recovers some
-side-channel text, and renders experimental audio through a candidate codec.
-The March role-0 EVS output reproduces a specific spectral feature of the RF
-capture, but a complete programme/audio match is not verified. The November
-contribution adds variable-length records and greatly improves usable text-tail
-coverage.
+raw KiwiSDR IQ recordings. The repo parses the DRM container, salvages CRC-good
+179-byte packets across partial groups, recovers side-channel text, and renders
+experimental audio through the 3GPP EVS reference codec. The March role-0 EVS
+output reproduces a specific spectral feature of the RF capture, though a
+complete programme match is not verified. Contributed November work adds
+variable-length text records ([contrib/kcbsdrm](contrib/kcbsdrm/README.md)) and
+capture-specific measured masks ([docs/measured-masks.md](docs/measured-masks.md))
+from [skgsara/kcbs-drm](https://github.com/skgsara/kcbs-drm).
 
 ## Play or render the bundled 19:06 recording
 
@@ -32,21 +34,30 @@ To reproduce it from the bundled MSC dumps without rebuilding the DRM demodulato
        --replay-nearby --attenuate-db 2.2
    ```
 
-This writes `KCBS2_MARCH_UNVERIFIED_REPLAY_QUIETER_32k_25463783-25464737.wav`
-and `report.json`. Use a new `--out` directory for each render.
+This writes `KCBS2_MARCH_UNVERIFIED_REPLAY_QUIETER_32k_25463782-25464738.wav`
+(19:08.4) and `report.json`. Use a new `--out` directory for each render.
 
-- **865 of 955** timeline groups (90.6%) have a CRC-supported 16-byte mask prefix.
-  That gives **12,975 fully unmasked frame slots out of 57,300**, not 90.6%
-  verified audio.
+- **916 of 957** timeline groups (95.7%) supply verified 16-byte idle-tail
+  prefixes: **866** complete three-phase groups plus **50** partial groups where
+  at least two phases confirm the same 16-byte prefix and frames are extracted
+  from individually CRC-good 179-byte packets. That yields **13,566 fully unmasked
+  role-0 frame slots out of 57,420**, not 95.7% verified audio.
+- Per-packet extraction eliminates all five in-capture silent dropouts caused by
+  whole-group rejection. The render runs in **two continuous decoder passes**
+  separated only by the **40.8 s** off-air pause between adjacent recordings at
+  **3:19.2–4:00.0**. Pass `--complete-groups-only` to require full three-phase
+  groups (`866` groups; `865 / 955` on the original six dumps used for the
+  `march-19m-quiet` release binary).
 - Within a keyed four-frame cycle, the first slot is fully unmasked and the
   second has six substitute bytes. With `--replay-nearby`, the third copies the
   second, and the fourth copies the next fully unmasked frame when available
   or falls back to the second. These copies do not restore missing frames.
 - The quieter edition uses a fixed **2.2 dB attenuation** relative to the raw
-  replay render, with no compression or peak limiting.
+  replay render, with no compression or peak limiting (`0` clipped samples).
 - Counter gaps retain their duration. Gaps of up to four groups use decoder
   concealment; longer gaps are digital silence with 20 ms fades at the edges.
-  The longest silence is **3:18–4:00**. `--merge-gap 0` silences every gap.
+  `--merge-gap 0` silences every gap. `--slice START_SEC END_SEC` also exports a
+  lossless WAV excerpt from the rendered timeline.
 - Omit `--replay-nearby` to use decoder concealment in the last two slots of each
   keyed cycle instead. `--rate` accepts 16000, 32000, or 48000. `--fresh` ignores
   the bundled dumps and requires patched Dream.
@@ -90,14 +101,16 @@ python scripts/salvage_msc_packets.py receiver-a.msc.bin receiver-b.msc.bin \
 ```
 
 Salvage merges packet-CRC-good payloads at the same counter and phase, rejects
-conflicting copies, and requires the reassembled data unit to pass its CRC.
-The March fast path instead uses complete CRC-good groups in the cached dumps.
-On the longest bundled March capture, both paths independently return the same
-708 counters and data units; salvage adds zero, so it does not explain the
-reported 702 count. Martyn’s 702 groups are a byte-identical subset of those
-708; his dump lacks the other six. For June, combining CRC-good packets across the two
-frequencies yields **410 complete groups instead of 408**.
-The two added groups are not additional verified text prefixes.
+conflicting copies, and requires the reassembled data unit to pass its CRC
+(`kcbs_decode_fast.py` additionally extracts frames from partial groups when at
+least two phases confirm the idle-tail prefix). Comparing complete three-phase
+groups on the original longest March capture, both whole-group audit and packet
+salvage independently return the same 708 counters and data units; salvage adds
+zero complete groups there, so it does not explain the reported 702 count.
+Martyn’s 702 groups are a byte-identical subset of those 708; his dump lacks the
+other six. For June, combining CRC-good packets across the two frequencies yields
+**410 complete groups instead of 408**. The two added groups are not additional
+verified text prefixes.
 
 ## Render the contributed November recording
 
@@ -156,6 +169,33 @@ mode-edge counters without mistaking gaps for transitions:
 ```bash
 python scripts/audit_capture_layout.py work/mycapture/salvage/groups.npz
 ```
+
+## Replay measured November masks (roles 1–3)
+
+For two November captures where commercial releases airing on KCBS-2 were
+identified (*행복한 내 나라* on a 1991 Wangjaesan CD and Pyongyang FM archive on
+November 27; two Moranbong Band releases on November 19), [skgsara/kcbs-drm](https://github.com/skgsara/kcbs-drm)
+published capture-specific role-1/2/3 mask tables inferred by matching EVS
+codec parameters and bit-budget constraints across all 15 cycles of a group
+against those external reference recordings. See [docs/measured-masks.md](docs/measured-masks.md)
+for details and limitations.
+
+To reproduce the 30-second November 27 render bit-exactly on your local EVS build:
+
+```bash
+python scripts/render_measured_evs.py examples/nov27/receiver \
+    --masks dumps/nov27-measured-masks.json --received-span --out work/nov27
+python examples/nov27/validation/check.py
+```
+
+`render_measured_evs.py` verifies each phase's 716-byte SHA-256 and per-packet
+CRCs before applying any mask, producing `programme.192` with expected SHA-256
+`2ae4c7d6f186558db6f96cfc9c4c613e4d9702175f3980c855784fb3b4b32738` (**355**
+text-CRC-supported + **795** acoustically inferred = **1,150 / 1,500** supplied
+frames; **350** concealed). `check.py` independently verifies all ten weather
+record CRCs and rebuilds every supplied frame from the bundled packet bodies.
+Inferred masks apply only to the exact data units they were measured on and do
+not recover per-counter keys for other broadcasts.
 
 ## Container and partial mask
 
@@ -298,13 +338,13 @@ scripts. The reported operating hours remain **05:00–23:00 KST**.
 ## Tests and licensing
 
 ```bash
-for t in test_key_recovery test_november_recovery test_speech_reconstruction test_aio_pipeline test_march_playback test_text_records test_capture_layout test_supplied_records; do
-    python scripts/$t.py || exit 1
-done
+python -m unittest discover -s scripts -p 'test_*.py'
+python examples/nov27/validation/check.py
 ```
 
-The tests use synthetic inputs to check CRC and salvage, key evidence, alignment,
-frame placement, donor-byte coordinates, gap length, and fades. The bundled March and November
-commands are end-to-end checks. Dream is GPL; see [docs/NOTICE.md](docs/NOTICE.md)
-and [docs/COPYING.FAAD2](docs/COPYING.FAAD2) for third-party notices. The 3GPP EVS
-reference codec is not redistributed here.
+The unit suite (55 tests) uses synthetic inputs to check packet/DU CRCs,
+partial-group idle-tail salvage, conflict quarantine, measured-mask SHA binding,
+key evidence, alignment, frame placement, donor-byte coordinates, gap length,
+and fades. The bundled March and November commands are end-to-end checks. Dream
+is GPL; see [docs/NOTICE.md](docs/NOTICE.md) and [docs/COPYING.FAAD2](docs/COPYING.FAAD2)
+for third-party notices. The 3GPP EVS reference codec is not redistributed here.

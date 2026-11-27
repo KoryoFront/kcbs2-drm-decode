@@ -5,9 +5,13 @@ import unittest
 
 import numpy as np
 
-from kcbs_decode_fast import assemble_frames, attenuate, group_runs, render_timeline, replay_nearby
+from kcbs_decode_fast import (
+    IDLE_TAILS, assemble_frames, assemble_salvaged_idle, attenuate,
+    group_runs, render_timeline, replay_nearby, salvage_idle_packets,
+)
 from march_listening_filter import reduce_flutter
 from render_supported_nonidle import join_supported
+from tail_fill_audit import crc
 
 
 class MarchPlaybackTests(unittest.TestCase):
@@ -41,6 +45,13 @@ class MarchPlaybackTests(unittest.TestCase):
         np.testing.assert_array_equal(out[:, 0], [0, 1, 1, 4, 4, 5, 5, 5, 8, 9, 10, 11, 12, 13, 13, 13])
         np.testing.assert_array_equal(out[supplied], frames[supplied])
         np.testing.assert_array_equal(keep, np.repeat([True, True, False, True], 4))
+
+    def test_replay_keeps_a_partial_final_cycle(self):
+        frames = np.repeat(np.arange(7, dtype=np.uint8)[:, None], 33, axis=1)
+        supplied = np.array([True, True, False, False, True, True, False])
+        out, keep = replay_nearby(frames, supplied)
+        np.testing.assert_array_equal(out[:, 0], [0, 1, 1, 4, 4, 5, 5])
+        self.assertTrue(keep.all())
 
     def test_attenuation_is_signed_and_does_not_change_length(self):
         source = np.array([-32768, -5000, 0, 5000, 32767], dtype='<i2')
@@ -104,6 +115,44 @@ class MarchPlaybackTests(unittest.TestCase):
         self.assertFalse(out[source == 0].any())
         self.assertTrue((np.abs(out) <= np.abs(source)).all())
         self.assertLess(stats['held_out_slot_spread_db_after'], stats['held_out_slot_spread_db_before'])
+
+    def test_salvaged_idle_recovers_partial_group_and_quarantines_conflicts(self):
+        rng = np.random.default_rng(77)
+        key = np.arange(10, 26, dtype=np.uint8)
+        du = rng.integers(0, 256, (3, 716), dtype=np.uint8)
+        counter = 500
+        du[0, 664:668] = np.frombuffer(counter.to_bytes(4, 'big'), dtype=np.uint8)
+        for p in range(3):
+            du[p, 1] = p << 4
+            du[p, 698:714] = np.frombuffer(IDLE_TAILS[p], dtype=np.uint8) ^ key
+            du[p, 714:716] = np.frombuffer(crc(du[p, :714]).to_bytes(2, 'big'), dtype=np.uint8)
+
+        def pack_record(unit, corrupt_packet=None):
+            chunks = []
+            for q in range(4):
+                body = bytearray([q]) + bytearray(unit[q * 179 : (q + 1) * 179])
+                pkt_crc = crc(body)
+                if q == corrupt_packet:
+                    pkt_crc ^= 0xFFFF
+                chunks.append(bytes(body) + pkt_crc.to_bytes(2, 'big'))
+            raw = b''.join(chunks)
+            return len(raw).to_bytes(4, 'little') + raw
+
+        with tempfile.TemporaryDirectory() as td:
+            dump = Path(td) / 'partial.msc.bin'
+            # Phase 2 loses packet 2 (bytes 358..537), while phases 0 and 1 are intact.
+            dump.write_bytes(pack_record(du[0]) + pack_record(du[1]) + pack_record(du[2], corrupt_packet=2))
+            payloads = salvage_idle_packets([dump])
+            counters, frames, supplied, exact_r0 = assemble_salvaged_idle(payloads)
+            np.testing.assert_array_equal(counters, [counter])
+            self.assertGreater(exact_r0, 10)
+            self.assertLess(exact_r0, 15)
+            # Injecting a conflicting packet observation on phase 0 packet 3 drops that phase's key vote;
+            # injecting a second conflict on phase 1 packet 3 leaves <2 agreeing phases and rejects the group.
+            payloads[(counter, 0, 3)].add(b'\x00' * 179)
+            payloads[(counter, 1, 3)].add(b'\x00' * 179)
+            counters2, _, _, _ = assemble_salvaged_idle(payloads)
+            self.assertEqual(len(counters2), 0)
 
 
 if __name__ == '__main__':

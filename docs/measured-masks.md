@@ -21,15 +21,15 @@ role 1, 11 in role 2, 10 in role 3 (the fourth frame's terminal byte is
 received clear). So text-only recovery gives at most role 0 and a partial
 role 1 — one to one-and-a-bit of every four frames — and conceals the rest.
 
-skgsara's masks are measured by a **known-plaintext attack in the codec
-domain**: the broadcast is a commercially released performance (identified, e.g.
-*행복한 내 나라* on the 1991 Wangjaesan CD, and the Nov 19 Moranbong Band tracks),
-so an aligned reference encode gives known EVS-internal values (sign-bit
-addresses, TCX coefficients, LP/HQ fields). Candidate mask bytes are ranked and
-cross-checked against two independent references (FM + CD) and across cycle
-splits, and are kept only where the choice is unique under the codec's bit
-budget. This recovers role-1/2/3 masks the text tail never touches — the
-substantive coverage gain over prefix-only decoding.
+skgsara's masks are inferred in the **EVS codec domain against external
+reference recordings**: the broadcast is a commercially released performance
+(identified, e.g. *행복한 내 나라* on the 1991 Wangjaesan CD, and the Nov 19
+Moranbong Band tracks), so an aligned reference encode gives expected
+EVS-internal values (sign-bit addresses, TCX coefficients, LP/HQ fields).
+Candidate mask bytes are ranked and cross-checked against two independent
+references (FM + CD) and across cycle splits, and are kept only where the choice
+is unique under the codec's bit budget. This fills role-1/2/3 slots the text
+tail never touches — the substantive coverage gain over prefix-only decoding.
 
 **Honesty, carried over from upstream.** These are *inferred* masks, not
 text-CRC-verified keys. The renderer labels each supplied slot `established`
@@ -62,11 +62,13 @@ Of the 1,500 EVS slots in the 30-second November 27 capture:
 | inferred (acoustic, roles 1–4) | 795 |
 | erased (concealed) | 350 |
 
-By frame position: role 1 = 375, role 2 = 285, role 3 = 265, role 4 = 225.
-That is **77 % of frames supplied** versus roughly the role-0 share (~25 %)
-from the text tail alone.
+By 1-based frame position (roles 0–3): position 1 = 375, position 2 = 285,
+position 3 = 265, position 4 = 225. That is **77 % of frames supplied** versus
+roughly the role-0 share (~25 %) from the text tail alone.
 
-`examples/nov27/validation/check.py` recomputes the weather-record CRCs and
-rebuilds each supplied EVS word from the bundled packet bodies and masks.
-Reproducing the *acoustic* search additionally requires the aligned FM and CD
-references and the instrumented reader, which are not bundled.
+`python examples/nov27/validation/check.py` recomputes all ten weather-record
+CRCs, rebuilds each supplied EVS word from the bundled packet bodies and masks,
+and verifies every frame against the bundled `programme.192.gz`,
+`text-supported.192.gz`, and `frames.csv`. Reproducing the acoustic inference
+additionally requires the aligned FM and CD references and the instrumented
+reader, which are not bundled.

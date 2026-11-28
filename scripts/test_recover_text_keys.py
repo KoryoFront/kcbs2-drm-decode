@@ -87,6 +87,47 @@ class RecoverTextKeysTest(unittest.TestCase):
             recovered = self._run(tails, Path(td))
         self.assertEqual(recovered, {})
 
+    def test_carousel_xor_link_keys_a_non_record_sibling(self):
+        # Two clean copies verify groups 100-103 via carousel repeat. A third copy one
+        # period later (groups 104-105) has a corrupted CRC, so it is not a valid record
+        # and cannot be found by the scanner; its text blocks still match the verified
+        # copies at the carousel distance, so the XOR-link keys it.
+        plain = np.frombuffer(self.record, np.uint8).reshape(6, 16)
+        groups = (100, 101, 102, 103, 104, 105)
+        keys = {g: self.rng.integers(0, 256, 16, np.uint8) for g in groups}
+        tails = {}
+        for copy in range(3):
+            raw = bytearray(self.record)
+            if copy == 2:
+                raw[90] ^= 1  # corrupt the CRC region of the third copy
+            blocks = np.frombuffer(bytes(raw), np.uint8).reshape(6, 16)
+            for b in range(6):
+                block = copy * self.PERIOD + b
+                group, phase = groups[block // 3], block % 3
+                tails[3 * group + phase] = blocks[b] ^ keys[group]
+        with tempfile.TemporaryDirectory() as td:
+            recovered = self._run(tails, Path(td))
+        self.assertEqual(set(recovered), set(groups))
+        for g in (104, 105):
+            np.testing.assert_array_equal(recovered[g], keys[g])
+
+    def test_period_auto_detected_when_omitted(self):
+        from recover_text_keys import detect_period
+        tails, _ = self._build()
+        tailmap = {t: v for t, v in tails.items()}
+        first = min(t // 3 for t in tails)
+        span = max(t // 3 for t in tails) - first + 1
+        # supplied keys are empty here, so detect from the already-plain records instead:
+        # build a keyed map by brute truth to confirm the dominant distance is PERIOD.
+        plain = np.frombuffer(self.record, np.uint8).reshape(6, 16)
+        keys = {}
+        for copy in (0, 1):
+            for b in range(6):
+                block = copy * self.PERIOD + b
+                g = self.GROUPS[block // 3]
+                keys[g] = tailmap[3 * g + block % 3] ^ plain[b]
+        self.assertEqual(detect_period(keys, tailmap, first, span), self.PERIOD)
+
 
 if __name__ == "__main__":
     unittest.main()

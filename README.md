@@ -130,20 +130,28 @@ Three things close the other gaps, each at or above the existing CRC bar:
 2. **Additive prefix recovery.** `recover_text_keys.py` proposes a text-tail prefix for
    groups the supplied archive left unkeyed (skgsara's phrase method, plus item-opening
    `0x45/0xFC` title records), then keeps it **only** when the tail decrypts to a record
-   whose CRC passes *and* whose body recurs at the 969-block carousel period, or when two
-   or more phases independently reproduce an already-established block (128-bit agreement).
-   A 16-bit CRC a wrong key hits by chance cannot also recur at the exact carousel offset.
+   whose CRC passes *and* whose body recurs at the carousel period, or when two or more
+   phases independently reproduce an already-established block (128-bit agreement). A
+   16-bit CRC a wrong key hits by chance cannot also recur at the exact carousel offset.
+   Once a group is trusted, its decrypted blocks are the plaintext of the matching blocks
+   one carousel period away, so a **carousel XOR-link** keys siblings whose own content
+   never forms a verifiable record, again gated by two-phase agreement. The carousel
+   period is auto-detected from the supplied records.
 3. **Partial-phase rendering.** `render_supported_nonidle.py --data-units` renders role-0
    audio from every received phase of a keyed group, not only complete three-phase groups.
 
-Together these raise the listening span from 717 to **816 of 884 groups** with role-0
+Together these raise the listening span from 717 to **817 of 884 groups** with role-0
 audio. This is group coverage, not a percentage of verified speech or music: role 0 is
-exact, role 1 keeps six substitute bytes, and roles 2/3 are concealed or replayed.
+exact, role 1 keeps six substitute bytes, and roles 2/3 are concealed or replayed. Across
+the six contributed captures the well-received ones are now gap-free or nearly so (the
+12:46 KST capture has no silent gap; 10:08 KST has one 1.2 s group), while the two weak
+captures (26th 05:00 and 06:42 KST) keep large gaps because many of their groups were
+never received — a reception limit, not a decode one.
 
 [Martyn’s contribution](contrib/kcbsdrm/README.md) supplies six matching captures of
 dumps, prefix archives, record reports and Korean text. Across them, `recover_text_keys.py`
 adds CRC-and-carousel-verified prefixes beyond the supplied set; on the November 25
-04:48+04:57 capture it recovers **153** further prefixes (1,114 → 1,267). Repeat agreement
+04:48+04:57 capture it recovers **154** further prefixes (1,114 → 1,268). Repeat agreement
 is an extra consistency check, not authentication, and no recovered prefix supplies the
 role-1/2/3 audio masks or a per-counter keystream for other broadcasts.
 
@@ -156,7 +164,7 @@ python scripts/salvage_msc_packets.py \
 python scripts/recover_text_keys.py \
     --data-units work/november/data_units.npz \
     --keys contrib/kcbsdrm/keys/keys_2026-11-25.npz \
-    --reference contrib/kcbsdrm/reference --repeat-blocks 969 --out work/november_keys
+    --reference contrib/kcbsdrm/reference --out work/november_keys
 python scripts/render_supported_nonidle.py \
     --data-units work/november/data_units.npz --keys work/november_keys/keys.npz \
     --timeline --start-counter 43679908 --end-counter 43680791 \

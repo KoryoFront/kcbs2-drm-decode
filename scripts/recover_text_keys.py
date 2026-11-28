@@ -21,12 +21,13 @@ group stays a miss. Nothing here infers a per-counter keystream, and a recovered
 supports the 16-byte text tail only, never the role-1/2/3 audio masks or codec identity.
 """
 import argparse
+from collections import Counter
 import json
 from pathlib import Path
 
 import numpy as np
 
-from parse_text_records import scan_records, crc
+from parse_text_records import scan_records
 from tail_fill_audit import text_unit
 
 CAROUSEL_SPAN = 4          # carousel copies searched either side for propagation
@@ -146,36 +147,56 @@ def _scan_verified(keys, tails, first, span, repeat_blocks):
     return verified, group_keys, plain
 
 
-def _carousel_plaintext(verified, plain, first, repeat_blocks):
-    """Known plaintext at each carousel copy of a verified record.
+def detect_period(keys, tails, first, span):
+    """Carousel period in blocks: the dominant repeat distance of supplied records.
 
-    A body record is identical across copies apart from its item-toggle bit and the
-    CRC that follows, so both toggle states propagate every block. An item-opening
-    record carries per-copy metadata (serial, clock, header toggle, check word) in
-    blocks 0, 1 and 5, so only its copy-invariant blocks (2, 3, 4 and the fill) do.
+    A record body recurs once per carousel, so the most common block distance between
+    two records with the same (sequence, final, text) is the period. Returns None when
+    there is no repeat (a capture shorter than one carousel).
+    """
+    plain = np.zeros((3 * span, 16), np.uint8)
+    known = np.zeros_like(plain, bool)
+    for tick, tail in tails.items():
+        c = tick // 3
+        if c in keys:
+            plain[tick - 3 * first] = tail ^ keys[c]
+            known[tick - 3 * first] = True
+    positions = {}
+    for r in scan_records(plain.tobytes(), known_bytes=known.tobytes()):
+        positions.setdefault((r.sequence, r.final, r.text), []).append(r.offset // 16)
+    distances = Counter()
+    for offs in positions.values():
+        offs.sort()
+        for a, b in zip(offs, offs[1:]):
+            if b > a:
+                distances[b - a] += 1
+    return distances.most_common(1)[0][0] if distances else None
+
+
+def _carousel_expected(trusted, tails, repeat_blocks):
+    """Plaintext expected at each carousel sibling, from every trusted group's blocks.
+
+    Carousel content repeats every `repeat_blocks`, so a trusted group's decrypted
+    block is the plaintext of the matching block one or more periods away. This holds
+    for any repeating content, not only CRC-verified records, which lets a key reach a
+    sibling whose own content never forms a verifiable record. Per-copy fields (item
+    toggle, serial, clock, CRC) differ between copies and simply fail to agree, so the
+    two-phase check downstream never accepts a key from them.
     """
     expected = {}
-    for r in verified:
-        base = r.offset // 16
-        nblk = r.size // 16
-        raw = plain[base:base + nblk].tobytes()
-        if _opening_header(raw[0], raw[1]):
-            emit = {k: [raw[16 * k:16 * k + 16]] for k in (2, 3, 4, 6) if k < nblk}
-        else:
-            toggled = bytearray(raw)
-            toggled[0] ^= 0x80
-            length = (toggled[0] & 7) * 16 + (toggled[1] & 15)
-            toggled[2 + length:4 + length] = crc(bytes(toggled[:2 + length])).to_bytes(2, "big")
-            emit = {k: [raw[16 * k:16 * k + 16], bytes(toggled[16 * k:16 * k + 16])]
-                    for k in range(nblk)}
-        for m in range(-CAROUSEL_SPAN, CAROUSEL_SPAN + 1):
-            for k, blocks in emit.items():
-                tick = (base + m * repeat_blocks + k) + 3 * first
-                expected.setdefault(tick, set()).update(blocks)
+    for c, key in trusted.items():
+        for p in range(3):
+            tick = 3 * c + p
+            if tick not in tails:
+                continue
+            block = (tails[tick] ^ key).tobytes()
+            for m in range(-CAROUSEL_SPAN, CAROUSEL_SPAN + 1):
+                if m:
+                    expected.setdefault(tick + m * repeat_blocks, set()).add(block)
     return expected
 
 
-def recover(data_units_npz, supplied_keys_npz, ref_dir, repeat_blocks, out, rounds=6):
+def recover(data_units_npz, supplied_keys_npz, ref_dir, repeat_blocks, out, rounds=8):
     with np.load(data_units_npz) as d:
         du_c, du_p, du = d["counters"].astype(np.int64), d["phases"].astype(np.int64), d["du"]
     tails = {int(3 * c + p): du[i, 698:714].copy() for i, (c, p) in enumerate(zip(du_c, du_p))}
@@ -185,6 +206,11 @@ def recover(data_units_npz, supplied_keys_npz, ref_dir, repeat_blocks, out, roun
     supplied = set(keys)
     all_c = sorted({t // 3 for t in tails})
     first, span = all_c[0], all_c[-1] - all_c[0] + 1
+
+    if repeat_blocks is None:
+        repeat_blocks = detect_period(keys, tails, first, span)
+        if repeat_blocks is None:
+            raise ValueError("no carousel repeat detected; pass --repeat-blocks explicitly")
 
     phrases, words, charset = build_corpus(ref_dir)
     for c in all_c:
@@ -196,12 +222,17 @@ def recover(data_units_npz, supplied_keys_npz, ref_dir, repeat_blocks, out, roun
             if cand is not None:
                 keys[c] = cand
 
-    confirmed = {}
+    # Trusted = supplied prefixes plus those confirmed by the carousel/CRC gate below.
+    confirmed = {c: keys[c] for c in supplied}
     for _ in range(rounds):
-        verified, group_keys, plain = _scan_verified(keys, tails, first, span, repeat_blocks)
-        confirmed.update(group_keys)
-        keys.update(group_keys)
-        expected = _carousel_plaintext(verified, plain, first, repeat_blocks)
+        _, group_keys, _ = _scan_verified(keys, tails, first, span, repeat_blocks)
+        for c, kv in group_keys.items():
+            confirmed[c] = kv
+            keys[c] = kv
+        # Carousel XOR-link: a trusted group's decrypted block is the plaintext of the
+        # same block one period away; a sibling two of whose phases reproduce the same
+        # 16-byte key (128-bit agreement) is confirmed.
+        expected = _carousel_expected(confirmed, tails, repeat_blocks)
         added = 0
         for c in all_c:
             if c in confirmed:
@@ -210,9 +241,8 @@ def recover(data_units_npz, supplied_keys_npz, ref_dir, repeat_blocks, out, roun
             for p in range(3):
                 tick = 3 * c + p
                 if tick in tails and tick in expected:
-                    cands = {(tails[tick] ^ np.frombuffer(pb, np.uint8)).tobytes()
-                             for pb in expected[tick]}
-                    matches[p] = cands
+                    matches[p] = {(tails[tick] ^ np.frombuffer(pb, np.uint8)).tobytes()
+                                  for pb in expected[tick]}
             union = set().union(*matches.values()) if matches else set()
             winners = [k for k in union if sum(k in s for s in matches.values()) >= 2]
             if len(winners) == 1:
@@ -223,21 +253,18 @@ def recover(data_units_npz, supplied_keys_npz, ref_dir, repeat_blocks, out, roun
         if not added:
             break
 
-    # Only prefixes confirmed by the carousel/CRC gate, or already supplied, are exported.
-    out_counters = np.array(sorted(set(confirmed) | supplied), dtype=np.uint32)
+    out_counters = np.array(sorted(confirmed), dtype=np.uint32)
     ks = np.zeros((len(out_counters), 16), np.uint8)
-    mask = np.zeros_like(ks, bool)
-    seed = {**{c: keys[c] for c in supplied}, **confirmed}
+    mask = np.ones_like(ks, bool)
     for i, c in enumerate(out_counters):
-        ks[i] = seed[int(c)]
-        mask[i] = True
+        ks[i] = confirmed[int(c)]
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     np.savez_compressed(out / "keys.npz", counters=out_counters, ks=ks, crc_supported=mask)
     report = dict(received_groups=len(all_c), supplied_prefixes=len(supplied),
                   recovered_prefixes=len(set(confirmed) - supplied),
                   exported_prefixes=int(len(out_counters)),
-                  carousel_blocks=repeat_blocks,
+                  carousel_blocks=int(repeat_blocks),
                   note="Recovered prefixes pass a CRC that also recurs at the carousel "
                        "period, or >=2-phase 128-bit agreement. Text tail only; not audio "
                        "masks or codec identity.")
@@ -253,11 +280,12 @@ def main():
     ap.add_argument("--keys", required=True, type=Path, help="supplied prefix archive")
     ap.add_argument("--reference", required=True, type=Path,
                     help="directory with decoded items_*.json and titles_*.json")
-    ap.add_argument("--repeat-blocks", type=int, required=True,
-                    help="carousel period in 16-byte blocks for this recording")
+    ap.add_argument("--repeat-blocks", type=int, default=None,
+                    help="carousel period in 16-byte blocks (auto-detected from the supplied "
+                         "records when omitted)")
     ap.add_argument("--out", required=True, type=Path)
     a = ap.parse_args()
-    if a.repeat_blocks <= 0:
+    if a.repeat_blocks is not None and a.repeat_blocks <= 0:
         ap.error("--repeat-blocks must be positive")
     recover(a.data_units, a.keys, a.reference, a.repeat_blocks, a.out)
 

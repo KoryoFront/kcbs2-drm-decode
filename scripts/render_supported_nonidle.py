@@ -9,7 +9,7 @@ import wave
 import numpy as np
 
 from kcbs_decode_fast import (assemble_frames, attenuate, decode_evs, group_runs,
-                              render_timeline, replay_nearby)
+                              render_timeline, replay_nearby, timeline_runs)
 
 RATE = 32000
 
@@ -50,7 +50,7 @@ def with_loss_policy(frames, supplied, policy):
 
 
 def render(groups, keys, out, *, timeline=False, merge_gap=4, policy='replay', attenuation=0,
-           start_counter=None, end_counter=None):
+           start_counter=None, end_counter=None, conceal_all_gaps=False):
     started = time.monotonic()
     counters, prefix, du, available = join_supported(groups, keys)
     if not len(available):
@@ -71,7 +71,8 @@ def render(groups, keys, out, *, timeline=False, merge_gap=4, policy='replay', a
     if output_groups*60*frame_samples*2 > 512*1024**2:
         raise ValueError('split this capture into shorter outputs to stay below 512 MiB of PCM')
     offsets = counters-first
-    runs = group_runs(offsets, merge_gap if timeline else 0)
+    runs, concealed_long_gaps = timeline_runs(offsets, merge_gap if timeline else 0,
+                                               conceal_all_gaps and timeline, span)
     parts, pieces = [], []
     cursor = 0
     out.mkdir(parents=True, exist_ok=False)
@@ -111,13 +112,18 @@ def render(groups, keys, out, *, timeline=False, merge_gap=4, policy='replay', a
                       (runs[-1][1],span)]
         silences = [dict(start_seconds=round(lo*1.2,3), duration_seconds=round((hi-lo)*1.2,3))
                     for lo,hi in boundaries if hi > lo]
+    concealed = [dict(start_seconds=round(lo*1.2, 2), duration_seconds=round((hi-lo)*1.2, 2))
+                 for lo, hi in concealed_long_gaps]
     report = dict(file=path.name, first_counter=first, last_counter=last,
                   timeline=timeline, received_groups=len(available), supported_groups=len(counters),
                   supported_seconds=round(len(counters)*1.2,2),
                   output_seconds=sum(len(p) for p in pieces)/RATE, playback_method=policy,
                   attenuation_db=attenuation, decoder_calls=len(runs),
                   wall_seconds=round(time.monotonic()-started,2), silent_gaps=silences,
+                  concealed_long_gaps=concealed,
                   separator_seconds=0 if timeline else .5, excerpts=parts,
+                  concealment_note=('All long gaps are explicit EVS losses, not recovered broadcast audio.'
+                                    if conceal_all_gaps and timeline else ''),
                   note='CRC supports text-tail prefixes, not audio identity. Missing slots use loss concealment or replay.')
     (out/'report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps({k:v for k,v in report.items() if k not in ('silent_gaps','excerpts')},indent=2))
@@ -130,6 +136,9 @@ if __name__ == '__main__':
     ap.add_argument('--timeline', action='store_true', help='preserve the entire capture clock')
     ap.add_argument('--merge-gap', type=int, default=4, help='timeline: conceal up to N missing groups')
     ap.add_argument('--loss-policy', choices=('replay','future','plc'), default='replay')
+    ap.add_argument('--conceal-all-gaps', action='store_true',
+                    help='timeline: pass all long gaps to EVS as losses instead of digital silence; '
+                         'preserves the clock but does not recover missing broadcast content')
     ap.add_argument('--attenuate-db', type=float, default=0)
     ap.add_argument('--start-counter', type=int, help='include this counter as the first slot of the render')
     ap.add_argument('--end-counter', type=int, help='include this counter as the last slot of the render')
@@ -138,4 +147,5 @@ if __name__ == '__main__':
         ap.error('provide nonnegative merge-gap and attenuation between 0 and 60')
     render(a.groups, a.keys, a.out, timeline=a.timeline, merge_gap=a.merge_gap,
            policy=a.loss_policy, attenuation=a.attenuate_db,
-           start_counter=a.start_counter, end_counter=a.end_counter)
+           start_counter=a.start_counter, end_counter=a.end_counter,
+           conceal_all_gaps=a.conceal_all_gaps)

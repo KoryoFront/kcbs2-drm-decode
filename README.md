@@ -154,6 +154,14 @@ python scripts/finish_listening_wav.py \
     --out work/november_audio/KCBS2_NOV25_UNVERIFIED_QUIET_17m40_32k.wav
 ```
 
+For a **gap-free playback timeline**, append `--conceal-all-gaps` to the
+`render_supported_nonidle.py` command. This passes all eight long November
+reception gaps to EVS as explicit losses in one continuous decode, eliminating
+digital silence while preserving the 17:40.8 clock. **It does not recover the
+missing broadcast groups or make their audio verified.** The report records
+`concealed_long_gaps` separately from `silent_gaps`. The same opt-in flag is
+available in `kcbs_decode_fast.py` for March; defaults remain unchanged.
+
 Use a new output directory or filenames for reruns. Omit `--timeline` for an
 excerpt reel with half-second separators. `--loss-policy replay` matches the
 quieter March playback policy; `--loss-policy plc` uses concealment instead of

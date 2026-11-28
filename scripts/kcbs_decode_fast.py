@@ -225,6 +225,22 @@ def group_runs(offsets, merge_gap):
             for lo, hi in zip(np.r_[0, breaks+1], np.r_[breaks, len(offsets)-1])]
 
 
+def timeline_runs(offsets, merge_gap, conceal_all_gaps=False, span=None):
+    """Return decoder runs and the long gaps explicitly concealed instead of silenced."""
+    standard = group_runs(offsets, merge_gap)
+    if not conceal_all_gaps:
+        return standard, []
+    if not len(offsets):
+        raise ValueError('cannot conceal an empty capture')
+    concealed = [(hi, lo) for (_, hi), (lo, _) in zip(standard, standard[1:])]
+    span = int(offsets[-1]) + 1 if span is None else int(span)
+    if standard[0][0] > 0:
+        concealed.insert(0, (0, standard[0][0]))
+    if standard[-1][1] < span:
+        concealed.append((standard[-1][1], span))
+    return [(0, span)], concealed
+
+
 def replay_nearby(frames, supplied):
     """Fill loss slots only inside received four-frame cycles; keep supplied bytes intact."""
     out, keep = frames.copy(), supplied.copy()
@@ -296,6 +312,9 @@ def main():
                          'silence longer gaps (default: 4; 0 silences every gap)')
     ap.add_argument('--replay-nearby', action='store_true',
                     help='replay neighbouring supplied frames instead of concealing roles 2/3')
+    ap.add_argument('--conceal-all-gaps', action='store_true',
+                    help='pass all long reception gaps to EVS as losses instead of digital silence; '
+                         'preserves the clock but does not recover missing broadcast content')
     ap.add_argument('--attenuate-db', type=float, default=0,
                     help='lower the final PCM level without compression or limiting')
     ap.add_argument('--complete-groups-only', action='store_true',
@@ -362,7 +381,7 @@ def main():
     if a.replay_nearby:
         frames, supplied = replay_nearby(frames, supplied)
     replayed_frames = int(supplied.sum()) - supplied_frames
-    runs = group_runs(offsets, a.merge_gap)
+    runs, concealed_long_gaps = timeline_runs(offsets, a.merge_gap, a.conceal_all_gaps, span)
     timings['frames_seconds'] = round(time.monotonic() - stage, 1)
 
     stage = time.monotonic()
@@ -390,8 +409,11 @@ def main():
             w.writeframes(pcm[i0:i1].tobytes())
         slice_file = slice_path.name
 
-    silenced = [dict(start_seconds=round(hi*1.2, 2), duration_seconds=round((lo-hi)*1.2, 2))
-                for (_, hi), (lo, _) in zip(runs, runs[1:])]
+    silenced = [] if a.conceal_all_gaps else [
+        dict(start_seconds=round(hi*1.2, 2), duration_seconds=round((lo-hi)*1.2, 2))
+        for (_, hi), (lo, _) in zip(runs, runs[1:])]
+    concealed = [dict(start_seconds=round(lo*1.2, 2), duration_seconds=round((hi-lo)*1.2, 2))
+                 for lo, hi in concealed_long_gaps]
     peak = max(int(pcm.max()), -int(pcm.min()))
     clipped = int(np.count_nonzero((pcm == -32768) | (pcm == 32767)))
     norm = pcm.astype(np.float32) / 32768
@@ -405,8 +427,12 @@ def main():
                   attenuation_db=a.attenuate_db, fully_unmasked_frames=exact_r0_count,
                   total_frames=len(frames), rms=round(float(np.sqrt(np.mean(norm**2))), 4),
                   peak_pcm=peak, full_scale_samples=clipped, clipped_fraction=clipped/len(pcm),
-                  merge_gap=a.merge_gap, decoder_calls=len(runs), silenced_gaps=silenced,
+                  merge_gap=a.merge_gap, conceal_all_gaps=a.conceal_all_gaps,
+                  decoder_calls=len(runs), silenced_gaps=silenced,
+                  concealed_long_gaps=concealed,
                   timings=timings, wall_seconds=round(time.monotonic() - started, 1),
+                  concealment_note=('All long gaps are explicit EVS losses, not recovered broadcast audio.'
+                                    if a.conceal_all_gaps else ''),
                   note='The idle text and CRC support the 16-byte mask prefix, not codec identity '
                        'or an audio match. Partial groups require >=2 phases agreeing on the 16-byte '
                        'idle-tail prefix and per-packet CRC checks. Role 1 has six role-0 donor bytes; '

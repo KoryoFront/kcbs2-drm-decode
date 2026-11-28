@@ -7,7 +7,7 @@ import numpy as np
 
 from kcbs_decode_fast import (
     IDLE_TAILS, assemble_frames, assemble_salvaged_idle, attenuate,
-    group_runs, render_timeline, replay_nearby, salvage_idle_packets,
+    group_runs, render_timeline, replay_nearby, salvage_idle_packets, timeline_runs,
 )
 from march_listening_filter import reduce_flutter
 from render_supported_nonidle import join_supported
@@ -83,6 +83,15 @@ class MarchPlaybackTests(unittest.TestCase):
         self.assertEqual(group_runs(offsets, 4), [(0, 6), (11, 13)])
         self.assertEqual(group_runs(offsets, 0), [(0, 1), (5, 6), (11, 13)])
         self.assertEqual(group_runs([0], 4), [(0, 1)])
+
+    def test_conceal_all_gaps_keeps_clock_and_marks_concealed_interval(self):
+        offsets = [0, 10]
+        runs, concealed = timeline_runs(offsets, 4, True)
+        self.assertEqual(runs, [(0, 11)])
+        self.assertEqual(concealed, [(1, 10)])
+        self.assertEqual(timeline_runs(offsets, 4, False), ([(0, 1), (10, 11)], []))
+        self.assertEqual(timeline_runs([2, 10], 4, True, span=15),
+                         ([(0, 15)], [(0, 2), (3, 10), (11, 15)]))
 
     def test_alignment_and_fades_do_not_change_gap_length(self):
         rate = 16000

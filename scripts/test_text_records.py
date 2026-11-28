@@ -30,6 +30,26 @@ def flip(data, index):
     return bytes(result)
 
 
+def make_opening(cat_no="1", category="기상정보", title="오늘 날씨", *, toggle=0):
+    """A 112-byte item-opening/title record (header 0x45 0xFC)."""
+    buf = bytearray(112)
+    buf[0] = 0x45 | (0x80 if toggle else 0)
+    buf[1] = 0xFC
+    buf[4:6] = b"\x08\x00"
+    buf[8:10] = b"\xab\x7e"
+    buf[14:16] = b"\x51\x00"
+    buf[17] = 0xAB
+    buf[18:20] = b"\x7e\x00"
+    buf[20:22] = cat_no.encode("utf-16le")
+    buf[22:24] = b"\x2e\x00"
+    buf[24:32] = category.encode("utf-16le")
+    title_bytes = title.encode("utf-16le")
+    buf[38:38 + len(title_bytes)] = title_bytes
+    buf[94:96] = reference_crc(bytes(buf[:94])).to_bytes(2, "big")
+    buf[96:112] = b"\xbb" * 16
+    return bytes(buf)
+
+
 class TextRecordsTest(unittest.TestCase):
     def test_crc_standard_check(self):
         self.assertEqual(crc(b"123456789"), 0xD64E)
@@ -132,6 +152,36 @@ class TextRecordsTest(unittest.TestCase):
         row = make_record(b"A\0", final=True)
         self.assertEqual(parse_record(row + b"\xbb" * 16,
                                       known_bytes=b"\x01" * len(row) + bytes(16)).size, len(row))
+
+    def test_item_opening_record_parses_category_and_title(self):
+        row = make_opening(cat_no="2", category="문화정보", title="오늘의 소식")
+        record = parse_record(row)
+        self.assertEqual(record.size, 112)
+        self.assertEqual(record.header_hex, "45fc")
+        self.assertEqual(record.text, "~2.문화정보\n오늘의 소식")
+        self.assertFalse(record.final)
+
+    def test_item_opening_requires_fixed_metadata_and_crc(self):
+        row = make_opening()
+        # A byte in the fixed metadata frame must match exactly (CRC recomputed so
+        # the metadata gate, not the CRC, is what rejects it).
+        bad_meta = bytearray(flip(row, 8))
+        bad_meta[94:96] = reference_crc(bytes(bad_meta[:94])).to_bytes(2, "big")
+        with self.assertRaisesRegex(RecordError, "item-opening metadata"):
+            parse_record(bytes(bad_meta))
+        # The CRC still covers header+body.
+        with self.assertRaisesRegex(RecordError, "CRC mismatch"):
+            parse_record(flip(row, 40))
+        # The category must be Hangul.
+        bad = bytearray(row)
+        bad[24:26] = b"\x20\x00"  # a space, not Hangul
+        bad[94:96] = reference_crc(bytes(bad[:94])).to_bytes(2, "big")
+        with self.assertRaisesRegex(RecordError, "category failed charset"):
+            parse_record(bytes(bad))
+
+    def test_item_opening_toggle_bit_is_reported(self):
+        self.assertEqual(parse_record(make_opening(toggle=1)).item_toggle, 1)
+        self.assertEqual(parse_record(make_opening(toggle=0)).item_toggle, 0)
 
     def test_replay_ignores_input_flags_and_requires_exact_window(self):
         row = make_record(b"A\0")

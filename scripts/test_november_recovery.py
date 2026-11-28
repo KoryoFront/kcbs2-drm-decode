@@ -119,6 +119,26 @@ class NovemberRecoveryTests(unittest.TestCase):
             self.assertEqual(report['extra_groups'], 1)
             self.assertEqual(report['reassembly_crc_failures'], 0)
 
+    def test_synchronous_span_anchors_a_non_self_anchoring_group(self):
+        # Three consecutive groups. In observation A the middle group's phase-0
+        # record has a bad q3, so it cannot self-anchor and the 0/1/2/0 bracket
+        # fails; only the synchronous span between the intact 100 and 102 phase-0
+        # anchors assigns its phase-1 record. Observation B fills the one packet A
+        # is missing. The middle group is recoverable only with span anchoring.
+        base = group(100) + group(101) + group(102)
+        a, b = bytearray(base), bytearray(base)
+        a[3*732 + 4 + 3*182 + 20] ^= 1  # A: group 101 phase 0, packet q3
+        b[4*732 + 4 + 1*182 + 20] ^= 1  # B: group 101 phase 1, packet q1
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td); pa, pb = root/'a.bin', root/'b.bin'
+            pa.write_bytes(a); pb.write_bytes(b)
+            with contextlib.redirect_stdout(io.StringIO()):
+                salvage([pa, pb], root/'output')
+            report = json.loads((root/'output/report.json').read_text())
+            self.assertEqual(report['salvaged_complete_groups'], 3)
+            self.assertEqual(report['reassembly_crc_failures'], 0)
+            self.assertEqual(report['conflicting_data_units'], [])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -76,6 +76,26 @@ def salvage(paths, out):
                 continue
             for p in range(3):
                 assigned[i+p].add((c, p))
+        barriers = {i for i, r in enumerate(recs) if r is None}
+        anchors = {i: r['counter'] for i, r in enumerate(recs)
+                   if r and r['phase'] == 0 and r['packet_ok'][0] and r['packet_ok'][3]}
+        for i, c in anchors.items():
+            for p in (1, 2):
+                if i+p < len(recs) and recs[i+p] and recs[i+p]['packet_ok'][0] and recs[i+p]['phase'] == p:
+                    if not any(i < k <= i+p for k in barriers):
+                        assigned[i+p].add((c, p))
+            for back, p in ((1, 2), (2, 1)):
+                if c > 0 and i-back >= 0 and recs[i-back] and recs[i-back]['packet_ok'][0] and recs[i-back]['phase'] == p:
+                    if not any(i-back <= k < i for k in barriers):
+                        assigned[i-back].add((c-1, p))
+        anchor_indices = sorted(anchors)
+        for a, b in zip(anchor_indices, anchor_indices[1:]):
+            dc = anchors[b] - anchors[a]
+            if 0 < dc <= 64 and (b - a) == 3 * dc and not any(a < k < b for k in barriers):
+                for k in range(a, b + 1):
+                    r = recs[k]
+                    if r and (not r['packet_ok'][0] or r['phase'] == (k - a) % 3):
+                        assigned[k].add((anchors[a] + (k - a) // 3, (k - a) % 3))
         for i, candidates in assigned.items():
             if len(candidates) != 1:
                 continue

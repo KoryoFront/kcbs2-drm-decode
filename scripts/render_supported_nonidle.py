@@ -8,10 +8,68 @@ import wave
 
 import numpy as np
 
+import render_continuous as rc
 from kcbs_decode_fast import (assemble_frames, attenuate, decode_evs, group_runs,
-                              render_timeline, replay_nearby, timeline_runs)
+                              render_timeline, replay_nearby)
 
 RATE = 32000
+
+
+def load_keymap(keys):
+    """Confirmed 16-byte prefixes from a keys.npz, keyed by counter."""
+    with np.load(keys) as f:
+        if 'crc_supported' not in f or f['crc_supported'].dtype != np.bool_:
+            raise ValueError('expected a per-byte CRC-supported mask')
+        mask, ks, key_c = f['crc_supported'], f['ks'], f['counters'].astype(np.int64)
+    if (mask.ndim != 2 or mask.shape != ks.shape or mask.shape[1] != 16
+            or ks.dtype != np.uint8 or len(mask) != len(key_c)):
+        raise ValueError('expected a 16-byte key and support mask for each counter')
+    full = mask.all(axis=1)
+    if len(np.unique(key_c[full])) != int(full.sum()):
+        raise ValueError('ambiguous verified counters')
+    return {int(c): k for c, k, m in zip(key_c, ks, full) if m}
+
+
+def assemble_partial(data_units, keymap, first, span):
+    """Role-0 (and donor role-1) frames from whatever phases each keyed group received.
+
+    Unlike the complete-group path, a group contributes the role-0 audio of every phase
+    it received even when the full three-phase data unit is incomplete; the missing
+    phases' frames stay unsupplied for the loss policy to handle. Returns the frame
+    array, the supplied mask, and the counters that contributed at least one phase.
+    """
+    with np.load(data_units) as d:
+        du_c = d['counters'].astype(np.int64)
+        du_p = d['phases'].astype(np.int64)
+        du = d['du']
+    if du.ndim != 2 or du.shape[1] != 716 or du.dtype != np.uint8:
+        raise ValueError('expected per-phase 716-byte data units')
+    by_counter = {}
+    for c, p, row in zip(du_c, du_p, du):
+        by_counter.setdefault(int(c), {})[int(p)] = row
+    frames = np.zeros((span * 60, 33), np.uint8)
+    supplied = np.zeros(span * 60, bool)
+    rows0 = np.arange(0, 60, 4)
+    rows1 = rows0 + 1
+    unknown = rc.KEYED[5:]
+    filled = []
+    for c, phases in by_counter.items():
+        if c not in keymap or not (0 <= c - first < span):
+            continue
+        base = (c - first) * 60
+        du_row = np.zeros((3, 716), np.uint8)
+        for p, row in phases.items():
+            du_row[p] = row
+        modes, payload = rc.group_frames(du_row, keymap[c])
+        payload[np.ix_(rows1, unknown)] = payload[np.ix_(rows0, unknown)]
+        frames[base:base + 60, 0] = modes
+        frames[base:base + 60, 1:] = payload
+        for p in phases:
+            in_phase = (rows0 >= p * 20) & (rows0 < p * 20 + 20)
+            supplied[base + rows0[in_phase]] = True
+            supplied[base + rows1[in_phase]] = True
+        filled.append(c)
+    return frames, supplied, np.array(sorted(filled), np.int64)
 
 
 def join_supported(groups, keys):
@@ -50,29 +108,53 @@ def with_loss_policy(frames, supplied, policy):
 
 
 def render(groups, keys, out, *, timeline=False, merge_gap=4, policy='replay', attenuation=0,
-           start_counter=None, end_counter=None, conceal_all_gaps=False):
+           start_counter=None, end_counter=None, data_units=None):
     started = time.monotonic()
-    counters, prefix, du, available = join_supported(groups, keys)
-    if not len(available):
-        raise ValueError('no complete received groups')
-    low, high = int(available.min()), int(available.max())
-    first = low if start_counter is None else start_counter
-    last = high if end_counter is None else end_counter
-    if not low <= first <= last <= high:
-        raise ValueError('counter slice must be within the recorded span')
-    use = (counters >= first) & (counters <= last)
-    counters, prefix, du = counters[use], prefix[use], du[use]
-    available = available[(available >= first) & (available <= last)]
-    if not len(counters):
-        raise ValueError('no received groups with a full CRC-supported prefix in selected span')
-    span = last-first+1
     frame_samples = RATE//50
-    output_groups = span if timeline else len(counters)
-    if output_groups*60*frame_samples*2 > 512*1024**2:
-        raise ValueError('split this capture into shorter outputs to stay below 512 MiB of PCM')
-    offsets = counters-first
-    runs, concealed_long_gaps = timeline_runs(offsets, merge_gap if timeline else 0,
-                                               conceal_all_gaps and timeline, span)
+    prebuilt = None
+    if data_units is not None:
+        if not timeline:
+            raise ValueError('--data-units partial rendering requires --timeline')
+        keymap = load_keymap(keys)
+        with np.load(data_units) as d:
+            received_all = np.unique(d['counters'].astype(np.int64))
+        if not len(received_all):
+            raise ValueError('no received groups in the data units')
+        low, high = int(received_all.min()), int(received_all.max())
+        first = low if start_counter is None else start_counter
+        last = high if end_counter is None else end_counter
+        if not low <= first <= last <= high:
+            raise ValueError('counter slice must be within the recorded span')
+        span = last-first+1
+        if span*60*frame_samples*2 > 512*1024**2:
+            raise ValueError('split this capture into shorter outputs to stay below 512 MiB of PCM')
+        frames, supplied, filled = assemble_partial(data_units, keymap, first, span)
+        available = received_all[(received_all >= first) & (received_all <= last)]
+        counters = filled[(filled >= first) & (filled <= last)]
+        if not len(counters):
+            raise ValueError('no keyed groups with a received phase in selected span')
+        offsets = counters-first
+        prebuilt = (frames, supplied)
+    else:
+        counters, prefix, du, available = join_supported(groups, keys)
+        if not len(available):
+            raise ValueError('no complete received groups')
+        low, high = int(available.min()), int(available.max())
+        first = low if start_counter is None else start_counter
+        last = high if end_counter is None else end_counter
+        if not low <= first <= last <= high:
+            raise ValueError('counter slice must be within the recorded span')
+        use = (counters >= first) & (counters <= last)
+        counters, prefix, du = counters[use], prefix[use], du[use]
+        available = available[(available >= first) & (available <= last)]
+        if not len(counters):
+            raise ValueError('no received groups with a full CRC-supported prefix in selected span')
+        span = last-first+1
+        output_groups = span if timeline else len(counters)
+        if output_groups*60*frame_samples*2 > 512*1024**2:
+            raise ValueError('split this capture into shorter outputs to stay below 512 MiB of PCM')
+        offsets = counters-first
+    runs = group_runs(offsets, merge_gap if timeline else 0)
     parts, pieces = [], []
     cursor = 0
     out.mkdir(parents=True, exist_ok=False)
@@ -81,7 +163,10 @@ def render(groups, keys, out, *, timeline=False, merge_gap=4, policy='replay', a
     with tempfile.TemporaryDirectory(dir=out) as td:
         tmp = Path(td)
         if timeline:
-            frames, supplied = assemble_frames(du, prefix, offsets, span)
+            if prebuilt is None:
+                frames, supplied = assemble_frames(du, prefix, offsets, span)
+            else:
+                frames, supplied = prebuilt
             frames, supplied = with_loss_policy(frames, supplied, policy)
             pcm = render_timeline(frames, supplied, runs, RATE,
                                   lambda f, s: decode_evs(f, s, RATE, tmp))
@@ -112,18 +197,14 @@ def render(groups, keys, out, *, timeline=False, merge_gap=4, policy='replay', a
                       (runs[-1][1],span)]
         silences = [dict(start_seconds=round(lo*1.2,3), duration_seconds=round((hi-lo)*1.2,3))
                     for lo,hi in boundaries if hi > lo]
-    concealed = [dict(start_seconds=round(lo*1.2, 2), duration_seconds=round((hi-lo)*1.2, 2))
-                 for lo, hi in concealed_long_gaps]
     report = dict(file=path.name, first_counter=first, last_counter=last,
                   timeline=timeline, received_groups=len(available), supported_groups=len(counters),
                   supported_seconds=round(len(counters)*1.2,2),
                   output_seconds=sum(len(p) for p in pieces)/RATE, playback_method=policy,
                   attenuation_db=attenuation, decoder_calls=len(runs),
                   wall_seconds=round(time.monotonic()-started,2), silent_gaps=silences,
-                  concealed_long_gaps=concealed,
+                  partial_phase=data_units is not None,
                   separator_seconds=0 if timeline else .5, excerpts=parts,
-                  concealment_note=('All long gaps are explicit EVS losses, not recovered broadcast audio.'
-                                    if conceal_all_gaps and timeline else ''),
                   note='CRC supports text-tail prefixes, not audio identity. Missing slots use loss concealment or replay.')
     (out/'report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps({k:v for k,v in report.items() if k not in ('silent_gaps','excerpts')},indent=2))
@@ -131,21 +212,24 @@ def render(groups, keys, out, *, timeline=False, merge_gap=4, policy='replay', a
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__)
-    for opt in ('groups', 'keys', 'out'):
+    for opt in ('keys', 'out'):
         ap.add_argument('--'+opt, required=True, type=Path)
+    ap.add_argument('--groups', type=Path,
+                    help='complete-group groups.npz (omit when using --data-units)')
+    ap.add_argument('--data-units', type=Path,
+                    help='per-phase data_units.npz: render role-0 audio from every received '
+                         'phase of a keyed group, not only complete three-phase groups (timeline only)')
     ap.add_argument('--timeline', action='store_true', help='preserve the entire capture clock')
     ap.add_argument('--merge-gap', type=int, default=4, help='timeline: conceal up to N missing groups')
     ap.add_argument('--loss-policy', choices=('replay','future','plc'), default='replay')
-    ap.add_argument('--conceal-all-gaps', action='store_true',
-                    help='timeline: pass all long gaps to EVS as losses instead of digital silence; '
-                         'preserves the clock but does not recover missing broadcast content')
     ap.add_argument('--attenuate-db', type=float, default=0)
     ap.add_argument('--start-counter', type=int, help='include this counter as the first slot of the render')
     ap.add_argument('--end-counter', type=int, help='include this counter as the last slot of the render')
     a = ap.parse_args()
     if a.merge_gap < 0 or not 0 <= a.attenuate_db <= 60:
         ap.error('provide nonnegative merge-gap and attenuation between 0 and 60')
+    if (a.groups is None) == (a.data_units is None):
+        ap.error('provide exactly one of --groups or --data-units')
     render(a.groups, a.keys, a.out, timeline=a.timeline, merge_gap=a.merge_gap,
            policy=a.loss_policy, attenuation=a.attenuate_db,
-           start_counter=a.start_counter, end_counter=a.end_counter,
-           conceal_all_gaps=a.conceal_all_gaps)
+           start_counter=a.start_counter, end_counter=a.end_counter, data_units=a.data_units)

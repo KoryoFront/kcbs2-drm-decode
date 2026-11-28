@@ -114,38 +114,51 @@ verified text prefixes.
 
 ## Render the contributed November recording
 
-[**Download the quieter 17:40.8 listening WAV**](https://github.com/KoryoFront/kcbs2-drm-decode/releases/download/november-quiet-review/KCBS2_NOV25_UNVERIFIED_QUIET_17m40_32k.wav).
-It uses the same counter span as the previous November 24 UTC / November 25 KST
-sample. The `november-quiet-review` release binary covered 671 of 884 timeline
-groups (−26.7 LUFS, −2.6 dBTP, 11 silent gaps). After updating
-`parse_text_records.py` to accept CJK paragraph-indent spaces (`U+3000`) and
-optional `0xBB` fill blocks after item-final records, all **717 of 884 timeline
-groups** (`860.4 s`, leaving **8** silent gaps) pass both strict record CRC and
-969-block carousel repeat checks. This is group coverage, not a percentage of
-verified speech or music. Role 2 is concealed; role 3 can replay the next fully
-unmasked frame.
+The listening copy spans the November 24 UTC / November 25 KST sample. The first
+`november-quiet-review` release binary covered 671 of 884 timeline groups (11 silent
+gaps). Two parser fixes (CJK paragraph-indent `U+3000`, optional `0xBB` fill after
+item-final records) raised that to 717 groups / 8 gaps. The recovery and rendering
+below now leave a **single 7.2 s silent stretch** (counters 43680333–43680338),
+where no complete data unit was received at all — a genuine reception dropout, not a
+decode limit.
 
-[Martyn’s contribution](contrib/kcbsdrm/README.md) supplies six matching groups of
-dumps, prefix archives, record reports and Korean text. All **3,517** exported full prefixes matched complete received groups by
-counter; the six captures contain **4,421** complete groups in total. Rechecking header/body CRC, padding, fill, and matching carousel
-copies on the four multi-loop captures (plus strict CRC/framing on the two
-single-loop captures) kept **3,435 full prefixes** (up from 3,007 before the
-`U+3000` and item-final fill fixes). Repeat agreement is an extra consistency
-check, not authentication; the exports are not a source of keys for future
-broadcasts.
+Three things close the other gaps, each at or above the existing CRC bar:
 
-With FFmpeg and the EVS build from the March quickstart, render the updated
-717-group timeline from the contributed data (Git Bash):
+1. **Packet-anchored salvage.** `salvage_msc_packets.py` now assigns `(counter, phase)`
+   to every record inside a synchronous span between two intact phase-0 anchors, so a
+   group whose own phase-0 packet dropped still contributes its CRC-good packets.
+2. **Additive prefix recovery.** `recover_text_keys.py` proposes a text-tail prefix for
+   groups the supplied archive left unkeyed (skgsara's phrase method, plus item-opening
+   `0x45/0xFC` title records), then keeps it **only** when the tail decrypts to a record
+   whose CRC passes *and* whose body recurs at the 969-block carousel period, or when two
+   or more phases independently reproduce an already-established block (128-bit agreement).
+   A 16-bit CRC a wrong key hits by chance cannot also recur at the exact carousel offset.
+3. **Partial-phase rendering.** `render_supported_nonidle.py --data-units` renders role-0
+   audio from every received phase of a keyed group, not only complete three-phase groups.
+
+Together these raise the listening span from 717 to **816 of 884 groups** with role-0
+audio. This is group coverage, not a percentage of verified speech or music: role 0 is
+exact, role 1 keeps six substitute bytes, and roles 2/3 are concealed or replayed.
+
+[Martyn’s contribution](contrib/kcbsdrm/README.md) supplies six matching captures of
+dumps, prefix archives, record reports and Korean text. Across them, `recover_text_keys.py`
+adds CRC-and-carousel-verified prefixes beyond the supplied set; on the November 25
+04:48+04:57 capture it recovers **153** further prefixes (1,114 → 1,267). Repeat agreement
+is an extra consistency check, not authentication, and no recovered prefix supplies the
+role-1/2/3 audio masks or a per-counter keystream for other broadcasts.
+
+With FFmpeg and the EVS build from the March quickstart, render the timeline from the
+contributed data (Git Bash):
 
 ```bash
 python scripts/salvage_msc_packets.py \
     contrib/kcbsdrm/reference/sf_2026-11-25_04*3205_hik.bin --out work/november
-python scripts/review_supplied_records.py \
+python scripts/recover_text_keys.py \
     --data-units work/november/data_units.npz \
     --keys contrib/kcbsdrm/keys/keys_2026-11-25.npz \
-    --repeat-blocks 969 --out work/november_review
+    --reference contrib/kcbsdrm/reference --repeat-blocks 969 --out work/november_keys
 python scripts/render_supported_nonidle.py \
-    --groups work/november/groups.npz --keys work/november_review/keys.npz \
+    --data-units work/november/data_units.npz --keys work/november_keys/keys.npz \
     --timeline --start-counter 43679908 --end-counter 43680791 \
     --loss-policy future --attenuate-db 2.2 --out work/november_audio
 python scripts/finish_listening_wav.py \
@@ -154,19 +167,14 @@ python scripts/finish_listening_wav.py \
     --out work/november_audio/KCBS2_NOV25_UNVERIFIED_QUIET_17m40_32k.wav
 ```
 
-For a **gap-free playback timeline**, append `--conceal-all-gaps` to the
-`render_supported_nonidle.py` command. This passes all eight long November
-reception gaps to EVS as explicit losses in one continuous decode, eliminating
-digital silence while preserving the 17:40.8 clock. **It does not recover the
-missing broadcast groups or make their audio verified.** The report records
-`concealed_long_gaps` separately from `silent_gaps`. The same opt-in flag is
-available in `kcbs_decode_fast.py` for March; defaults remain unchanged.
-
-Use a new output directory or filenames for reruns. Omit `--timeline` for an
-excerpt reel with half-second separators. `--loss-policy replay` matches the
-quieter March playback policy; `--loss-policy plc` uses concealment instead of
-frame replay. None of the options recovers the missing payload or guarantees
-natural music. Each render writes a counter and timing report.
+`recover_text_keys.py` only adds prefixes that pass the carousel/CRC gate; to keep the
+supplied archive untouched and merely narrow it, use `review_supplied_records.py` instead.
+Pass `--groups work/november/groups.npz` in place of `--data-units` to render only complete
+three-phase groups. Use a new output directory for reruns. Omit `--timeline` for an excerpt
+reel with half-second separators. `--loss-policy replay` matches the quieter March playback
+policy; `--loss-policy plc` uses concealment instead of frame replay. None of the options
+recovers the missing payload or guarantees natural music. Each render writes a counter and
+timing report.
 
 To check for a pre-programme RF pulse from two overlapping recordings, use
 `python scripts/rf_pulse_check.py --help`. In one June pair on 3205 and 6140 kHz
@@ -265,7 +273,10 @@ plaintext using the reported block-aligned header, length `((b0 & 7) << 4) | (b1
 last-record flag, sequence number, CRC, zero padding, a mandatory fill block after a
 non-final record, and an optional fill block after an item-final record. The optional
 same-length `--known-bytes` map (0 or 1 per input byte) prevents unknown bytes from
-being treated as evidence. Binary item-metadata blocks and title headers are not parsed.
+being treated as evidence. Item-opening/title records (header `0x45 0xFC`) are also
+parsed: their fixed metadata frame and CRC are checked and the category and opening
+title text are returned; the per-copy serial/clock fields in the metadata are not
+interpreted.
 
 ```bash
 python scripts/parse_text_records.py plaintext.bin --known-bytes known_mask.bin

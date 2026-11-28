@@ -103,10 +103,37 @@ def parse_record(plaintext: bytes, offset: int = 0, *,
         if plaintext[pad_end:fill_end] != FILL:
             raise RecordError("invalid nonfinal fill block")
         end = fill_end
-    try:
-        text = plaintext[offset + 2:body_end].decode("utf-16le")
-    except UnicodeDecodeError as exc:
-        raise RecordError("invalid UTF-16LE") from exc
+    if (b0 & 0x7F) == 0x45 and b1 == 0xFC:
+        if (plaintext[offset + 4:offset + 6] != b"\x08\x00"
+                or plaintext[offset + 8:offset + 10] != b"\xab\x7e"
+                or plaintext[offset + 14:offset + 16] != b"\x51\x00"
+                or plaintext[offset + 17] != 0xAB
+                or plaintext[offset + 18:offset + 20] != b"\x7e\x00"
+                or plaintext[offset + 22:offset + 24] != b"\x2e\x00"
+                or plaintext[offset + 32:offset + 38] != b"\x00" * 6):
+            raise RecordError("invalid item-opening metadata header")
+        try:
+            cat_no = plaintext[offset + 20:offset + 22].decode("utf-16le")
+            category = plaintext[offset + 24:offset + 32].decode("utf-16le")
+        except UnicodeDecodeError as exc:
+            raise RecordError("invalid UTF-16LE") from exc
+        if check_charset and not all(0xAC00 <= ord(ch) <= 0xD7A3 for ch in category):
+            raise RecordError("opening category failed charset gate")
+        raw_title = plaintext[offset + 38:body_end]
+        units = [int.from_bytes(raw_title[i:i + 2], "little") for i in range(0, len(raw_title), 2)]
+        last_nz = max((i + 1 for i, u in enumerate(units) if u != 0), default=0)
+        if any(u == 0 for u in units[:last_nz]):
+            raise RecordError("embedded NUL in opening title")
+        try:
+            opening = raw_title[:2 * last_nz].decode("utf-16le")
+        except UnicodeDecodeError as exc:
+            raise RecordError("invalid UTF-16LE") from exc
+        text = f"~{cat_no}.{category}\n{opening}"
+    else:
+        try:
+            text = plaintext[offset + 2:body_end].decode("utf-16le")
+        except UnicodeDecodeError as exc:
+            raise RecordError("invalid UTF-16LE") from exc
     if check_charset and not plausible_text(text):
         raise RecordError("text failed charset gate")
     return TextRecord(offset, end - offset, plaintext[offset:offset + 2].hex(),
